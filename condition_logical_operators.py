@@ -28,8 +28,8 @@ print(message)
 ''' So the 'not' operator make the boolean value inverse, here good income is flase so the 'not'
 operator makes it True and reurns Eligible '''
 
-''' Let's assume mpre complex scenario for this loan the applicant must have atleast 1 True good income
-or good credit scores and not be a student '''
+''' Let's assume more complex scenario for this loan the applicant must have at least one True between good income
+or good credit scores, and the applicant can not be a student '''
 
 # if (good_income or good_credit) and not student:
 #     print("Eligible")
