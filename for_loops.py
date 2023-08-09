@@ -24,3 +24,7 @@ results as above. More cleaner codes.'''
 
 for number in range(1, 5):
     print("For loops attempt", number, number * ":")
+
+''' We can also pass third argument as step '''
+for number in range(1, 10, 2):
+    print("For loops attempt", number, number * ":")
