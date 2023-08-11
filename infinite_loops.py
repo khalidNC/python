@@ -18,4 +18,5 @@ while True:
 
 ''' In this program we no longer need to difine the command variable to set an empty string,
 because we make the while statement condition set to True but in previous, the while 
-statement we set the variable command != "exit '''
+statement we set the variable command != "exit 
+Note: when use the infinite loop always break it otherwise it will run forever. '''
