@@ -3,7 +3,7 @@ Map function is a built-in function that takes a lambda function and a itarable 
 map function syntax is, map(func, itarable) and we know lambda function is a function inside a function.
 so it is, map(lambda parameters : expresion, itarable) iterable means, loops can run over the data. 
 
-Let's say we have a list of taples with 2 items string(name of product), and int(price).
+Let's say we have a list of tuples with 2 items string(name of product), and int(price).
 Now we want to modify the list and want to get a list of numbers excluding the string. 
 
 The basic way to do this is, define an empty list e.g prices

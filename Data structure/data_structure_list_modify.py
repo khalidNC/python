@@ -22,7 +22,7 @@ print(letters)
 
 ''' Now there is another way to add multiple items to the end of the list. To do so you
 need to call extend() method. Extend() method adds the specified list elements 
-or any iterable(list, taple, set etc) to the end of the current list. Let's extend the
+or any iterable(list, tuple, set etc) to the end of the current list. Let's extend the
 letters list by adding a list ["f", "g", "h", "i"] '''
 
 letters_extends = ["f", "g", "h", "i"]
@@ -30,7 +30,7 @@ letters.extend(letters_extends)
 print(letters)
 
 
-''' Now try to extend a taple ("j", "k", "l")'''
+''' Now try to extend a tuple ("j", "k", "l")'''
 more_letters = ("j", "k", "l")
 letters.extend(more_letters)
 print(letters)

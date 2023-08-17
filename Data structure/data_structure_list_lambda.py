@@ -11,7 +11,7 @@ print(x(3))                 # Now put the value of a 3 and print x. And get the 
 
 ''' Usages of lambda: 
 Let's say we have a function that sort a complex list. 
-The sort function that sorts a list that have taple with 2 items, and sort by numbers. 
+The sort function that sorts a list that have tuple with 2 items, and sort by numbers. 
 Here we have the function and we just reference the function in the sort() method. '''
 
 items = [

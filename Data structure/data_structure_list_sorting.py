@@ -29,8 +29,8 @@ print(sorted(numbers, reverse=True))
 
 
 ''' So sorting numbers and string are very easy but what if you have a liet of complex objects. For an example,
-we have a taple. Let's assume we are building an application that processing orders and we have list of order
-items. Every items in the list is a taple with 2 items product's name followed by price. 
+we have a tuple. Let's assume we are building an application that processing orders and we have list of order
+items. Every items in the list is a tuple with 2 items product's name followed by price. 
 
 Now if I going to sort() this and print nothing will change I will get same thing. Because Python does not 
 how to sort this list. In this type of cases, we need to define a function to let pyhton work. '''
@@ -47,9 +47,9 @@ print(items)
 
 
 ''' Let's define a function sort_item 
-and this function will take item(for this case a taple), sort_item(item)
+and this function will take item(for this case a tuple), sort_item(item)
 and should return a value of the item that will be sorted. 
-let's say the price which index is 1 in the taple. 
+let's say the price which index is 1 in the tuple. 
 So if I return item[1] that mean it returns price.
 Now python gets the numbers and can sort this by price. 
 

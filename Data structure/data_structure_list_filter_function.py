@@ -1,5 +1,5 @@
 ''' Here is another scenario on lambda function where we can use filter() a built-in function.
-Let's we have a list of taples with 2 imtes a string(product name) and a int(price). 
+Let's we have a list of tuples with 2 imtes a string(product name) and a int(price). 
 Now we want to get a list of items which product's price are more or equal to 10. 
 
 So in basic way we can do;
@@ -11,7 +11,7 @@ But we can do the same thing in more alligant way in one line, using filter() fu
 The filter() function syntax is, filter(func, iterable) and it returns iterable object.
 So here we will pass lambda expression and the list(iterables) as arguments to the function. 
 So lambda syntax we know, lambda parameter : expression
-here the parameter is the item (in items) and the expresion is price so index[1] in the taple
+here the parameter is the item (in items) and the expresion is price so index[1] in the tuple
 and the condition is the price should be equal or more than 10, so we can write item[1] >= 10
 then the second argument is the iterable(the items list). 
 
