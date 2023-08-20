@@ -25,3 +25,5 @@ for num in numbers:
     values[num] = num ** 2
 
 print(values)
+
+# So instead of 3 lines code we can write the comprehension in 1 line code.
