@@ -26,8 +26,8 @@ and prints an error message.
 
 
 
-''' Now if want to print the same error message for both except blocks then we can write both except
-in 1 line code within the parenthesis. '''
+''' Now if want to print the same error message for both except blocks then we can write both exceptions
+in 1 line code within the parenthesis and comma separated. '''
 
 try:
     dividend = int(input("Enter the divident: "))
@@ -39,4 +39,30 @@ except (ZeroDivisionError, ValueError):
 
 else:
     print("Result:", remainder)
-    
+
+
+
+''' Another trick to print a detail error message if there is exceptions. We can define a variable
+that will incude the detail of the execption mostly the error message and additional argument.
+Syntax: execptionType as ex/exception/error etc jus define variable: 
+then print(ex/exception/error etc the variable) this
+also print(type(ex/exception/error etc the variable)) '''
+
+''' Let's check with the below example: '''
+
+try:
+    age = int(input("Age: "))
+
+except ValueError as hhh:
+    print("Enter a valid age")
+    print(hhh)
+    print(type(hhh))
+
+else:
+    print("No exception was thrown")
+print("Prgram continues")
+
+''' Now if we run the program and input a non numeric value the error message shows like;
+Enter a valid age                              => this the custom error message
+invalid literal for int() with base 10: 'a'    => Actual error message
+<class 'ValueError'>                           => Actual error message '''  
