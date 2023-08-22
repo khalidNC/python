@@ -42,8 +42,8 @@ Note: either the program throws exception or not the finally: block is executed.
 try:
     file = open("exception_cleaningup.py", "r")   # There are few modes to open file. "r" is read mode. 
     content = file.read()                         # Then read()
-    print(conten)
-    # Here, I intentionally made a mistake, 'content' spelling is wrong which is a NameError exception type
+    print(content)
+    # Here, I intentionally made a mistake, 'conten' spelling is wrong which is a NameError exception type
     # So wriete a except block and print some message. So my program does not break.
     # then I need to close the file since this is still open.
     # So at the end I write finally block.
