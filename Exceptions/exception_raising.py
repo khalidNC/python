@@ -23,14 +23,13 @@ else:
 
 # # Raising an IndexError
 my_list = [1, 2, 3]
-index = 4
+index = 8
 try:
-    item = my_list[index]
     if index >= len(my_list):
-        raise IndexError("index out of range")
+        raise IndexError("Index out of range")
     
 except IndexError as r:
-    print('cought', r)
+    print('Cought:', r)
 
 else:
     print("No exception was thrown")
