@@ -1,16 +1,14 @@
-''' In Python, a class is a blueprint for creating objects (instances) that share 
-the same attributes (variables) and behaviors (methods). Classes provide a way to 
-define the structure and behavior of objects in an organized manner. 
+''' The class is extremly important in Python or programming in general.
+Let's have some examples: '''
 
-Let's dive into the details of defining and using classes with examples. '''
+# We are defining a list of numbers
+numbers = [1, 2]
+# Then when we use dot notation we can see set of methods for the list
+numbers.clear()
+print(numbers)
 
-# Defining a Class:
-# You define a class using the class keyword. Here's a basic example of a Person class:
-
-class Person:
-    def __init__(self, name, age):
-        self.name = name
-        self.age = age
-
-    def greet(self):
-        print(f"Hello, my name is {self.name} and I am {self.age} years old.")
+# Now if we create objects like;
+shopping_cart = []
+shopping_cart.add()
+shopping_cart.remove()
+shopping_cart.get_total()
