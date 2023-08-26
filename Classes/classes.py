@@ -32,3 +32,36 @@ out a greeting using the object's attributes. '''
 ''' Creating Objects:
 Once you have a class, you can create objects (instances) of that class. Here's how you do it: '''
 
+person1 = Person("Khalid", 42)
+person2 = Person("Borna", 38)
+
+
+''' Here, we've created two Person objects, person1 and person2, with different names and ages.
+Accessing Attributes and Methods:
+You can access an object's attributes and methods using the dot notation: '''
+
+print(person1.name)  # Output: Khalid
+print(person2.age)   # Output: 38
+
+person1.greet()      # Output: Hello, my name is Khalid and I am 42 years old.
+person2.greet()      # Output: Hello, my name is Borna and I am 38 years old.
+
+
+''' Inheritance:
+Classes can also inherit attributes and methods from other classes. This allows you to create a new
+class based on an existing class, adding or modifying functionality. Here's a simple example of inheritance: '''
+
+class Student(Person):
+    def __init__(self, name, age, student_id):
+        super().__init__(name, age)
+        self.student_id = student_id
+
+    def study(self, subject):
+        print(f"{self.name} is studying {subject}.")
+
+student1 = Student("Nameera", 9, "S12345")
+student1.greet()     # Output: Hello, my name is Khalid and I am 9 years old.
+student1.study("Math")  # Output: Nameera is studying Math.
+
+
+
