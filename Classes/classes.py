@@ -8,10 +8,10 @@ numbers.clear()
 print(numbers)
 
 # Now if we create objects like;
-shopping_cart = []
-shopping_cart.add()
-shopping_cart.remove()
-shopping_cart.get_total()
+# shopping_cart = []
+# shopping_cart.add()
+# shopping_cart.remove()
+# shopping_cart.get_total()
 
 ''' Defining a Class:
 You define a class using the class keyword. Here's a basic example of a Person class: '''
@@ -57,11 +57,8 @@ class Student(Person):
         self.student_id = student_id
 
     def study(self, subject):
-        print(f"{self.name} is studying {subject}.")
+        print(f"{self.name} student id {self.student_id}, is studying {subject}")
 
 student1 = Student("Nameera", 9, "S12345")
-student1.greet()     # Output: Hello, my name is Khalid and I am 9 years old.
-student1.study("Math")  # Output: Nameera is studying Math.
-
-
-
+student1.greet()     # Output: Hello, my name is Nameera and I am 9 years old.
+student1.study("Math")  # Output: Nameera is studying Math and her student id is S12345
