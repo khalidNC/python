@@ -38,7 +38,7 @@ person2 = Person("Borna", 38)
 
 ''' Here, we've created two Person objects, person1 and person2, with different names and ages.
 Accessing Attributes and Methods:
-You can access an object's attributes and methods using the dot notation: '''
+You can access an object's attributes and methods using the dot notation '''
 
 print(person1.name)  # Output: Khalid
 print(person2.age)   # Output: 38
