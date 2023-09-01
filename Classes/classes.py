@@ -61,4 +61,10 @@ class Student(Person):
 
 student1 = Student("Nameera", 9, "S12345")
 student1.greet()     # Output: Hello, my name is Nameera and I am 9 years old.
-student1.study("Math")  # Output: Nameera is studying Math and her student id is S12345
+student1.study("Math")  # Output: Nameera student id S12345, is studying Math
+
+''' Here in the example, we added a new attribute called self.studnt_id and pass this parameter in the student
+class constractor to initialize. 
+The __init__ method of Student class calls the __init__ method of the parent class (Person) using super()
+Then we created another function study() with a parameter subject. that function prints the name of subject
+along with the student name and id. '''
