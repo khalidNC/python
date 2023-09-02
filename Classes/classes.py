@@ -14,7 +14,13 @@ print(numbers)
 # shopping_cart.get_total()
 
 ''' Defining a Class:
-You define a class using the class keyword. Here's a basic example of a Person class: '''
+You define a class using the class keyword. Here's a basic example of a Person class:
+Convention of naming of class:
+1. The name should be first letter is capital
+2. and there should be no underscore.
+example: class Point or class MyPoint
+after that at the end of the class name we use a colon(:) to indicate the next block
+to write function thats define the class. '''
 
 class Person:
     def __init__(self, name, age):
