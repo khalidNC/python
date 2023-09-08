@@ -1,6 +1,7 @@
 ''' Instance Attributes: '''
 
 class Point:
+
   def __init__(self, x, y):       # This is constructor of Point class
     self.x = x                    #These 2 are attributes of Point object(line 9)
     self.y = y
@@ -36,6 +37,7 @@ and they are shared with all instances. Let's write a similer class at below and
 
 
 class Human:
+  
   default_org = "Nose"                            # We added a class level attribute syntax: variable = data_type
 
   def __init__(self, eyes, ears, name):
