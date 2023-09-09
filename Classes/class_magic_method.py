@@ -1,0 +1,1 @@
+''' __init__ is the magic method.'''
