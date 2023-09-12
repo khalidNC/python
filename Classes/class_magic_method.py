@@ -95,3 +95,5 @@ print(my_object.attribute2)  # Output: value2
 of attribute values. The __init__ method is crucial for defining the initial state of objects and ensuring that objects 
 of a class have the required data when they are created. It's a fundamental part of object-oriented programming in 
 Python and is used to construct objects with specific characteristics and behaviors. '''
+
+''' We can find more deatil about magic method here: https://rszalski.github.io/magicmethods/'''
