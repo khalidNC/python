@@ -30,7 +30,7 @@ print(point > another)
 # Output: True
 
 print(point + another)
-# output: TypeError: unsupported operand type(s) for +: 'Point' and 'Point'
+# Output: TypeError: unsupported operand type(s) for +: 'Point' and 'Point'
 
 print(combine.x)
 # Output: 5 
