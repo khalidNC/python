@@ -100,7 +100,7 @@ for key in my_dict:
     print(key)  # Output: name, age
 
 # Using the items stored in the custom dictionary
-for key, value in my_dict.items():
+for key, value in my_dict.items:
     print(f"{key}: {value}")  # Output: name: Alice, age: 30
 
 ''' Let's break down the code step by step:
@@ -147,10 +147,86 @@ various numbers of tags in a blog. Like, we can find the numbers of articles tag
 library. '''
 
 
-class TagCould:
+class TagCloud:
     
     def __init__(self):
-        self.tag = {}
+        self.tags = {}
+    ''' In the constructor method (__init__), an instance variable self.tags is initialized as an empty dictionary {}. 
+    This dictionary will be used to store tags and their counts.'''
 
-    # def add(self, tag);
+    def add(self, tag):
+        # self.tags[tag] = self.tags.get(tag, 0) + 1
+        self.tags[tag.lower()] = self.tags.get(tag.lower(), 0) + 1
+    ''' This method, named add, takes a tag as a parameter. Inside the method, it uses the get method of the self.tags
+    dictionary to retrieve the current count of the tag. If the tag is not found in the dictionary, it defaults to 0. 
+    It then increments the count by 1 and updates the dictionary with the new count. '''
+
+    def __getitem__(self, tag):
+        return self.tags.get(tag.lower(), 0)
+    ''' This magic method is called when you access a tag using square brackets, like cloud["Python"]
+    It returns the count of the tag from the self.tags dictionary. If the tag doesn't exist, it returns 0. '''
+    
+    def __setitem__(self, tag, count):
+        self.tags[tag.lower()] = count
+    ''' This magic method is called when you assign a count to a tag using square brackets, like cloud["Python"] = 10.
+    It sets the count of the tag in the self.tags dictionary to the provided value. '''
+    
+    def __len__(self):
+        return len(self.tags)
+    ''' This magic method is called when you use the len() function on an instance of the TagCould class.
+    It returns the number of unique tags in the self.tags dictionary'''
+    
+    def __iter__(self):
+        return iter(self.tags)
+    ''' This magic method allows the TagCould class to be iterable.
+    It returns an iterator for the keys (tags) in the self.tags dictionary.'''
+    
+
+cloud = TagCloud()
+# An instance of the TagCloud class is created and assigned to the variable cloud.
+cloud["Python"] = 10
+# We set the count of the tag "Python" to 10 using square brackets.
+len(cloud)
+# We check the length of the cloud object using len(cloud), which returns the number of unique tags.
+cloud.add("Python")
+cloud.add("Python")
+cloud.add("Python")
+''' Three calls to the add method are made, each with the string "Python". This increments the count for the tag "Python"
+in the self.tags dictionary.'''
+
+cloud.add("python")
+''' Now if we call add method with lowercase string"python" then the output comes {'Python': 3, 'python': 1}.
+But we should catch all the text python either it is lower or upper case. to fix this, we can add python builtin method
+lower() in line 157, 158.
+so whatever tag we receiver here: def add(self, tag): we convert it to lower() in line 158. self.tags[tag.lower()]
+as well as convert it to lower() wehn we get the tag: self.tags.get(tag.lower(), 0) + 1 line-159. '''
   
+print(cloud.tags)
+# This line prints the tags dictionary, which now contains the counts of the "Python" tag. Output: {'Python': 3}
+
+
+''' More detail explanation of self.tags[tag] Line-158:
+
+self.tags[tag] is used to access and manipulate a value associated with a specific key (tag) in the self.tags dictionary.
+
+Let's break down what this expression means step by step:
+
+self: self is a reference to the instance of the class. It allows you to access the instance's attributes and methods.
+In object-oriented programming in Python, you use self to differentiate between instance variables and local variables
+within a class.
+
+self.tags: This refers to an attribute named tags that belongs to the instance. In the __init__ method, self.tags is 
+initialized as an empty dictionary. So, self.tags is a dictionary used to store tags and their counts.
+
+self.tags[tag]: This accesses a specific value in the self.tags dictionary, where tag is the key used to look up 
+the value. It retrieves the current count associated with the provided tag.
+
+self.tags.get(tag, 0): Here, the get method of the dictionary is used. It attempts to retrieve the value associated
+with the tag key. If the tag is not found in the dictionary, it returns 0 as the default value.
+
+self.tags[tag] = self.tags.get(tag, 0) + 1: This line increments the count associated with the tag key in the self.tags
+dictionary. It first retrieves the current count using self.tags.get(tag, 0), adds 1 to it, and then assigns the
+new count back to the tag key in the dictionary.
+
+In essence, self.tags[tag] is a way to access the count associated with a specific tag in the self.tags dictionary.
+It's a common pattern used to update values associated with keys in dictionaries. '''
