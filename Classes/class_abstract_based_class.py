@@ -50,7 +50,7 @@ issues;
 2. If we look at the impelementation of the sub-classes FileStream, and NetworkStream we see both clasess have read()
    function. And if in future, we add another type of stream then we have to remember the read() method and 
    exactly called read() method we might define method read_line() or read_str() and whatever the name
-   but this is not consistance behaviour. In other words, current there is no way to enforce the common interface 
+   but this is not consistance behaviour. In other words, currently there is no way to enforce the common interface 
    accross the different type of streams. 
    
 So how can we solve this problem? That's when we use the abstract base class. The abstract base class is like a half
