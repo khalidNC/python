@@ -24,3 +24,4 @@ class TraceableList(list):                  # Created a class and inheritated li
 list = TraceableList()                     # Created an object   
 list.append("1")                           # call the append method for the list object
 # Output: Append called
+print(list)                                # To print the list after appending Output: ['1']
