@@ -14,13 +14,15 @@ into separate files for better organization and reusability. '''
 
 ''' Importing a Module: Once you've created a module, you can use it in other Python scripts or programs
 by importing it. Importing a module allows you to access its functions, classes, and variables. Here's how you 
-can import a module:
+can import a module: (i) You can import the intire module as an object or (ii) you can import specific object in
+the module
 
+(i) Import intire module as an object: 
 1. Import the Module: In your Python script or program, use the import keyword followed by the name of the module 
 (without the .py extension).
 
 2. Access Module Content: After importing the module, you can access its functions, classes, and variables using
-the module name followed by a dot (.) notation. '''
+the module name followed by a dot (.) notation e.g module_name.method() module_name.variable_name etc. '''
 
 # import mymodule
 
@@ -51,7 +53,8 @@ when importing them. This can be helpful when working with modules with long nam
 # print(f"The value of the pi is {value_of_pi}")
 
 
-''' Importing Specific Functions or Variables: If you only need specific functions or variables from a module,
+''' (ii) Import specific object in the module:
+Importing Specific Functions or Variables: If you only need specific functions or variables from a module,
 you can import them individually using the from keyword: 
 1. 'from' then the module name 
 2. then 'import' then if you press "Control" button in your macbook keyword and hit "Space" bar you can see all 
@@ -62,9 +65,9 @@ from mymodule import greet, pi
 
 
 # Accessing function from the module
-message = greet("Khalid")             # So When you import specific function then no need to use .dot(Notation)
+message = greet("Khalid")          # So When you import specific function then no need to use modeule_name.dot(Notation)
 
-print(message)                        # Output: Hello, Khalid!
+print(message)                     # Output: Hello, Khalid!
 
 
 # Accessing variable from the module
