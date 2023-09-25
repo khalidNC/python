@@ -5,23 +5,54 @@ add new feature(function) to the Text class by define new function, for example 
 
 class Text(str):
   def duplicate(self):
-    return self + self                       # This function make the parameter dup;icate and returns
+    return self + self
   
 text = Text("Python")
-print(text.lower())                          # Here text. can access all the methos of str class. e.g we use lower()
-# Output: python
-print(text.duplicate())                      # Also we can use the custom method duplicate()
-# Output: PythonPython
+print(text.lower())
+print(text.duplicate())
 
-''' Another example, we can use built-in list class. '''
 
-class TraceableList(list):                  # Created a class and inheritated list class
-  def append(self, object):                 # Then override the append() method
-      print("Append called")                # Print a message after append item in list
-      super().append(object)                # Then just call the append base class syntax(super().append(supply object))
+class TraceableList(list):
+  def append(self, object):
+      print("Append called")
+      super().append(object)
      
 
-list = TraceableList()                     # Created an object   
-list.append("1")                           # call the append method for the list object
-# Output: Append called
-print(list)                                # To print the list after appending Output: ['1']
+my_list = TraceableList()
+my_list.append("1")
+
+print(my_list)
+
+
+''' let's break down both examples step by step:
+1. You define a new class called Text that inherits from the built-in str class. This means that Text inherits 
+   all the methods and behavior of str.
+
+2. Inside the Text class, you add a custom method called duplicate which takes the current text and returns it 
+   concatenated with itself.
+
+3. You create an instance of the Text class called text with the content "Python".
+
+4. When you call text.lower(), it's using the lower method inherited from the str class to convert the text 
+   to lowercase, resulting in "python."
+
+5. When you call text.duplicate(), it's using the custom duplicate method defined in the Text class, which duplicates 
+the text and returns "PythonPython". 
+
+6. In 2nd example, You define a new class called TraceableList that inherits from the built-in list class. 
+This means that TraceableList inherits all the methods and behavior of list.
+
+7. Inside the TraceableList class, you override the append method. This overridden append method first prints 
+"Append called" and then calls the append method of the superclass using super().append(object) to ensure that 
+the object is added to the list as usual.
+
+8. You create an instance of the TraceableList class called my_list.
+
+9. When you call my_list.append("1"), it calls the custom append method defined in the TraceableList class, 
+which prints "Append called" and then appends the string "1" to the list.
+
+10. So, if you print my_list, it should display: ['1'] 
+
+It's important to note that in the second example, you've overridden the append method of the list class to add 
+a custom behavior (printing "Append called"). This is an example of method overriding and extending the behavior 
+of a built-in class. '''
