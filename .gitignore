@@ -1,3 +1,4 @@
 modules/__pycache__
 modules/module_sub_directory/__pycache__
 .vscode
+.DS_Store
