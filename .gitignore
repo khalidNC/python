@@ -5,3 +5,5 @@ modules/module_sub_directory/__pycache__
 Modules/module_sub_directory/module_sub_package/__pycache__
 Modules/module_sub_directory_two/__pycache__/__init__.cpython-310.pyc
 Modules/module_sub_directory_two/__pycache__/module_intra_package_reference.cpython-310.pyc
+Modules/module_sub_directory/module_intra_package_reference/__pycache__/__init__.cpython-310.pyc
+Modules/module_sub_directory/module_intra_package_reference/__pycache__/customer.cpython-310.pyc
