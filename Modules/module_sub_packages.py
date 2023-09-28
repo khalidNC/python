@@ -21,7 +21,7 @@ print(payment_method)
 module_sub_directory.py now we created a directory module_sub_package and added a file module_shopping.py. 
 
 Now if we import module here, python will not find it untill we add __init__.py file to the new folder. 
-When you add __init__.py this will be trated as a package. 
+When you add __init__.py this will be treated as a package. 
 
 We can also import entire module from sub-package. 
 
