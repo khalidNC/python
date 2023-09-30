@@ -1,5 +1,5 @@
 # Absolute import
-from module_sub_directory.module_intra_package_reference import customer
+from Modules.module_sub_directory.module_intra_package_reference import customer
 
 # Relative import
 # from ..module_intra_package_reference import customer
