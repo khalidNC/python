@@ -7,3 +7,6 @@ Modules/module_sub_directory_two/__pycache__/__init__.cpython-310.pyc
 Modules/module_sub_directory_two/__pycache__/module_intra_package_reference.cpython-310.pyc
 Modules/module_sub_directory/module_intra_package_reference/__pycache__/__init__.cpython-310.pyc
 Modules/module_sub_directory/module_intra_package_reference/__pycache__/customer.cpython-310.pyc
+Modules/module_executing_module_as_script.py
+Modules/module_sub_directory_one/__pycache__/__init__.cpython-310.pyc
+Modules/module_sub_directory_one/__pycache__/module_supplier.cpython-310.pyc
