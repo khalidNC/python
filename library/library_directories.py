@@ -81,6 +81,53 @@ PosixPath('Modules/__pycache__')]
 
 Got only the directories. '''
 
-''' There are 2 limitations of .iterdir() methods
+''' 
+Use of .glob() method:
+There are 2 limitations of .iterdir() methods
     1. It does not allow to search by pattern 
-    2. It does not search recursively'''
+    2. It does not search recursively 
+    
+For search by pattern we need to use .glob() method. This method takes 
+pattarn("*.*" or "*.py") [*.* means all files, *.py python files only] and it returns generator so
+we need to use list expression e.g [item for item in path.glob("*.*")] '''
+
+list_of_items = [p for p in path.glob("*.*")]
+print(list_of_items)
+
+''' OutPut: 
+PosixPath('Modules/module_compiled_python_file.py'), 
+PosixPath('Modules/.DS_Store'), 
+PosixPath('Modules/module_search_path.py'), 
+PosixPath('Modules/module_dir_function.py'), 
+PosixPath('Modules/__init__.py'), 
+PosixPath('Modules/module_packages.py'), 
+PosixPath('Modules/module_sub_packages.py'), 
+PosixPath('Modules/mymodule.py'), 
+PosixPath('Modules/module_executing_module_as_script.py'), 
+PosixPath('Modules/module_creation.py')] '''
+
+''' For search recursively we need to change something like this;
+list_of_items = [p for p in path.glob("**/*.*")] or to use rglob() short form of recursive glob
+list_of_items = [p for p in path.rglob("*.*")] '''
+
+recursive_py_files = [p for p in path.rglob("*.py")]
+print(recursive_py_files)
+
+''' OutPut: now we can see all childs files
+[PosixPath('Modules/module_compiled_python_file.py'), 
+PosixPath('Modules/module_search_path.py'), 
+PosixPath('Modules/module_dir_function.py'), 
+PosixPath('Modules/__init__.py'), 
+PosixPath('Modules/module_packages.py'), 
+PosixPath('Modules/module_sub_packages.py'), 
+PosixPath('Modules/mymodule.py'), 
+PosixPath('Modules/module_executing_module_as_script.py'), 
+PosixPath('Modules/module_creation.py'), 
+PosixPath('Modules/module_sub_directory/module_sales.py'), 
+PosixPath('Modules/module_sub_directory/__init__.py'), 
+PosixPath('Modules/module_sub_directory/module_sub_package/__init__.py'), 
+PosixPath('Modules/module_sub_directory/module_sub_package/module_shopping.py'), 
+PosixPath('Modules/module_sub_directory/module_intra_package_reference/__init__.py'), 
+PosixPath('Modules/module_sub_directory/module_intra_package_reference/customer.py'), 
+PosixPath('Modules/module_sub_directory_one/module_supplier.py'), 
+PosixPath('Modules/module_sub_directory_one/__init__.py')] '''
