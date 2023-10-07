@@ -28,6 +28,7 @@ directory so there is posibility of having huge number of files in it.
 
 So we need to iterate it like, for files in path; '''
 
+
 for item in path.iterdir():
   print(item)
 
@@ -64,9 +65,7 @@ PosixPath('Modules/module_creation.py')]
 We get a array of PosixPath objects. What is this? 
 At the top we import Path class which is the base class of 2 classes
     1. PosixPath - for Mac
-    2. WindowsPath - for window
-
-'''
+    2. WindowsPath - for window '''
 
 ''' Now we can make the list comprehension expression more useable by fileting. 
 Like you only want get the directories then can use .is_dir() method in the list expression. '''
