@@ -115,3 +115,16 @@ in to ctime() method. Then print it. '''
 
 print(ctime(file_path.stat().st_ctime))
 # OutPut: now we get the time as Tue Oct 10 15:19:33 2023
+
+
+''' Also there are couple of methods to reading data from a file:
+'''
+
+# It returns content of the file as byte object that represent binary data
+print(file_path.read_bytes())
+
+# It returns content of the file as text 
+print(file_path.read_text())
+
+# Write text and byte. write_text() function care about opening and closing file
+file_path.write_text()
