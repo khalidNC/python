@@ -128,3 +128,25 @@ print(file_path.read_text())
 
 # Write text and byte. write_text() function care about opening and closing file
 file_path.write_text()
+
+
+''' Now copping a file has 2 ways one is can coppy from the path also we can copy file with the help 
+of shutil class from shutil module. However copping from the path is not the ideal one. '''
+
+''' Let's try copy from file first:
+Let's say we are copping the file(line-90) to another location. So rename it to source
+and copy the file to the target path let's say to the current directory(/) 
+
+to copy the file 
+first, we need to read so use method source.read_text()
+then, use write_text() method. target_path.write_text(source.read_text())
+'''
+
+source = Path("modules/__init__.py")
+target_path = Path() / "__init__.py"
+
+# source.read_text()
+target_path.write_text(source.read_text())
+
+
+
