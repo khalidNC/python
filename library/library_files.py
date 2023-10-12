@@ -86,6 +86,7 @@ then we can use the below methods: '''
 
 from pathlib import Path
 from time import ctime
+import shutil
 
 file_path = Path("modules/__init__.py")
 
@@ -148,5 +149,8 @@ target_path = Path() / "__init__.py"
 # source.read_text()
 target_path.write_text(source.read_text())
 
+''' But there is a better way to copy, is shutil module, and this module has numbers of methods for 
+copping, moving files and directories. So let's import shutil line-89. '''
 
-
+# This approach is more easier and cleaner than using a path object
+shutil.copy(source, target_path)
