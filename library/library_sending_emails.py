@@ -10,7 +10,7 @@ import smtplib
 message = MIMEMultipart()
 # Set different headers related emails supported by MIMEMultipart object
 message["from"] = "Md Khalid Hussain"
-message["to"] = "khalid280284@gmail.com"
+message["to"] = "khalidpython3@gmail.com"
 message["subject"] = "This is a test purpose email."
 message.attach(MIMEText("body"))
 message.attach(MIMEImage(Path("khalid.png").read_bytes()))
