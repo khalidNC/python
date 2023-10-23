@@ -1,26 +1,29 @@
 import subprocess
 
+try:
+  # subprocess.run(["ls", "-l"])
+  # subprocess.call
+  # subprocess.check_call
+  # subprocess.check_output
+  # subprocess.Popen
 
-# subprocess.run(["ls", "-l"])
-# subprocess.call
-# subprocess.check_call
-# subprocess.check_output
-# subprocess.Popen
+  # results = subprocess.run(["ls", "-l"])
+  # print(type(results))
+  # OutPut: <class 'subprocess.CompletedProcess'>, a instance of the class
 
-# results = subprocess.run(["ls", "-l"])
-# print(type(results))
-# OutPut: <class 'subprocess.CompletedProcess'>, a instance of the class
+  # completed = subprocess.run(["ls", "-l"], capture_output=True, text=True)
+  # completed = subprocess.run(["python", "other.py"], capture_output=True, text=True)
+  completed = subprocess.run(["false"], capture_output=True, text=True, check=True)
+  print("Argument", completed.args)
+  print("Returncode", completed.returncode)
+  print("Standard error", completed.stderr)
+  print("Standard output", completed.stdout)
 
-# completed = subprocess.run(["ls", "-l"], capture_output=True, text=True)
-# completed = subprocess.run(["python", "other.py"], capture_output=True, text=True)
-completed = subprocess.run(["false"], capture_output=True, text=True, check=True)
-print("Argument", completed.args)
-print("Returncode", completed.returncode)
-print("Standard error", completed.stderr)
-print("Standard output", completed.stdout)
+  # if completed.returncode != 0:
+  #   print(completed.stderr)
 
-if completed.returncode != 0:
-  print(completed.stderr)
+except subprocess.CalledProcessError as ex:
+  print(ex)
 
 ''' Here we will mainly look at;
 How to call external program from python script. 
@@ -202,7 +205,11 @@ So our job is to check for error;
 
    See got a exception error type "CalledProcessError" and this class is define in subprocess 
    module. 
+   Note: if we use check=True the we do not need the if condition so we comnneted out these.
 
-3. So finally, we can complete this code with the try block.   
+3. So finally, we can complete this code with the try block. 
+   Then add except block, we want to call exception as get above "subprocess.CalledProcessError"
+   as ex object then just print the ex. 
+   OutPut: Command '['false']' returned non-zero exit status 1.
 
-'''
+So this all about running external program in python script. '''
