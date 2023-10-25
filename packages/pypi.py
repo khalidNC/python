@@ -46,3 +46,5 @@ pip install package_name
 PyPI is a fundamental part of the Python ecosystem, and it has significantly contributed to the 
 ease of Python package distribution and installation, fostering collaboration and innovation in 
 the Python community. '''
+
+# Here is the pypi website where we can find all the packages we need. https://pypi.org/
