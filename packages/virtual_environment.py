@@ -19,4 +19,3 @@ pip install virtualenv
 virtualenv myenv
 
 Replace myenv with the name you want to give to your virtual environment. '''
-
