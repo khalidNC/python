@@ -2,20 +2,19 @@
 and its own set of libraries. It is used to isolate and manage Python packages and dependencies 
 for different projects, ensuring that one project's dependencies do not interfere with another. 
 Virtual environments are particularly useful when you have multiple Python projects with different 
-library requirements.
+library requirements. '''
 
-Here's a explanation with an example of how to create and use virtual environments in Python: '''
+''' To check the list of all installed packages we have we can use the command pip3 list this will
+return the list of all the currently installed packages in the terminal;
 
-''' 1. Creating a Virtual Environment:
+We see requests 2.25.1 in the list that means we have already requests package installed and it's
+main version is 2 and the minor version is 25 and the fix/patch 1.
 
-You can create a virtual environment using the venv module (for Python 3.3 and later) or virtualenv 
-(an external package).
+Now let's say for another project we need the earlier version of request but the problem is we 
+can not have different packages in our system side by side. To solved this problem we can create
+an isolated vertual environment for each project and keep the dependencies in the virtual 
+environment. 
 
-Using venv: 
-python -m venv myenv 
 
-Using virtualenv (if not installed, you can install it via pip):
-pip install virtualenv
-virtualenv myenv
+'''
 
-Replace myenv with the name you want to give to your virtual environment. '''
