@@ -55,4 +55,5 @@ So this requests is spesifically for this enviroment and for this project.
 
 Now on site-packge directory requests folder appears. Here the requests 2.9.2 has installed.
 
-'''
+After this done command deactivate
+It deactivate the virtual environment. '''
