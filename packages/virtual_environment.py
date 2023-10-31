@@ -15,6 +15,14 @@ can not have different packages in our system side by side. To solved this probl
 an isolated vertual environment for each project and keep the dependencies in the virtual 
 environment. 
 
+So in the project directory we run the command to create virtual environment:
+
+python -m venv name_of_directory that contains virtual environment by convention it is env
+os it comes like; python -m venv env
+
+But do not need to memorise this, there is a better and simple way to do this we will demo
+that later.
+
 
 '''
 
