@@ -18,7 +18,6 @@ also I can see the last version number as well as the newly updated version as b
 Requirement already satisfied: pip in /Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages (21.2.3)
 Collecting pip
   Downloading pip-23.3.1-py3-none-any.whl (2.1 MB)
-     |████████████████████████████████| 2.1 MB 82 kB/s 
 Installing collected packages: pip
   Attempting uninstall: pip
     Found existing installation: pip 21.2.3
