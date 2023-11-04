@@ -22,7 +22,7 @@ terminal;
           ii. Open the file in text editor: open .bash_profile
           iii. Then export PATH="path:$PATH", then just save the file by using: command+s
     f. After creating and export PATH, we need to source the file.
-          i. To do so the terminal command: source ./.bash_prifle
+          i. To do so the terminal command: source ./.bash_profile
           ii. Then restart the terminal and check pipenv command like: pipenv --version
 4. Now, the way to find the actual path the terminal command: python3 -m site --user-base
     a. This will return the user PATH it is like: /users/user/bin/python3.10   
