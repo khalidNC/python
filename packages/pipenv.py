@@ -33,6 +33,32 @@ terminal;
        Because we do not need this anymore since we will use pipenv and this will create virtual env automatically.
        The pipenv allows both, creating virtual environment and installing packages.
  
-6. After we complete those, install packages throgh pipenv commad like, pipenv install request
+6. Now we can install the dependency packages through pipenv instead pip3 the commad like, pipenv install requests
     a. This will install request for the project specially not for global.
-    b. So this pipenv create virtual environment and the package same time for the project. '''
+    b. And automatically created a couple of files: Pipfile, and Pipfile.lock
+    c. Also it creates an virtual environment for us and installed the requests package inside the environment.
+    d. But the vertual envornment is not visible inside the project directory. Let's where is it;
+            i. Run this command line in the terminal: pipenv --venv
+            ii. This will return the path of the virtual environment directory: 
+                  /Users/user/.local/share/virtualenvs/Python_Course-DQXbx9fU
+            iii. We can see this directory is not the part of our project but this is a deliberate decision
+                  and the main reason behind this, we may installed tons of packages and dependencies for the 
+                  project and this increase the size of the project. So we want to exclude the virtual env
+                  from our project directory. 
+                  
+7. To show how the requests package works that we installed in the vertual environment, we are deleting 
+   the global one that we installed through pip3. So run the command: pip3 uninstall requests 
+   
+   Now if we run the program file pip.py we will get error that requests module not found because we 
+   deleted this. And here Python has no idea where the vertual environment and the requests module is
+   located. So we need to activate the environment.
+   
+   Do to so run the command: pipenv shell this activate the environment. And we will see in the terminal:
+   Launching subshell in virtual environment...
+   USERs-MacBook-Air:python course Khalid$  . /Users/user/.local/share/virtualenvs/Python_Course-DQXbx9fU/bin/activate
+   (Python Course) USERs-MacBook-Air:python course Khalid$  
+   
+   Now if we run the program file pip.py once more time this time it works. 
+
+8. we are in the virtual environment so if we want to deactivate the env then simply type exit in the 
+   termain and run and you are out of the virtual environment. '''
