@@ -6,7 +6,7 @@ separately. It is a dependescy manager in python pacakages.
 
 So let's use pipenv. First we need to install pipenv. So write and run this command in 
 terminal; 
-1. pip3 install pipenv 
+1. pip install pipenv --user : Doc link: https://pipenv.pypa.io/en/latest/installation/
 2. After pipenv installed, we need to set path variable in .bash_profile
 3. To set path need to to do below steps:
     a. Open terminal and go to home directory
@@ -24,8 +24,15 @@ terminal;
     f. After creating and export PATH, we need to source the file.
           i. To do so the terminal command: source ./.bash_profile
           ii. Then restart the terminal and check pipenv command like: pipenv --version
-4. Now, the way to find the actual path the terminal command: python3 -m site --user-base
-    a. This will return the user PATH it is like: /users/user/bin/python3.10   
-4. After we complete those, install packages throgh pipenv commad like, pipenv install request
+4. Now, the way to find the actual path the terminal command: python3 -m site --user-base or -site
+    a. This returns the user PATH like: /Users/user/Library/Python/3.10 and -site returns site-packages path
+
+5. After doing those as above we should see the pipenv command work in terminal. 
+    a. Like, pipenv --version command returns the version in the terminal
+    b. Now we actually not need virtual environment(the env) folder that we created before. So we delete this.
+       Because we do not need this anymore since we will use pipenv and this will create virtual env automatically.
+       The pipenv allows both, creating virtual environment and installing packages.
+ 
+6. After we complete those, install packages throgh pipenv commad like, pipenv install request
     a. This will install request for the project specially not for global.
     b. So this pipenv create virtual environment and the package same time for the project. '''
