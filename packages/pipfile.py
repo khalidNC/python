@@ -21,10 +21,50 @@ meta: Here at the top we have section called  _meta:
             package and the version that we installed in our local machine.
 
 Now all the infomation in this file we can take the source code and put these in anpther machine like a production
-invironment and can reporduce exact execution invironment. And this minimizes or eleminates the situation like the 
-application that runs in your machine but does not run in other machine due have different virsion on one of this
+invironment and can reporduce exact execution invironment. And this minimizes or eleminates the situation where your 
+application runs in your machine but does not run in other machine due have different virsion on one of this
 dependencies. 
 
 Now let's check how this works:
+1. Let's find the virtual environment for this project: terminal command: pipenv --nenv
+   Output: /Users/user/.local/share/virtualenvs/Python_Course-DQXbx9fU
+   this is the virtual environment directory link. And I am going to delete this link now to create a scenario
+   where we copy our project into another machine on that machine this virtual envirment doe not exist, all we
+   have the source code of our application.  
 
-'''
+2. Delete the directory: In mac or linex the terminal command to delete directory is: rm -rf the path of dir
+   terminal command: rm -rf /Users/user/.local/share/virtualenvs/Python_Course-DQXbx9fU
+   and file deleted.
+   Again command: pipenv --venv
+   Output: No virtualenv has been created for this project/Users/user/Desktop/Python Course yet!
+   since the directory is deleted. 
+   Now only have the source code and Pipfile and Pipfile.lock that specify the dependency of the project.
+
+3. Now we need to install all this dependencies. This is very easy, just we need to run pipenv install.
+   When we run this command this will check the Pipfile and install all the dependencies. Let's do it.
+   pipenv install
+   This install the dependency on pipfile and creates the virtual environment.
+   Run the pipenv --venv command once again and it returns the pat of the virtual environment directory.
+   Output: /Users/user/.local/share/virtualenvs/Python_Course-DQXbx9fU
+
+   So all the dependencies installed based on the packages version mentioned in the pipfile:
+        [[source]]
+        url = "https://pypi.org/simple"
+        verify_ssl = true
+        name = "pypi"
+
+        [packages]
+        requests = "*"
+
+        [dev-packages]
+
+        [requires]
+        python_version = "3.10.0" 
+  
+   Now in the pipfile we see the request package version is the latest one and on the lock the request version
+   is 2.31.0. Later if we opne the porject in a different machine and run the program we might need a newer version
+   of request package. In that case, the dependency install in other machine deferrent that in my machine. 
+   So if we want to install exactly same as listed in lock file. Then we need to ignore the pipfile and need to 
+   use the lock file while installing pipenv. Let's see the command in terminal:
+       
+        pipenv install --ignore-pipfile '''
