@@ -67,4 +67,6 @@ Now let's check how this works:
    So if we want to install exactly same as listed in lock file. Then we need to ignore the pipfile and need to 
    use the lock file while installing pipenv. Let's see the command in terminal:
        
-        pipenv install --ignore-pipfile '''
+        pipenv install --ignore-pipfile 
+        
+    Output: Installing dependencies from Pipfile.lock (479990)... '''
