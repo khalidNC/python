@@ -153,3 +153,6 @@ project in a separate directory. The steps to publish package on pypi.org are as
    f. then call pdf2text.convert()
    g. and run the program 
    h. and in the output: pdf2text '''
+
+
+''' For real life example, a separate project will be created for publishing package on pypi. '''
