@@ -16,6 +16,13 @@ project in a separate directory. The steps to publish package on pypi.org are as
    - to create a directory: mkdir khalidpdf
    - to open the directory: cd khalidpdf
    - to open the directory in vscode: code .
+      Note: if 'code' does not install on vscode then code . command will not work. So in this case you need
+      to install 'code' on vscode. The step to install 'code' are bellow:
+      - Open vscode
+      - Menu bar on top, go to View then go to Command Palette
+      - or via shortkey: shift+command+P and type 'shell command' to find the Shell Command:
+      - Then install 'code' command in PATH
+
 
 4. This command will open the project directory in vscode. Now as a best practice it should create the high
    level directory with the same nome of our package so;
