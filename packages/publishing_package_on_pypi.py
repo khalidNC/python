@@ -1,7 +1,7 @@
 ''' This section we will narrate the steps of publishing a package on Pypi site and will do a small
 project in a separate directory. The steps to publish package on pypi.org are as below :
 
-1. Visit pypi.org sute and signup and verify your email account.
+1. Visit pypi.org sute and signup and verify your email account also set 2 factor authentication.
 
 2. Go back to the terminal and install 3 tools globally:
     a. Setuptools
@@ -47,7 +47,7 @@ project in a separate directory. The steps to publish package on pypi.org are as
         pdf2text.py
         pdf2image.py
 
-5. Now in order to pulish into pypi site we need to add another 3 files in the root directory. The most 
+5. Now in order to publish into pypi site we need to add another 3 files in the root directory. The most 
    important one is setup.py, README.md file, and LICENSE
    a. setup.py file: First import setuptools(That we installed at the begining). That module has 
       a method called .setup(). We will call this method and will pass few keyword=arguments there.
@@ -162,4 +162,4 @@ project in a separate directory. The steps to publish package on pypi.org are as
    h. and in the output: pdf2text '''
 
 
-''' For real world example, a separate project will be created for publishing package on pypi. '''
+''' For real world example, a separate project name khalidpdf has been created for publishing package on pypi. '''
