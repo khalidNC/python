@@ -157,8 +157,14 @@ project in a separate directory. The steps to publish package on pypi.org are as
          twine upload --repository testpypi dist/*
 
          After run this command it ask for input username and password. Then upload completed.
-         Then visit to the testpypi site and look at the package you just uploaded.
-         Then you can install the package as regular package in your project.
+         Terminal output:
+            View at:
+            https://test.pypi.org/project/khalidpdf/1.0/
+
+         Then visit to the site site and look at the package you just uploaded.
+         There is a link to install the package: pip3 install -i https://test.pypi.org/simple/ khalidpdf==1.0
+         Use the link to install in your project and import the module of the package and use.
+         Ypu can also use the pipenv command to install the package.
 
 8. Now visit to pypi.org and search for khalidpdf you find find this on the site. Now you can install
    this package just like other packages on pypi.org for example:
@@ -174,3 +180,11 @@ project in a separate directory. The steps to publish package on pypi.org are as
 
 
 ''' For real world example, a separate project name khalidpdf has been created for publishing package on pypi. '''
+
+''' Finally, the instalation part:
+1. In 2 ways you can install the package '''
+
+from khalidpdf import pdf2text
+
+pdf2text.conver()
+
