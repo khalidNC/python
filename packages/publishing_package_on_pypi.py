@@ -149,6 +149,17 @@ project in a separate directory. The steps to publish package on pypi.org are as
    After running this command it asks my username: then password: and input the informantion and my 
    package is uploaded to the pypi.org site.
 
+   Note: It is recommanded that, for testing purpose it is preffered to register on testpypi site: and complete
+         the registration part with 2FA.
+         Doc for more detail: https://packaging.python.org/en/latest/guides/using-testpypi/
+         Then upload package on the testpypi site by the below terminal command:
+
+         twine upload --repository testpypi dist/*
+
+         After run this command it ask for input username and password. Then upload completed.
+         Then visit to the testpypi site and look at the package you just uploaded.
+         Then you can install the package as regular package in your project.
+
 8. Now visit to pypi.org and search for khalidpdf you find find this on the site. Now you can install
    this package just like other packages on pypi.org for example:
 
