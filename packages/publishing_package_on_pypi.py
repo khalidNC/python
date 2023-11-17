@@ -182,9 +182,28 @@ project in a separate directory. The steps to publish package on pypi.org are as
 ''' For real world example, a separate project name khalidpdf has been created for publishing package on pypi. '''
 
 ''' Finally, the instalation part:
-1. In 2 ways you can install the package '''
+1. In 2 ways you can install the package;
+      a. by pip command: pip3 install package_name
+      b. by pipenv command: pipenv install package_name
+      
+2. pip3 install: We need specify the user directory to install. The command wil be:
+                 pip3 install -i https://test.pypi.org/simple/ khalidpdf==1.0 --user
 
-from khalidpdf import pdf2text
+                 Note: this command to install from the testpypi, when we install from production 
+                 then thencommand will be pip3 install khalidpdf --user
+                 
+                 Now you can import method from the package and can run program.
 
-pdf2text.conver()
+3. pipenv install: pipenv command will create a verual environment as well as install the package.
+                   Go to the project directory and run the command: 
+                   pipenv install -i https://test.pypi.org/simple/ khalidpdf==1.0
 
+                   This will install the package and automatically updated the pipfile and pipfile.lock
+                   Now active the environment by the command: pipenv shell
+
+                   Then run the program and it run within the virtual environment. '''
+
+
+from khalidpdf import pdf2image
+
+pdf2image.convert()
