@@ -161,10 +161,23 @@ project in a separate directory. The steps to publish package on pypi.org are as
             View at:
             https://test.pypi.org/project/khalidpdf/1.0/
 
-         Then visit to the site site and look at the package you just uploaded.
+         Instead using username, password you can use username as:
+         __token__ 
+         & Password as: <the api token> and prefix with pypi-
+
+         To avoid having to copy and paste the token every time you upload, you can create a $HOME/.pypirc file:
+         To have more detail visit: 
+         https://packaging.python.org/en/latest/guides/distributing-packages-using-setuptools/#create-an-account
+
+         So uploading is done.
+         Then visit to the pypi site and look at the package you just uploaded.
          There is a link to install the package: pip3 install -i https://test.pypi.org/simple/ khalidpdf==1.0
          Use the link to install in your project and import the module of the package and use.
-         Ypu can also use the pipenv command to install the package.
+         You can also use the pipenv command to install the package.
+
+         If you want to confiqure the uploads like, when our production environemnt deploy this confiquration
+         will automatically upload packages to pypi. For detail visit:
+         https://docs.travis-ci.com/user/deployment/pypi/
 
 8. Now visit to pypi.org and search for khalidpdf you find find this on the site. Now you can install
    this package just like other packages on pypi.org for example:
