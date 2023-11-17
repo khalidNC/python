@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "f06a09b1a5a3fcaae402bb6f7a9e5ed553ef63cf75a2c04155c9131b889e646e"
+            "sha256": "ade91e1aead5debed0668905620f9b08a6ec158033689eb1f4581f061158658a"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -135,11 +135,11 @@
         },
         "khalidpdf": {
             "hashes": [
-                "sha256:8f745362ef44190b5ceaac2064df93a01a330e0c00d455a8f36fc06b212bfaf4",
-                "sha256:ed0e1a1e879811a49df00c2a7cf837bd08da9bccc332ba6d1f23603a0108c343"
+                "sha256:30b2f595fcd19605e8248b76189f567edd5a71ccff45f17c6b429eaedbe450c9",
+                "sha256:497b9d80d0383d7bdbb17f4481f1d88c8228097531f3193e127048890c7fdc77"
             ],
             "index": "testpypi",
-            "version": "==1.0"
+            "version": "==1.1"
         },
         "requests": {
             "hashes": [

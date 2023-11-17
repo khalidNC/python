@@ -217,6 +217,36 @@ project in a separate directory. The steps to publish package on pypi.org are as
                    Then run the program and it run within the virtual environment. '''
 
 
+''' A link to get insight on how to create and upload package on pypi:
+https://www.freecodecamp.org/news/how-to-create-and-upload-your-first-python-package-to-pypi/ '''
+
+
+''' Upload multipule versions: 
+1. Change the version number on setup file: like 1.0 to 1.0
+2. Generate distribution file: run the command: python3 setup.py sdist bdist_wheel
+   This command will generate 2 files(build distribution, source distribution) onece again.
+3. Now to puload run this command: twine upload --repository testpypi dist/*
+   Since this is pypi test site so run this command.
+4. Then terminal asks for the username and password.
+5. Then the latest version of the package has uploaded. 
+6. And it show the urls of the version like below:
+   View at:
+   https://test.pypi.org/project/khalidpdf/1.1/
+   https://test.pypi.org/project/khalidpdf/1.0/ 
+   
+7. Now on pypi site it will see the latest version is appeared and it is downloadable. 
+8. At this point, you need to update the package version. For testpypi pipenv outdate comand has issue.
+   So you can uninstall the package then install again for the testpypi. The command is:
+
+   pipenv install -i https://test.pypi.org/simple/ khalidpdf==1.0 
+   
+   This updated the pipfile and lok file with the package and the version. 
+   
+   Then you active the environment and use the package and run the program. '''
+
+
 from khalidpdf import pdf2image
+from khalidpdf import pdf2text
 
 pdf2image.convert()
+pdf2text.convert()
