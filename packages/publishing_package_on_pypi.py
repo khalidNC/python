@@ -235,14 +235,14 @@ https://www.freecodecamp.org/news/how-to-create-and-upload-your-first-python-pac
    https://test.pypi.org/project/khalidpdf/1.0/ 
    
 7. Now on pypi site it will see the latest version is appeared and it is downloadable. 
-8. At this point, you need to update the package version. For testpypi pipenv outdate comand has issue.
+8. At this point, you need to update the package version. For testpypi pipenv outdate command has an issue.
    So you can uninstall the package then install again for the testpypi. The command is:
 
-   pipenv install -i https://test.pypi.org/simple/ khalidpdf==1.0 
+   pipenv install -i https://test.pypi.org/simple/ khalidpdf==1.1 
    
-   This updated the pipfile and lok file with the package and the version. 
+   This updated the pipfile and lock file with the package and the version. 
    
-   Then you active the environment and use the package and run the program. '''
+   Then you activate the environment and use the package and run the program. '''
 
 
 from khalidpdf import pdf2image
