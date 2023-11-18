@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "ade91e1aead5debed0668905620f9b08a6ec158033689eb1f4581f061158658a"
+            "sha256": "580b7fc8eaac6d94e7ad4167b9369a25388a2d20e49b0fded3b202ebec40c6bf"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -23,11 +23,11 @@
     "default": {
         "certifi": {
             "hashes": [
-                "sha256:539cc1d13202e33ca466e88b2807e29f4c13049d6d87031a3c110744495cb082",
-                "sha256:92d6037539857d8206b8f6ae472e8b77db8058fec5937a1ef3f54304089edbb9"
+                "sha256:9b469f3a900bf28dc19b8cfbf8019bf47f7fdd1a65a1d4ffb98fc14166beb4d1",
+                "sha256:e036ab49d5b79556f99cfc2d9320b34cfbe5be05c5871b51de9329f0603b0474"
             ],
             "markers": "python_version >= '3.6'",
-            "version": "==2023.7.22"
+            "version": "==2023.11.17"
         },
         "charset-normalizer": {
             "hashes": [
@@ -135,11 +135,11 @@
         },
         "khalidpdf": {
             "hashes": [
-                "sha256:30b2f595fcd19605e8248b76189f567edd5a71ccff45f17c6b429eaedbe450c9",
-                "sha256:497b9d80d0383d7bdbb17f4481f1d88c8228097531f3193e127048890c7fdc77"
+                "sha256:193380b343f9fa25b97840d3fc0ed17eeb04839775a297cae3629e451219c6d9",
+                "sha256:2bc084b4127caa6e2dbc88185a2d5aca6931df3da1ce8816a7f965438eaa7564"
             ],
             "index": "testpypi",
-            "version": "==1.1"
+            "version": "==1.2"
         },
         "requests": {
             "hashes": [
