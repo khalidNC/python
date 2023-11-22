@@ -4,3 +4,20 @@ In simple terms these apis are endpoints that are publically accessibale on the 
 
 So can send an http request to this endpoint to get the list of businesses that match some criteria. In simple terms, http is the protocall that powers our web. So as we are browsing the web, our browser sends http request to the various websites to get something back. Let's take a look;
 
+Open this url:https://docs.developer.yelp.com/reference/v3_business_search on chrome browser then on the top menu go to view then go to developer option then click on the Developer Tools. It opens the console here we can see the api response in network tab. So these are all the http requests that our browser sent to Yelp.
+
+Look at the first request:
+Name: v3_business_search
+This a request to get document. Let's inspect the request, just click on the name and it opens the headers default here we can various attributes of an http request, the first one is the Request url or address and this is:https://docs.developer.yelp.com/reference/v3_business_search the endpoint where we are sending request to.
+
+Method: GET
+Every http request has a method and this method determines what we are going to use this request for. There are few standard http request methods, get or getting the data, post for creating data, put for updating data, and delete for deleting data. 
+
+Status Code:
+Then we have a status code: 200 and that is the status code for the response of the request that we get from the web server. 200 indicates success. 
+
+Now if we look at the Response tab on the top. We can see the response that the web server sends to our browser. This is basically a html document that represents this(current) web page. 
+
+Then if we open the Preview tab we can see the Preview of the page. 
+
+Note: next we are looking at how to comunicate with the Yelp api to search for businesses based some criteria. 
