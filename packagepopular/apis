@@ -1,0 +1,6 @@
+These days lot of websites make their data available to others via what we called application programming interface's or API's. 
+
+In simple terms these apis are endpoints that are publically accessibale on the internet, so they have urls just like the websites themselves. Here is an example. On Yelp site: https://docs.developer.yelp.com/reference/v3_business_search, we have this API: https://api.yelp.com/v3/businesses/search for searching for businesses. And this api has an endpoint to this address or url: https://api.yelp.com/v3/businesses/search. 
+
+So can send an http request to this endpoint to get the list of businesses that match some criteria. In simple terms, http is the protocall that powers our web. So as we are browsing the web, our browser sends http request to the various websites to get something back. Let's take a look;
+
