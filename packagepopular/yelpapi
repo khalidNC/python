@@ -1,3 +1,21 @@
 Here we will look at Yelp APIs, if we search yelp api on google then we find the website https://www.yelp.com/developers. Let's have a quick look here in the website. We see here Yelp Fusion click on that and this takes me to a new page on fusion: https://fusion.yelp.com/ here at the bottom we see link for documentation. Then click on the link it opens new page: https://docs.developer.yelp.com/ here we see a link Fusion API on that page: https://docs.developer.yelp.com/docs/fusion-intro we have various endpoints for working with business for example we have endpoints for finding business by keyword, location, category or using a phone number, also we have endpoint for getting details. 
 
-On this page we also have endpoints for working with reviews events categories. So we can do lots of things with yelp api. To start we need to create an app. So go to create app page: 
+On this page we also have endpoints for working with reviews events categories. So we can do lots of things with yelp api. To start we need to create an app. So go to create app page: https://www.yelp.com/developers/v3/manage_app
+
+Note: We need to signup on yelp to create an app to signup out side usa we need to use vpn as chreome extension.
+
+To create an app we need fill out a form:
+1. App Name: Give a name of your app let's say my app name is PyYelp
+2. Add Website(optional): If we have a website put the link here
+3. Industry: The industry name for this app let's say Business
+4. Company(optional): If we have company put the name here
+5. Contact Email: The give the email address e.g khalidpython3@gmail.com
+6. Description: Write some descrition and you can edit this later
+7. Then Accepet the terms and condition
+8. Add hit create button. It created the app.
+
+Here we can see bellow things:
+1. Client ID: That uniquely identlfies the application we just created. This is like a user name of the app.
+2. API Key: This is like a password for the application. We will lend this key whenever we want to talk to any of endpoints on Yelp. This is for security. So Yelp wants to who is calling their API endpoints. 
+
+So they know who is the creator of this application. Alright we have created the application and next we will show how to send a http request to Yelp API to get the list of business in yelpapisearch file.
