@@ -69,7 +69,7 @@ We are going to create a new project let's name it pyyelp. This project sends ht
                            import requests
 
 
-                           url = https://api.yelp.com/v3/businesses/search 
+                           url = "https://api.yelp.com/v3/businesses/search"
                            response = requests.get(url)
                            print(response)
 
