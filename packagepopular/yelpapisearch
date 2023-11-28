@@ -1,1 +1,64 @@
-Here we will send a http request to Yelp api to get list of business in a separate project named pyyelp
+We are going to create a new project let's name it pyyelp. This project sends http request to Yelp api to get list of business. The full process of the project will be documented here breaking down step by step:
+
+1. Create a new project:
+                        a. Open the terminal
+                        b. And create a root diectory: Terminal command: mkdir pyyelp
+                        c. Open the directory in VScode: Terminal command: code .
+                        d. Make a source directory under root directory: name it for example, src
+                        e. Then create a py file inside src directory named e.g app.py
+
+2. Virtual environment & Install packages:
+                        a. Open terminal in vscode
+                        b. Install request package: Terminal command: pipenv install requests
+                           This will create a virtual environment as well as install the package.
+                           And the Pipfile and lock file are created.  
+                        c. Then change the virtual environment for the pyyelp project in vscode.
+                        d. At this point if vscode suggets to install linter pylint then go ahead and install it
+                        
+3. Starting codding:
+                        a. Go to app.py file
+                        b. Import request package
+                        c. Then use get method to get data. The code will be like:
+                            import requests
+
+                            requests.get()
+                        f. Here we need to pass a str "url" the url is the address of the endpoint. To get the
+                           yelp site on fusion api doc page: https://docs.developer.yelp.com/docs/fusion-intro
+                           here you find business search endpoint: https://api.yelp.com/v3/businesses/search
+                           just copy this address and pass as parameter in get method. So the code comes like,
+
+                           import requests
+
+                           requests.get("https://api.yelp.com/v3/businesses/search")
+
+                        g. This get method returns a response object. We created a variable called response. So the
+                           code is now: response = requests.get("https://api.yelp.com/v3/businesses/search")
+
+                        h. At this point, vscode may suggest to install code formatter for this virtual environment
+                           so let's install it.
+                        i. Now pirnt the response. The code now looks like:
+
+                            import requests
+
+                            response = requests.get("https://api.yelp.com/v3/businesses/search")
+
+                            print(response)
+
+4. Run the code output:
+                        a. Now save the chnages and run the code
+                        b. OutPut: <Response [401]>
+
+5. Authentication:
+                        a. The 401 is the status of one of the standard http error codes.
+                        b. If you search the 401 in google you see this error indicates unauthorized request. In
+                           this case, we got this error because we did not tell yelp who we are. So every time we want to call any of the endpoints of Yelp we need to send the key to tell Yelp who we are. This is we call authentication. 
+                        c. Now back to the Yelp developer portal: https://docs.developer.yelp.com/
+                           And get started the dcumentation: https://docs.developer.yelp.com/docs
+                           Then go to fusion authentication in left menu: https://docs.developer.yelp.com/docs/fusion-authentication
+                        d. This page is telling us that first we need to create app to get the api key. We already
+                          did this(See yelpapi file). 
+                        
+
+              
+
+                    
