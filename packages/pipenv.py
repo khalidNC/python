@@ -14,13 +14,13 @@ terminal;
     c. Also can check in user folder: shift+comand+dot this will display all hidden files
     d. If the file is not there then create: terminal command nano .bash_profile
           i. This will open the bash_profile file in nano text editor
-          ii. Then export the path, the syntax is: export PATH="actual/path:$PATH"
+          ii. Then export the path, the syntax is: export PATH="actual/path":$PATH
           iii. Then save the file shortcut key: control+o then hit Enter
           iv. Then exit shortcut: control+x
     e. We can also create and export path in text editor: terminal command: open .bash_profile
           i. To create bash_profile: touch .bash_profile
           ii. Open the file in text editor: open .bash_profile
-          iii. Then export PATH="path:$PATH", then just save the file by using: command+s
+          iii. Then export PATH="path":$PATH, then just save the file by using: command+s
     f. After creating and export PATH, we need to source the file.
           i. To do so the terminal command: source ./.bash_profile
           ii. Then restart the terminal and check pipenv command like: pipenv --version
