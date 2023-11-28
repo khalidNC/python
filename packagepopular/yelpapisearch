@@ -130,7 +130,7 @@ We are going to create a new project let's name it pyyelp. This project sends ht
                             "Authorization": "Bearer " + api_key
                            }
                            params = {
-                            "Location": "NYC"
+                            "location": "NYC"
                            }
                            response = requests.get(url, headers=headers, params=params)
                            print(response.text)
@@ -150,7 +150,7 @@ We are going to create a new project let's name it pyyelp. This project sends ht
                         b. This will return only the barbers in New York city in the terminal.
                         c. And if you scroll at the top you see in this json object has property called businesses
                            and this is set to a list/array because we have a square bracket. In this array, we have bunch of json objects because we have curly brackets. 
-                        d. Now bak to the code on response object now instead text attribute we are going to call
+                        d. Now back to the code on response object now instead text attribute we are going to call
                            json method and this will convert the result in a dictionary. And we can store the result in a variable called result.
                            So the codes look like;
 
