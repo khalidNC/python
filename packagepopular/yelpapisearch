@@ -15,7 +15,7 @@ We are going to create a new project let's name it pyyelp. This project sends ht
                         c. Then change the virtual environment for the pyyelp project in vscode.
                         d. At this point if vscode suggets to install linter pylint then go ahead and install it
                         
-3. Starting codding:
+3. Start codding:
                         a. Go to app.py file
                         b. Import request package
                         c. Then use get method to get data. The code will be like:
@@ -256,4 +256,32 @@ We are going to create a new project let's name it pyyelp. This project sends ht
 15. Run the codes and get output:
                         a. Run the program and it rutunrs a list of the names of the barbers in New York city with
                            the rating 4.5 or more.
+
+16. Secure the api key:
+                        a. We must not hard code the api_key or password in the source code. So we need to hide
+                           this information. 
+                        b. There are few ways to do this here we are going to use one of them which is environment
+                           variables in python.
+                        c. In Python, environment variables are global variables that are accessible to a running
+                           Python script or application. These variables are set outside of the Python script, typically at the system level, and can be accessed by Python code to retrieve information or configure the behavior of the script. Environment variables are useful for storing configuration settings, sensitive information, or any data that needs to be shared across different parts of an application. By setting these environment variables outside of the script, you can easily change the configuration without modifying the code.
+                        d. The steps of implement this are;
+                              1. Add the secret info like pass/key into the bash profile:
+                                      a. Open the terminal and go to users/home directory
+                                      b. Then open the .bash_profile file: nano .bash_profile
+                                      c. Export the api key: export variable_name="actual_api_key"
+                                      d. Save the file: shortkey control+o
+                                      e. Exit: shortkey control+x
+                                      f. Then need to source: source .bash_profile
+
+                              2. Accessing Environment Variables in Python: In Python, you can access environment
+                                 variables using the os module. 
+                                      a. Go to py file where you want to implement.(restart vs code may needed)
+                                      b. import os
+                                      c. os has a method .environ.get() it take str: os.environ.get("variable_name")
+                                      d. So en example: 
+                                                api_key = os.environ.get("yelp_api_key")
+                                                headers = {
+                                                  "authorization": "Bearer " + api_key
+                                                }
+                                      e. Run the program now and it should work.
                     
