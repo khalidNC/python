@@ -2,7 +2,7 @@
 And all the terminal command we need memorise there are lot's of things we momorise 
 to make our life easy pipenv comes into the picture. This pipenv is a tool that 
 combines both needs together. So we do not have to use pip and vertual environment
-separately. It is a dependescy manager in python pacakages. 
+separately. It is a dependency manager in python pacakages. 
 
 So let's use pipenv. First we need to install pipenv. So write and run this command in 
 terminal; 
@@ -63,9 +63,9 @@ terminal;
 8. we are in the virtual environment so if we want to deactivate the env then simply type exit in the 
    termain and run and you are out of the virtual environment. '''
 
-''' Noe note after the environment created by using pipenv in the file pip.py, the import requets has an alert
+''' Now note after the environment is created by using pipenv in the file pip.py, the import requets has an alert
     showing the pylance does not found the module requets. 
     Also if I run the pip.py file using code runner then I get same error that requests module not found. It is 
     because when I run the code from terminal the python interpretor knows where the requests module is located
     in vertual enviroment but still the vs-code does not know where the requests module located. So now we need
-    to set the vertual environment path in vs code. This sectione will be discussed in env_in_vscode.py file. '''
+    to set the vertual environment path in vs code. This section will be discussed in env_in_vscode.py file. '''
