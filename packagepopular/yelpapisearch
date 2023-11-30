@@ -258,14 +258,16 @@ We are going to create a new project let's name it pyyelp. This project sends ht
                            the rating 4.5 or more.
 
 16. Secure the api key:
-                        a. We must not hard code the api_key or password in the source code. So we need to hide
-                           this information. 
-                        b. There are few ways to do this here we are going to use one of them which is environment
-                           variables in python.
-                        c. In Python, environment variables are global variables that are accessible to a running
-                           Python script or application. These variables are set outside of the Python script, typically at the system level, and can be accessed by Python code to retrieve information or configure the behavior of the script. Environment variables are useful for storing configuration settings, sensitive information, or any data that needs to be shared across different parts of an application. By setting these environment variables outside of the script, you can easily change the configuration without modifying the code.
-                        d. The steps of implement this are;
-                              1. Add the secret info like pass/key into the bash profile:
+                     a. We must not hard code the api_key or password in the source code. So we need to hide
+                        this information. 
+                     b. There are few ways to do this. here we are going to highlight couple of them. One way is
+                        environment variables in python. Another is manage a confiq file for the key and exclude it 
+                        from the source code.
+                        1. Environment variables: In python, environment variables are global variables that are accessible 
+                           to a running Python script or application. These variables are set outside of the Python script, typically at the system level, and can be accessed by Python code to retrieve information or configure the behavior of the script. Environment variables are useful for storing configuration settings, sensitive information, or any data that needs to be shared across different parts of an application. By setting these environment variables outside of the script, you can easily change the configuration without modifying the code.
+                           The steps of implementation are;
+
+                              i. Add the secret info like pass/key into the bash profile:
                                       a. Open the terminal and go to users/home directory
                                       b. Then open the .bash_profile file: nano .bash_profile
                                       c. Export the api key: export variable_name="actual_api_key"
@@ -273,7 +275,7 @@ We are going to create a new project let's name it pyyelp. This project sends ht
                                       e. Exit: shortkey control+x
                                       f. Then need to source: source .bash_profile
 
-                              2. Accessing Environment Variables in Python: In Python, you can access environment
+                              ii. Accessing Environment Variables in Python: In Python, you can access environment
                                  variables using the os module. 
                                       a. Go to py file where you want to implement.(restart vs code may needed)
                                       b. import os
@@ -284,4 +286,23 @@ We are going to create a new project let's name it pyyelp. This project sends ht
                                                   "authorization": "Bearer " + api_key
                                                 }
                                       e. Run the program now and it should work.
-                    
+
+                        2. Hiding keys in a configuration file: Here we will create a configuration file named config.py in 
+                           the source directory and keep the key here in the file then import the config module in the required py file and then the config module has attribute like key so we can access it using dot 
+                           oparator. Then we will create gitignore file add the confiq file in the gitignore then we can push our code and the key is secured now. The detail step by step are as below:
+
+                              i. Create config file:
+                                       a. Create config.py file under source directory in VScode
+                                       b. Store the api key here in a varibale called yelp_api_key
+                              2. Import module:
+                                       a. Go to the py file where we need the api key
+                                       b. At the top import config
+                                       c. then inside the code where we need to access the key from config file access the
+                                          yelp_api_key attribute on config.py file using .(dot) oparator. e.g config.api_key
+                                       d. Save the changes.
+                              3. Gitignore:
+                                       a. Create gitignore file under the source code
+                                       b. Then open the gitignore file
+                                       c. Just add the config file here
+                                       d. Then all done and ready to share the codes
+                                 
