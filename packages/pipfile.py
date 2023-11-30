@@ -44,7 +44,7 @@ Now let's check how this works:
    When we run this command this will check the Pipfile and install all the dependencies. Let's do it.
    pipenv install
    This install the dependency on pipfile and creates the virtual environment.
-   Run the pipenv --venv command once again and it returns the pat of the virtual environment directory.
+   Run the pipenv --venv command once again and it returns the path of the virtual environment directory.
    Output: /Users/user/.local/share/virtualenvs/Python_Course-DQXbx9fU
 
    So all the dependencies installed based on the packages version mentioned in the pipfile:
