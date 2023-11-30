@@ -89,7 +89,7 @@ To do so run this command: pydoc3 -p (short from of port) then port number like 
 
 Since we installed the twine package in our virtual environment for the project.
 So we actually activate the virtual environment first.
-then ru the command:
+then run the command:
 
 pydoc -p 1234
 
