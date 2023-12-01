@@ -1,0 +1,7 @@
+In this section we will discover how to send text messages using twilio. Twilio is a very popular communication platform for adding voice, video, and messageing to your applications. For example, you can quickly make and receive video calls, send text messages. And this perticularly useful for  confirming reservations, sending appointment reminders or promotions the possibilities are endless. 
+
+They provide an API that is prefectly documented and very easy to use. So, we can directly communicate with this API by sending an http requests using the request model. But they also provide a library that we can install using pip or pipenv. This library is essentially a wrapper around the API. So this gives us objects and these objects encapsulate all the http communication. So we no longer have to work at a low level of sending http requests to twilio api. We work at a higher level and a more abstract and simplified fashion.
+
+There are objects, these object has methods, we call them, and they internally take care of sending the right http requests to Twilio API. So the first thing we need to do is create a Twilio account.
+
+1. Create twilio account:
