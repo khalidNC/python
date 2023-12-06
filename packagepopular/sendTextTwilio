@@ -1,7 +1,19 @@
 In this section we will discover how to send text messages using twilio. Twilio is a very popular communication platform for adding voice, video, and messageing to your applications. For example, you can quickly make and receive video calls, send text messages. And this perticularly useful for  confirming reservations, sending appointment reminders or promotions the possibilities are endless. 
 
-They provide an API that is prefectly documented and very easy to use. So, we can directly communicate with this API by sending an http requests using the request model. But they also provide a library that we can install using pip or pipenv. This library is essentially a wrapper around the API. So this gives us objects and these objects encapsulate all the http communication. So we no longer have to work at a low level of sending http requests to twilio api. We work at a higher level and a more abstract and simplified fashion.
+They provide an API that is prefectly documented and very easy to use. So, we can directly communicate with this API by sending an http requests using the request module. But they also provide a library that we can install using pip or pipenv. This library is essentially a wrapper around the API. So this gives us objects and these objects encapsulate all the http communication. So we no longer have to work at a low level of sending http requests to twilio api. We work at a higher level and a more abstract and simplified fashion.
 
 There are objects, these object has methods, we call them, and they internally take care of sending the right http requests to Twilio API. So the first thing we need to do is create a Twilio account.
 
-1. Create twilio account:
+1. Create twilio account and sign in:
+    a. Go to Twilio signup page: https://www.twilio.com/
+    b. Fill out the form and signup
+    c. Note: You may go through a email loop with Twilio team to activate the account
+    d. Then you sign in and create an account 
+    e. Thne you are on twilio console: https://console.twilio.com/
+
+2. Add phone number:
+    a. Click on Phone Numbers item on left menu 
+    b. On the page, the first step is get a twilio phone number
+    c. So click on the Get a Phone Number button
+    d. 
+
