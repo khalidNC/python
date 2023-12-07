@@ -14,6 +14,12 @@ There are objects, these object has methods, we call them, and they internally t
 2. Add phone number:
     a. Click on Phone Numbers item on left menu 
     b. On the page, the first step is get a twilio phone number
-    c. So click on the Get a Phone Number button
-    d. 
+    c. So click on the Get a Phone Number button 
+    d. Then it gets you back with a phone number and this number w are going to use to send a text message
+    e. So let's go ahead and the next step is to send text message.
+
+3. Send SMS:
+    a. Write the text message in the input box and click on the send button
+    b. And on the right hand side you can see the codes in different language and the response
+    c. Next step is start building an app
 
