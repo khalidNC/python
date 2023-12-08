@@ -23,3 +23,21 @@ There are objects, these object has methods, we call them, and they internally t
     b. And on the right hand side you can see the codes in different language and the response
     c. Next step is start building an app
 
+4. Start building an app:
+    a. Here in the twilio you can build application that could send sms to varified phones numbers
+    b. You can get sample codes in different languages
+
+5. Tutorial:
+    a. You can find tutorial here to flow to build and host the app
+
+6. Scale and upgrade twilio app:
+    b. Here need to upgrade the account with twilio and scale the app with many functions
+
+7. Build own app:
+    a. Create a new project and open in vscode:
+        i. Go to terminal and create a derectory in users.
+            Terminal command: mkdir PyText
+        ii. Then go to the directory: cd PyText
+        iii. Open in vscode: code .
+8. 
+
