@@ -195,4 +195,4 @@ There are objects, these object has methods, we call them, and they internally t
                         sms = call.date_sent
                         print("The message has been sent on ", sms)
 
-12. Finally run the program and check your phone that should receive the text.
+12. Finally active the virtual environment and run the program and check your phone that should receive the text.
