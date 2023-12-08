@@ -84,8 +84,52 @@ There are objects, these object has methods, we call them, and they internally t
        3. The text body
 
        Codes:
-       
-        
+              client.messages.create(
+                to = "phone_number"
+                from_ = "twilio_phone_number"
+                body = "A test message"
+              )
+
+    f. Then create a call object and store the result:
+       Codes:
+              call = client.messages.create(
+                to = "phone_number"
+                from_ = "twilio_phone_number"
+                body = "A test message"
+              )
+       This call object has attributes like date_created, date_sent, date_updated and so on. So this is the basic codes base for sending sms through twilio. 
+
+       Final codes:
+
+                    from twilio.rest inport Client
+
+
+                    account_sid = "314523452"
+                    auth_token = "868060y0980y0070"
+
+                    client = Client(account_sid, auth_token)
+
+                    phone_number = "actual_phone_number"
+                    twilio_phone_number = "actual_twilio_phone_number"
+
+                    call = client.messages.create(
+                      to = "phone_number"
+                      from_ = "twilio_phone_number"
+                      body = "The text messages content"
+                    )
+
+                    sms = call.date_sent
+                    print("The message has been sent on ", sms)
+
+11. Now in the real project we must not hard coded the confidential information like account SID, authentication
+    token, phone number etc. So we can either create a configaration file and keep those sensitive info there
+    and put the confiq file in gitignore so this is not been shared to other or we can use environment variables
+    which is keep the info in .bash_profile and the import them in the codes through os module. 
+
+      1. Configaration file:
+          a. Create a confiq file: Create a file named confiq.py in the source directory
+          b. and store the sensitive 
+
 
        
         
