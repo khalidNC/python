@@ -39,7 +39,7 @@ There are objects, these object has methods, we call them, and they internally t
     a. Create a new project and open in vscode:
         i. Go to terminal and create a derectory in users.
             Terminal command: mkdir TextTwilio
-        ii. Then go to the directory: cd PyText
+        ii. Then go to the directory: cd TextTwilio
         iii. Open in vscode: code .
 
 8. Install packages and create virtual environment:
@@ -121,16 +121,77 @@ There are objects, these object has methods, we call them, and they internally t
                     sms = call.date_sent
                     print("The message has been sent on ", sms)
 
-11. Now in the real project we must not hard coded the confidential information like account SID, authentication
+11. Secure the sensitive info:
+    Now in the real project we must not hard coded the confidential information like account SID, authentication
     token, phone number etc. So we can either create a configaration file and keep those sensitive info there
     and put the confiq file in gitignore so this is not been shared to other or we can use environment variables
     which is keep the info in .bash_profile and the import them in the codes through os module. 
 
-      1. Configaration file:
+      i. Configaration file:
           a. Create a confiq file: Create a file named confiq.py in the source directory
-          b. and store the sensitive 
-
-
-       
+          b. and store the sensitive information there in different variables
+          Codes:
+                phone_number = "8547087518"
+                twilio_phone_number = "39475270"
+                account_sid = "314523452"
+                auth_token = "868060y0980y0070"
         
+          c. Source codes: remove the sensitive info from the source code py file after creating the confiq file
+          d. then import the config file in the py file as module and call the info by attribute
+          Codes:
+                from twilio.rest inport Client
+                import confiq
 
+                client = Client(confiq.account_sid, confiq.auth_token)
+
+                call = client.messages.create(
+                  to = "confiq.phone_number"
+                  from_ = "confiq.twilio_phone_number"
+                  body = "The text messages content"
+                )
+
+                sms = call.date_sent
+                print("The message has been sent on ", sms)
+
+      ii. Environment variables:
+          a. Store the sensitive information in .bash_profile in different variables:
+              i. Go to terminal
+              ii. Go to users: cd
+              iii. Open bash_profile in nano: nano .bash_profile
+              iv. Create variables and store the infomation in string
+              v. Save the changes and exit
+              vi. Then source the bash file to make the changes executable: source .bash_profile
+              vii. Exit from the terminal and go back to vscode source codes.
+                  Codes:
+                        phone_number = "8547087518"
+                        twilio_phone_number = "39475270"
+                        account_sid = "314523452"
+                        auth_token = "868060y0980y0070"
+
+          b. Import the info from the bash profile in source code:
+              i. import os module
+              ii. os module has methods like .environ.get() it takes parameter as srt
+              iii. So pass the variables on bash_profile in get method in string
+              Codes:
+                        from twilio.rest inport Client
+                        import confiq
+                        import os
+
+
+                        account_sid = os.environ.get("account_sid")
+                        auth_token = os.environ.get("auth_token")
+                        phone_number = os.environ.get("phone_number")
+                        twilio_phone_number = os.environ.get("twilio_phone_number")
+
+                        client = Client(account_sid, auth_token)
+
+                        call = client.messages.create(
+                          to = "phone_number"
+                          from_ = "twilio_phone_number"
+                          body = "The text messages content"
+                        )
+
+                        sms = call.date_sent
+                        print("The message has been sent on ", sms)
+
+12. Finally run the program and check your phone that should receive the text.
