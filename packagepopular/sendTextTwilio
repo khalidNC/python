@@ -1,3 +1,5 @@
+This is a document of breaking down the steps of creating a new project on sending sms through Twilio. We will do the real project separatly named TextTwilio.
+
 In this section we will discover how to send text messages using twilio. Twilio is a very popular communication platform for adding voice, video, and messageing to your applications. For example, you can quickly make and receive video calls, send text messages. And this perticularly useful for  confirming reservations, sending appointment reminders or promotions the possibilities are endless. 
 
 They provide an API that is prefectly documented and very easy to use. So, we can directly communicate with this API by sending an http requests using the request module. But they also provide a library that we can install using pip or pipenv. This library is essentially a wrapper around the API. So this gives us objects and these objects encapsulate all the http communication. So we no longer have to work at a low level of sending http requests to twilio api. We work at a higher level and a more abstract and simplified fashion.
@@ -36,8 +38,55 @@ There are objects, these object has methods, we call them, and they internally t
 7. Build own app:
     a. Create a new project and open in vscode:
         i. Go to terminal and create a derectory in users.
-            Terminal command: mkdir PyText
+            Terminal command: mkdir TextTwilio
         ii. Then go to the directory: cd PyText
         iii. Open in vscode: code .
-8. 
+
+8. Install packages and create virtual environment:
+    a. Install twilio: Terminal command pipenv install twilio. 
+    b. That creates virtual environment and at the same time it installs twilio
+    c. Then select virtual environment in vscode
+
+9. Py file creation for the project:
+    a. Create a py file like, text.py in the root directory
+
+10. Write codes for the project:
+    a. First import client class from twilio rest api
+       Code:
+            import from twilio.rest import Client
+
+       This Client class represents a client in twilio rest api.
+
+    b. Now create a client object.
+       Code:
+            Client()
+
+       Here we need to pass my account sid, which is short for security indentifier as wel as an authentication token. We can find both these in twilio console page.
+
+    c. Copy the SID and token from Twilio and store in variables on the py file.
+       Codes:
+
+            account_sid = "284ur8249ufh9u24h82u4r0u90"
+            auth_token = "92887239872830932-498-2"
+
+            # Then create a client obejct
+            client = Client(account_sid, auth_token)
+
+    d. This client object has few interesting attributes. Here we use one of them messages
+       Codes:
+            client.messages
+
+        This message attribute has a method called .create()
+
+    e. In this create method we need to pass 3 pieces of information:
+       1. Phone number where to send sms
+       2. Phone number from where to send sms, which is our twilio phone number
+       3. The text body
+
+       Codes:
+       
+        
+
+       
+        
 
