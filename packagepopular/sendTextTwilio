@@ -54,7 +54,7 @@ There are objects, these object has methods, we call them, and they internally t
 10. Write codes for the project:
     a. First import client class from twilio rest api
        Code:
-            import from twilio.rest import Client
+            from twilio.rest import Client
 
        This Client class represents a client in twilio rest api.
 
