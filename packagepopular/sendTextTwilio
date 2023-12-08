@@ -146,8 +146,8 @@ There are objects, these object has methods, we call them, and they internally t
                 client = Client(confiq.account_sid, confiq.auth_token)
 
                 call = client.messages.create(
-                  to = "confiq.phone_number"
-                  from_ = "confiq.twilio_phone_number"
+                  to = confiq.phone_number,
+                  from_ = confiq.twilio_phone_number,
                   body = "The text messages content"
                 )
 
