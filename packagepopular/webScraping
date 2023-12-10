@@ -15,5 +15,85 @@ I this project we are going to write a program in Python that will extract a lis
        We also need requests module to download the web page that contains the newest questions on stackoverflow.
 
 3. Create py file:
-    a. Create a py file: Let's say created crawler.py
-    b.
+    a. Create a py file in source directory: Let's say crawler.py
+    b. Then select the vertual environment in vscode
+
+4. Start codding: Download the webpage stackoverflow where the newest questions are available:
+    a. On the py file let's import erquests module
+        Codes:
+                import requets
+
+    b. Then we call the the get method to send request to the stackoverflow server.
+        Codes:
+                import requests
+
+                requests.get("https://stackoverflow/questions")
+    
+    c. Then store the response of the http request in response object
+        Codes:
+                import requests
+
+                response = requests.get("https://stackoverflow/questions")
+
+    d. This response object has an attribute called .text this attribute returns the html content of this web page.
+        Codes:
+                import requests
+
+                response = requests.get("https://stackoverflow/questions")
+
+                html_content = response.text 
+    
+    e. So using the html content we can create a beautifulsoup. Let's import beautifulsoup class from bs4 and create 
+       BeautifulSpou class object and pass the html_content
+        Codes:
+                import requests
+                from bs4 import BeautifulBoup
+
+                response = requests.get("https://stackoverflow/questions")
+
+                BeautifulSoup(response.text)
+
+    f. Now we need to pass the second argument as type of parser sinces we are going to parse htmlfile, so should
+       parse html.parser and store the result in a variable soup.
+       Codes:
+                import requests
+                from bs4 import BeautifulBoup
+
+                response = requests.get("https://stackoverflow/questions")
+
+                soup = BeautifulSoup(response.text, "html.parser")
+
+       Now, the soup object mirrors the structure of our html document so we can easily navigate the document and
+       find the various elements.
+
+5. Html and find elements:
+    a. Go back to the stackoverflow website and let's right click and inspect element of the first question. So this 
+       is the structure of the document what we can see the console. 
+
+    b. Here we have an anchor(<a>) that contains the title of the question. And all the questions are in a <div> with 
+       id="questions"
+    
+    c. Let's look at one of these questions: 
+            i. a div with a class class="s-post-summary"
+            ii. inside if this we have 2 div with class:
+                1. class="s-post-summary--stats" : this has statistic like vote, views, answers in it
+                2. class="s-post-summary--content" : this has content(the question), and summery of the questions
+
+    d. So using our soup object we need find all the elements for the class s-post-summary
+
+6. Codding again:
+    a. Soup has a method call select that takes a css selector(Basically a string that helps to find an element in an html document) so here we want to get all elements for the class s-post-summary so the codes looks like;
+
+        Codes:
+                import requests
+                from bs4 import BeautifulBoup
+
+                response = requests.get("https://stackoverflow/questions")
+
+                soup = BeautifulSoup(response.text, "html.parser")
+
+                questions = soup.select(".s-post-summary")
+
+        This should return a list so we can store this is a variable, questions. Each item in 
+
+
