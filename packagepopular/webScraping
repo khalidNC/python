@@ -1,12 +1,13 @@
 We have learned how to consume API's using request module. However, not every website has an API for us to work with. 
-So in situation like that, the only way to get the data we want is to parse the html behind the we page get rid of all html tags, and extarct the actual data, this technique is called web scraping. So we scrape all the html tags and get the actual data we want. And that the things we are going to document here and we will do the project in a separate directory named - PyCrawler. 
+So in situation like that, the only way to get the data we want is to parse the html behind the page we get rid of all html tags, and extarct the actual data, this technique is called web scraping. So we scrape all the html tags and get the actual data we want. And that the things we are going to document here and we will do the project in a separate directory named - PyCrawler. 
 
 I this project we are going to write a program in Python that will extract a list of questions on stackoverflow.com and we refer this kind of program as a web crawler or a web spider. Let's start...
 
 1. Create a new project:
     a. Go to terminal and go to user: cd
-    b. Make a derictory in user named pycrawler: mkdir pycrawler
-    c. Then open the directory in VScode: code .
+    b. Make a derictory in user named PyCrawler: mkdir PyCrawler
+    c. Go to the directory: cd PyCrawler
+    d. Then open the directory in VScode: code .
 
 2. Install package and virtual environment:
     a. Install beautifulsoup: pipenv install beautifulsoup4
@@ -27,7 +28,7 @@ I this project we are going to write a program in Python that will extract a lis
         Codes:
                 import requests
 
-                requests.get("https://stackoverflow/questions")
+                requests.get("https://stackoverflow.com/questions")
     
     c. Then store the response of the http request in response object
         Codes:
@@ -74,7 +75,7 @@ I this project we are going to write a program in Python that will extract a lis
        id="questions"
     
     c. Let's look at one of these questions: 
-            i. a div with a class class="s-post-summary"
+            i. a div with a class, class="s-post-summary"
             ii. inside if this we have 2 div with class:
                 1. class="s-post-summary--stats" : this has statistic like vote, views, answers in it
                 2. class="s-post-summary--content" : this has content(the question), and summery of the questions
