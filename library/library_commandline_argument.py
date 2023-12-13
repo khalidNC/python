@@ -35,7 +35,7 @@ now the OutPut: ['library/library_commandline_argument.py', '-a', '-b', '-c']
 We see a list of 4 items, The first item is always our python file. Even we do not supply any additional
 argument this print(sys.argv) returns list of 1 item, which is out python file. 
 
-Rest of others are the items of the arguments and we can do an iterresting thing out these;
+Rest of others are the items of the arguments and we can do an interesting thing out these;
 We can get the len(sys.argv) of this array and if it is equal to 1 that means user does not supply any
 argument because this array always has atlease 1 item in it which is our python file.
 Then print a usage message and after that we expect a password
@@ -133,12 +133,39 @@ To do so we need to write a script as below;
     File Content:
     [{"id": 1, "name": "Terminator", "Year": "1989"}, {"id": 2, "name": "Predator", "Year": "1987"}] '''
 
+
+# Define the main Function: We define a function named main that will contain the main logic of our script.
 def main():
+    '''
+      Create an Argument Parser:
+      Here, we create an ArgumentParser object named parser. We provide a description for our program 
+      using the description parameter. This description will be displayed when users request help using 
+      the --help argument.
+    '''
     parser = argparse.ArgumentParser(description="Print the content of a file.")
+    '''
+      Define Command Line Arguments:
+      We define a command line argument named "filename". The help parameter provides a brief description 
+      of what this argument does. In this case, it specifies that it's the path to the file to print.
+    '''
     parser.add_argument("filename", help="Path to the file to print.")
 
+    '''
+      Parse Command Line Arguments:
+      we parse the command line arguments provided to our script and store the results in the args variable. 
+      This allows us to access the values of the parsed arguments.
+    '''
     args = parser.parse_args()
-    
+
+    '''
+      Read and Print the File Content:
+      Here, we open the file specified by args.filename in read mode ('r'). We then read the content of the 
+      file and print it to the console. We use a try block to handle exceptions:
+         a. If the file is not found (raises FileNotFoundError), we catch the exception and print a specific 
+            error message.
+         b. If any other exception occurs, we catch it and print a general error message along with the 
+            exception details.
+    '''
     try:
         with open(args.filename, 'r') as file:
             content = file.read()
@@ -149,5 +176,12 @@ def main():
     except Exception as e:
         print(f"An error occurred: {e}")
 
+'''
+   Main function and Run Script:
+   Main function: 
+   This conditional(if __name__ == "__main__") block checks if the script is being run as the main program. 
+   If so, it calls the main() function. This structure is commonly used to make the script reusable as a 
+   module and executable as a standalone script.
+'''
 if __name__ == "__main__":
     main()
