@@ -38,3 +38,14 @@ chars = list("Hello World")
 print(chars)
 
 ''' This returns list of all characters. '''
+
+# Concatinate 2 lists of dictionaries:
+data1 = [{"Question": "Question 1", "Vote": "1"}, {"Question": "Question 2", "Vote": "2"}, {"Question": "Question 3", "Vote": "3"}]
+data2 = [{"Question": "Question 4", "Vote": "4"}, {"Question": "Question 5", "Vote": "5"}, {"Question": "Question 6", "Vote": "6"}]
+
+data = data1 + data2
+print(data)
+
+# Output: 
+# [{'Question': 'Question 1', 'Vote': '1'}, {'Question': 'Question 2', 'Vote': '2'}, {'Question': 'Question 3', 'Vote': '3'}, 
+#  {'Question': 'Question 4', 'Vote': '4'}, {'Question': 'Question 5', 'Vote': '5'}, {'Question': 'Question 6', 'Vote': '6'}]
