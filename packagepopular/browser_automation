@@ -281,13 +281,13 @@ The full steps of the new project as below:
 
           Codes:
                   avatar.click()
-                  logout_button = browser.find_element(By.TEXT_LINK, "Sign Out")
+                  logout_button = browser.find_element(By.LINK_TEXT, "Sign Out")
                   logout_button.click()
-                  confirm_signout = browser.find_element(By.TEXT_LINK, "Sign Out")
+                  confirm_signout = browser.find_element(By.CLASS_NAME, "btn-danger")
                   confirm_signout.click()
 
                   # Public page has a alert message that you logged out, get the innerHTML of this element then assert that the message text in rendered in the html
-                  alert_msg = browser.find_element(By.CLASS_NAME, "alert")
+                  alert_msg = browser.find_element(By.CLASS_NAME, "alert-dismissible")
                   alert_msg_label = alert_msg.get_attribute("innerHTML")
 
                   assert "You have signed out." in alert_msg_label
