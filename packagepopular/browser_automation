@@ -170,7 +170,14 @@ The full steps of the new project as below:
          by applying few ways a couple of them could:
 
             1. Create a configaration file and keep those info there and put this file in gitignore so keep
-               the info out of the source code.
+               the info out of the source code. Steps are:
+                a. Create a configaration file in source directory: config.py
+                b. Write the sensitive information in string and store in a varuable. Like: password = "****"
+                c. Create .gitignore file in source directory
+                d. List the config.py file in the .gitignore file
+                e. Now go to the py file where we are writing the script e.g login.py
+                e. Then import config at the top of the page
+                d. and instead hradcode user_email or password call config as module. e.g config.user_name
 
             2. We cn use python enviroment variables. The steps are;
                 a. Open terminal
