@@ -87,7 +87,208 @@ The full steps of the new project as below:
                   browser = webdirever.Chrome()
                   browser.get("https://realpython.com")
 
-        At this point you can save the changes and run the program. You can see this open a new instance of 
-        chrome browser and open the realpython site.
+         At this point you can save the changes and run the program. You can see this open a new instance of 
+         chrome browser and open the realpython site.
 
-      d. 
+      d. Now we need to click on the Sign In button. So we need to tell selenium to click. The way is to find 
+         element from html and there are few options. 
+            1. Find element by their id, class, name and tag
+            2. So right click on the element on the website and inspect to open the pannel
+            3. Here in the html tags we cna see classes, id and so on.
+            4. we need to see either the classes or id is uniquely indentify
+            5. If it is not, then we can find the element by it's text, which is "Sign-In"
+            6. So back in the vscode:
+
+                Codes:
+                        from selenium import webdirever
+
+                        browser = webdirever.Chrome()
+                        browser.get("https://realpython.com")
+                        browser.find_element_by_link_text("Sign-In")
+
+            7. Now this returns the web element we can store this in a variable called signin_link. Then click.
+            
+                Codes:
+                        from selenium import webdirever
+
+                        browser = webdirever.Chrome()
+                        browser.get("https://realpython.com")
+                        signin_link = browser.find_element_by_link_text("Sign-In")
+                        signin_link.click()
+
+         At this point, save the changes and run program and see it open the browser then open the wepage
+         then click on the signin button that takes it to the signin page. Next ste is fill out the form.
+
+      e. Same as again find the element on the form by inspecting the element. We see the input tag we see
+         id: "id_login" so we use find_element_by_id method and store the elememnt in a variable, let's say 
+         user_email then we need to use send_keys() method. It takes string, it is simillar to typing somthing.
+
+          Codes:
+                  from selenium import webdirever
+
+                  browser = webdirever.Chrome()
+                  browser.get("https://realpython.com")
+                  signin_link = browser.find_element_by_link_text("Sign-In")
+                  signin_link.click()
+
+                  user_email = browser.find_element_by_id("id_login")
+                  user_email.send_keys("user_name@gmail.com")
+
+      d. In same way we need to write codes for password field.
+
+          Codes:
+                  from selenium import webdirever
+
+                  browser = webdirever.Chrome()
+                  browser.get("https://realpython.com")
+                  signin_link = browser.find_element_by_link_text("Sign-In")
+                  signin_link.click()
+
+                  user_email = browser.find_element_by_id("id_login")
+                  user_email.send_keys("user_name@gmail.com")
+
+                  password = browser.find_element_by_id("id_password")
+                  password.send_keys("actual_password")
+                  password.submit()
+
+          Form is filled out now we need to submit that is easy use submit() method. 
+          Now save the changes and run the program and you can see up to this:
+            - Open browser
+            - Open Website
+            - Open sign in page
+            - Fill out the form
+            - Then login in and we are on the homepage.
+
+      e. Now we must not hardcode the user's credential in the source code. We can hide this information
+         by applying few ways a couple of them could:
+
+            1. Create a configaration file and keep those info there and put this file in gitignore so keep
+               the info out of the source code.
+
+            2. We cn use python enviroment variables. The steps are;
+                a. Open terminal
+                b. Open bash_profile: nano .bash_profile
+                c. Add info: 
+                            - export user_email = "actual_user_email"
+                            - export password = "actual_password"
+                d. Save the chnages and exit
+                e. source the changes: source .bash_profile
+                f. Go to source code in vscode
+                e. import os module
+                g. This os module has a method called getenv() it takes the string(the vaiable on bash_profile)
+         For this project we apply the configaration file approach. 
+
+      f. Now the next step is to go to profile page. So simillarly find the profile element and click;
+
+          Codes:
+                  from selenium import webdirever
+
+                  browser = webdirever.Chrome()
+                  browser.get("https://realpython.com")
+                  signin_link = browser.find_element_by_link_text("Sign-In")
+                  signin_link.click()
+
+                  user_email = browser.find_element_by_id("id_login")
+                  user_email.send_keys("user_name@gmail.com")
+
+                  password = browser.find_element_by_id("id_password")
+                  password.send_keys("actual_password")
+                  password.submit()
+
+                  # Find element of avatar and then click
+                  avatar = browser.find_element_by_class(".align-self-center.p-0.m-0.dropdown-toggle")
+                  avatar.clic()
+
+      g. Now the tray opens now we need to click on the Manage account item in the dropdown. We can find the 
+         element by text link and then click.
+
+          Codes:
+                  from selenium import webdirever
+
+                  browser = webdirever.Chrome()
+                  browser.get("https://realpython.com")
+                  signin_link = browser.find_element_by_link_text("Sign-In")
+                  signin_link.click()
+
+                  user_email = browser.find_element_by_id("id_login")
+                  user_email.send_keys("user_name@gmail.com")
+
+                  password = browser.find_element_by_id("id_password")
+                  password.send_keys("actual_password")
+                  password.submit()
+
+                  # Find element of avatar and then click
+                  avatar = browser.find_element_by_class(".align-self-center.p-0.m-0.dropdown-toggle")
+                  avatar.clic()
+
+                  manage_account = browser.find_element_by_text_link("Manage Account")
+                  manage_account.click()
+
+      h. It takes you to the profile page. Here we will find the text element for the user name and give assertion 
+         that this text is rendered in the html content.
+
+          Codes:
+                  from selenium import webdirever
+
+                  browser = webdirever.Chrome()
+                  browser.get("https://realpython.com")
+                  signin_link = browser.find_element_by_link_text("Sign-In")
+                  signin_link.click()
+
+                  user_email = browser.find_element_by_id("id_login")
+                  user_email.send_keys("user_name@gmail.com")
+
+                  password = browser.find_element_by_id("id_password")
+                  password.send_keys("actual_password")
+                  password.submit()
+
+                  # Find element of avatar and then click
+                  avatar = browser.find_element_by_class(".align-self-center.p-0.m-0.dropdown-toggle")
+                  avatar.clic()
+
+                  manage_account = browser.find_element_by_text_link("Manage Account")
+                  manage_account.click()
+
+                  # Get user name element on profile page store in user_name variable
+                  user_name = browser.find_element_by_class(".col.mt-3")
+
+                  # Now user_name object has a method called get_attribute() that takes string "innerHTML" that returns html of the element
+                  user_name_lable = user_name.get_attribute("innerHTML")
+
+                  # Assert the text "khalid280284" is in the user_name_lable
+                  assert "khalid280284" in user_name_lable
+
+      i. Now logout:
+
+          Codes:
+                  avatar.click()
+                  logout_button = browser.find_element_by_text_link("Sign Out")
+                  logout_button.click()
+                  confirm_signout = browser.find_element_by_text_link("Sign Out")
+                  confirm_signout.click()
+
+                  # Public page has a alert message that you logged out, get the innerHTML of this element then assert that the message text in rendered in the html
+                  alert_msg = find_element_by_class(".alert.alert-success.alert-dismissible")
+                  aler_msg_label = alert_msg.get_attribute("innerHTML")
+
+                  assert "You have signed out." in alert_msg_label
+
+      j. Close the browser: After the function is done we need to close the browser.
+
+          Codes:
+                  browser.close()
+
+This is the basic of automation with python selenium.
+
+
+
+                  
+          
+
+
+
+
+                
+        
+
+          
