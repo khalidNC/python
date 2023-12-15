@@ -58,7 +58,8 @@ The full steps of the new project as below:
                   3. Run copy chrome driver: cp chromedriver /usr/local/bin
 
 3. Select the virtual environment to vscode:
-      a. Go back to vs code and select the virtual environment that just created 
+      a. Go back to the vscode and create a py file let's say login.py
+      b. Then select the virtual environment that just created 
 
 4. Start codding:
       a. Import webdriver module from selenium:
