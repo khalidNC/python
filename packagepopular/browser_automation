@@ -100,22 +100,25 @@ The full steps of the new project as below:
             4. we need to see either the classes or id is uniquely indentify
             5. If it is not, then we can find the element by it's text, which is "Sign-In"
             6. So back in the vscode:
+            Note: to command find_element_by we need to import By form webdriver
 
                 Codes:
                         from selenium import webdirever
+                        from selenium.webdriver.common.by import By
 
                         browser = webdirever.Chrome()
                         browser.get("https://realpython.com")
-                        browser.find_element_by_link_text("Sign-In")
+                        browser.find_element(By.LINK_TEXT, "Sign-In")
 
             7. Now this returns the web element we can store this in a variable called signin_link. Then click.
             
                 Codes:
                         from selenium import webdirever
+                        from selenium.webdriver.common.by import By
 
                         browser = webdirever.Chrome()
                         browser.get("https://realpython.com")
-                        signin_link = browser.find_element_by_link_text("Sign-In")
+                        signin_link = browser.find_element(By.LINK_TEXT, "Sign-In")
                         signin_link.click()
 
          At this point, save the changes and run program and see it open the browser then open the wepage
@@ -127,29 +130,31 @@ The full steps of the new project as below:
 
           Codes:
                   from selenium import webdirever
+                  from selenium.webdriver.common.by import By
 
                   browser = webdirever.Chrome()
                   browser.get("https://realpython.com")
-                  signin_link = browser.find_element_by_link_text("Sign-In")
+                  signin_link = browser.find_element(By.LINK_TEXT, "Sign-In")
                   signin_link.click()
 
-                  user_email = browser.find_element_by_id("id_login")
+                  user_email = browser.find_element(By.ID, "id_login")
                   user_email.send_keys("user_name@gmail.com")
 
       d. In same way we need to write codes for password field.
 
           Codes:
                   from selenium import webdirever
+                  from selenium.webdriver.common.by import By
 
                   browser = webdirever.Chrome()
                   browser.get("https://realpython.com")
-                  signin_link = browser.find_element_by_link_text("Sign-In")
+                  signin_link = browser.find_element(By.LINK_TEXT, "Sign-In")
                   signin_link.click()
 
-                  user_email = browser.find_element_by_id("id_login")
+                  user_email = browser.find_element(By.ID, "id_login")
                   user_email.send_keys("user_name@gmail.com")
 
-                  password = browser.find_element_by_id("id_password")
+                  password = browser.find_element(By.ID, "id_password")
                   password.send_keys("actual_password")
                   password.submit()
 
@@ -184,21 +189,22 @@ The full steps of the new project as below:
 
           Codes:
                   from selenium import webdirever
+                  from selenium.webdriver.common.by import By
 
                   browser = webdirever.Chrome()
                   browser.get("https://realpython.com")
-                  signin_link = browser.find_element_by_link_text("Sign-In")
+                  signin_link = browser.find_element(By.LINK_TEXT, "Sign-In")
                   signin_link.click()
 
-                  user_email = browser.find_element_by_id("id_login")
+                  user_email = browser.find_element(By.ID, "id_login")
                   user_email.send_keys("user_name@gmail.com")
 
-                  password = browser.find_element_by_id("id_password")
+                  password = browser.find_element(By.ID, "id_password")
                   password.send_keys("actual_password")
                   password.submit()
 
                   # Find element of avatar and then click
-                  avatar = browser.find_element_by_class(".align-self-center.p-0.m-0.dropdown-toggle")
+                  avatar = browser.find_element(By.CLASS_NAME, ".align-self-center.p-0.m-0.dropdown-toggle")
                   avatar.clic()
 
       g. Now the tray opens now we need to click on the Manage account item in the dropdown. We can find the 
@@ -206,24 +212,25 @@ The full steps of the new project as below:
 
           Codes:
                   from selenium import webdirever
+                  from selenium.webdriver.common.by import By
 
                   browser = webdirever.Chrome()
                   browser.get("https://realpython.com")
-                  signin_link = browser.find_element_by_link_text("Sign-In")
+                  signin_link = browser.find_element(By.LINK_TEXT, "Sign-In")
                   signin_link.click()
 
-                  user_email = browser.find_element_by_id("id_login")
+                  user_email = browser.find_element(By.ID, "id_login")
                   user_email.send_keys("user_name@gmail.com")
 
-                  password = browser.find_element_by_id("id_password")
+                  password = browser.find_element(By.ID, "id_password")
                   password.send_keys("actual_password")
                   password.submit()
 
                   # Find element of avatar and then click
-                  avatar = browser.find_element_by_class(".align-self-center.p-0.m-0.dropdown-toggle")
+                  avatar = browser.find_element(By.CLASS_NAME, ".align-self-center.p-0.m-0.dropdown-toggle")
                   avatar.clic()
 
-                  manage_account = browser.find_element_by_text_link("Manage Account")
+                  manage_account = browser.find_element(By.TEXT_LINK, "Manage Account")
                   manage_account.click()
 
       h. It takes you to the profile page. Here we will find the text element for the user name and give assertion 
@@ -231,28 +238,29 @@ The full steps of the new project as below:
 
           Codes:
                   from selenium import webdirever
+                  from selenium.webdriver.common.by import By
 
                   browser = webdirever.Chrome()
                   browser.get("https://realpython.com")
-                  signin_link = browser.find_element_by_link_text("Sign-In")
+                  signin_link = browser.find_element(By.LINK_TEX, "Sign-In")
                   signin_link.click()
 
-                  user_email = browser.find_element_by_id("id_login")
+                  user_email = browser.find_element(By.ID, "id_login")
                   user_email.send_keys("user_name@gmail.com")
 
-                  password = browser.find_element_by_id("id_password")
+                  password = browser.find_element(By.ID, "id_password")
                   password.send_keys("actual_password")
                   password.submit()
 
                   # Find element of avatar and then click
-                  avatar = browser.find_element_by_class(".align-self-center.p-0.m-0.dropdown-toggle")
+                  avatar = browser.find_element(By.CLASS_NAME, ".align-self-center.p-0.m-0.dropdown-toggle")
                   avatar.clic()
 
-                  manage_account = browser.find_element_by_text_link("Manage Account")
+                  manage_account = browser.find_element(By.TEXT_LINK, "Manage Account")
                   manage_account.click()
 
                   # Get user name element on profile page store in user_name variable
-                  user_name = browser.find_element_by_class(".col.mt-3")
+                  user_name = browser.find_element(By.CLASS_NAME, ".col.mt-3")
 
                   # Now user_name object has a method called get_attribute() that takes string "innerHTML" that returns html of the element
                   user_name_lable = user_name.get_attribute("innerHTML")
@@ -264,13 +272,13 @@ The full steps of the new project as below:
 
           Codes:
                   avatar.click()
-                  logout_button = browser.find_element_by_text_link("Sign Out")
+                  logout_button = browser.find_element(By.TEXT_LINK, "Sign Out")
                   logout_button.click()
-                  confirm_signout = browser.find_element_by_text_link("Sign Out")
+                  confirm_signout = browser.find_element(By.TEXT_LINK, "Sign Out")
                   confirm_signout.click()
 
                   # Public page has a alert message that you logged out, get the innerHTML of this element then assert that the message text in rendered in the html
-                  alert_msg = find_element_by_class(".alert.alert-success.alert-dismissible")
+                  alert_msg = find_element(By.CLASS_NAME, ".alert.alert-success.alert-dismissible")
                   aler_msg_label = alert_msg.get_attribute("innerHTML")
 
                   assert "You have signed out." in alert_msg_label
