@@ -234,7 +234,7 @@ The full steps of the new project as below:
                   password.submit()
 
                   # Find element of avatar and then click
-                  avatar = browser.find_element(By.CLASS_NAME, ".align-self-center.p-0.m-0.dropdown-toggle")
+                  avatar = browser.find_element(By.CLASS_NAME, "align-self-center")
                   avatar.click()
 
                   # Click on the Manage Account item in the dropdown
@@ -261,20 +261,21 @@ The full steps of the new project as below:
                   password.submit()
 
                   # Find element of avatar and then click
-                  avatar = browser.find_element(By.CLASS_NAME, ".align-self-center.p-0.m-0.dropdown-toggle")
+                  avatar = browser.find_element(By.CLASS_NAME, "align-self-center")
                   avatar.clic()
 
+                  # Click on the Manage Account item in the dropdown
                   manage_account = browser.find_element(By.TEXT_LINK, "Manage Account")
                   manage_account.click()
 
                   # Get user name element on profile page store in user_name variable
-                  user_name = browser.find_element(By.CLASS_NAME, ".col.mt-3")
+                  user_name = browser.find_element(By.TAG_NAME, "strong")
 
                   # Now user_name object has a method called get_attribute() that takes string "innerHTML" that returns html of the element
-                  user_name_lable = user_name.get_attribute("innerHTML")
+                  user_name_label = user_name.get_attribute("innerHTML")
 
-                  # Assert the text "khalid280284" is in the user_name_lable
-                  assert "khalid280284" in user_name_lable
+                  # Assert the text "khalid280284" is in the user_name_label
+                  assert "khalid280284" in user_name_label
 
       i. Now logout:
 
@@ -286,15 +287,15 @@ The full steps of the new project as below:
                   confirm_signout.click()
 
                   # Public page has a alert message that you logged out, get the innerHTML of this element then assert that the message text in rendered in the html
-                  alert_msg = find_element(By.CLASS_NAME, ".alert.alert-success.alert-dismissible")
-                  aler_msg_label = alert_msg.get_attribute("innerHTML")
+                  alert_msg = browser.find_element(By.CLASS_NAME, "alert")
+                  alert_msg_label = alert_msg.get_attribute("innerHTML")
 
                   assert "You have signed out." in alert_msg_label
 
       j. Close the browser: After the function is done we need to close the browser.
 
           Codes:
-                  browser.close()
+                  browser.quit()
 
 This is the basic of automation with python selenium.
 
