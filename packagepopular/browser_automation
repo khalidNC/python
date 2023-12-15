@@ -54,7 +54,7 @@ The full steps of the new project as below:
             vix. Now extract the file and you get the executable file
             x. Now we need put this in the path:
                   1. If you are in mac then add this to local bin directory
-                  2. Open the terminal and: cd
+                  2. Open the terminal and go to the folder that just downloaded: cd chromedriver_mac64
                   3. Run copy chrome driver: cp chromedriver /usr/local/bin
 
 3. Select the virtual environment to vscode:
