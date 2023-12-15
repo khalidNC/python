@@ -36,8 +36,8 @@ The full steps of the new project as below:
 1. Create a new project directory:
       a. Open the terminal
       b. Go to users: cd
-      c. Make a directory: mkdir browserAutomatonTest
-      d. Go the new directory: cd browserAutomatonTest
+      c. Make a directory: mkdir browserAutomation
+      d. Go the new directory: cd browserAutomaton
       e. Open the directory in vscode: code .
 
 2. Create virtual environment and package installation:
