@@ -1,1 +1,93 @@
 Browser Automation:
+Browser automation refers to the process of using a script or program to perform tasks in a web browser
+as if a human were interacting with it. This involves simulating user actions such as clicking buttons, 
+filling out forms, navigating through web pages, and extracting information. It is often employed for 
+various purposes, including web scraping, testing web applications, and automating repetitive tasks.
+
+There are several tools and libraries available for browser automation, each with its own strengths 
+and use cases. Here is a common method, Selenium used for browser automation:
+
+Selenium:
+Description: Selenium is a widely used open-source framework for browser automation. It supports multiple 
+programming languages, including Python, Java, and JavaScript.
+Use Cases: Web testing, web scraping, automating repetitive tasks on websites.
+Features: It provides a WebDriver API for interacting with web browsers, allowing users to write scripts 
+that automate browser actions.
+
+Here is an example:
+Let's a we are going to test a funtion of a website, realpython.com so we will automate the signin function
+in python and selenium. The sign in fucntion we will automate as below:
+
+      1. Open the website in chrome: realpython.com
+      2. Then go to signin page
+      3. Then fill out the signin form
+      4. Then click on the signin button
+      5. It logs in to the website
+      6. Then click on the avater
+      7. Then click on the Profile
+      8. It takes you to the profile page
+      9. Then check my prifle name and give an accersion
+      10. Then logout and close the browser
+
+Note: Here is only the document but we will do the rel project in a separate directory - browserAutomatonTest
+
+The full steps of the new project as below:
+
+1. Create a new project directory:
+      a. Open the terminal
+      b. Go to users: cd
+      c. Make a directory: mkdir browserAutomatonTest
+      d. Go the new directory: cd browserAutomatonTest
+      e. Open the directory in vscode: code .
+
+2. Create virtual environment and package installation:
+      a. Create virtual environment and install selenium in vscode terminal: pipenv install selenium
+      b. Drvier, is a piece of software to automate a specfic browser and we need to manually download:
+            i. Go to pypi.org
+            ii. And search for selenium and go inside to the page
+            iii. Scroll down to the page and under driver you will see the tabale of different browsers
+            iv. Click on the Chrome driver link
+            v. Most recent one is ont top. click on it
+            vi. It takes you to the download page
+            vii. Then choose the right one for you machine e.g for mac and click on the download link
+            viii. It downloads the zip file on your machine
+            vix. Now extract the file and you get the executable file
+            x. Now we need put this in the path:
+                  1. If you are in mac then add this to local bin directory
+                  2. Open the terminal and: cd
+                  3. Run copy chrome driver: cp chromedriver /usr/local/bin
+
+3. Select the virtual environment to vscode:
+      a. Go back to vs code and select the virtual environment that just created 
+
+4. Start codding:
+      a. Import webdriver module from selenium:
+
+          Codes:
+                  from selenium import webdriver
+
+      b. In this module we have classes that represents all the popular browsers, like chrome, safari, 
+         firefox and so on. To automate chrome we need to create an instence of chrome class.
+
+          Codes: 
+                  from selenium import webdriver
+
+                  # Create an chrome class instance
+                  webdriver.Chrome()
+
+                  # And this returns a browser object
+                  browser = webdirever.Chrome()
+
+      c. Now the browser boject has method called get() to open the browser and it takes web address in
+         string as argument.
+
+          Codes:
+                  from selenium import webdirever
+
+                  browser = webdirever.Chrome()
+                  browser.get("https://realpython.com")
+
+        At this point you can save the changes and run the program. You can see this open a new instance of 
+        chrome browser and open the realpython site.
+
+      d. 
