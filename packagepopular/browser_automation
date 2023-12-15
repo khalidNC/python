@@ -235,8 +235,9 @@ The full steps of the new project as below:
 
                   # Find element of avatar and then click
                   avatar = browser.find_element(By.CLASS_NAME, ".align-self-center.p-0.m-0.dropdown-toggle")
-                  avatar.clic()
+                  avatar.click()
 
+                  # Click on the Manage Account item in the dropdown
                   manage_account = browser.find_element(By.TEXT_LINK, "Manage Account")
                   manage_account.click()
 
