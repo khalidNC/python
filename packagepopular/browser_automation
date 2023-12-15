@@ -60,6 +60,7 @@ The full steps of the new project as below:
 3. Select the virtual environment to vscode:
       a. Go back to the vscode and create a py file let's say login.py
       b. Then select the virtual environment that just created 
+      c. To active the virtual environment: pipenv shell
 
 4. Start codding:
       a. Import webdriver module from selenium:
