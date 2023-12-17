@@ -7,10 +7,11 @@ In this section, we will discuss on how to work with PDF files in Python. There 
     d. Open the directory in vscode: code .
 
 2. Create virtual environment and install packages:
-    a. Open terminal in vscode and install pypdf2 with pipenv: pipenv install pypdf2
+    a. Open terminal in vscode and install pypdf2 with pipenv: pipenv install PyPDF2
 
 3. Start codding:
     a. Create a py file, pdf_rotation.py in the source directory
+    b. Select newly created virtual environment for the project in vscode
     b. Import pypdf2 module at the top of the file
 
         Codes:
