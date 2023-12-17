@@ -1,0 +1,115 @@
+In this section, we will discuss on how to work with PDF files in Python. There are lots of packages that work with PDF most popular one is pypdf2. Let's get started:
+
+1. Create a new project and open in vscode:
+    a. Open the terminal and go to users: cd
+    b. Create a directory for the project: mkdir pyPdf
+    c. Go to pyPdf directory: cd pyPdf
+    d. Open the directory in vscode: code .
+
+2. Create virtual environment and install packages:
+    a. Open terminal in vscode and install pypdf2 with pipenv: pipenv install pypdf2
+
+3. Start codding:
+    a. Create a py file, pdf_rotation.py in the source directory
+    b. Import pypdf2 module at the top of the file
+
+        Codes:
+                import PyPDF2
+
+    c. In this module there are few classes to work with pdf files. Like we have pdfFileReader, pdfFileWriter,
+       pdfFileMerger etc. Let's strat with creating pdfFileReader instance.
+
+        Codes:
+                import PyPDF2
+
+                PyPDF2.pdfFileReader()
+
+        We need to pass a file string in the pdfFileReader() method. The file string is the object that built in open() function returns. Let's say we have a couple of pdf files in the source directory: firstPdf.pdf and secondPdf.pdf so using the open method sytax open("file_name_path", "mode") the second argument is about the mode like read/write and the open function is needed to be read as binary so for this the argument should be "rb". 
+
+        Codes:
+                import PyPDF2
+
+                open("firstPdf.pdf", "rb")
+                PyPDF2.pdfFileReader()
+
+    d. So now we have the file string object so we are gointo use with statement since we open the file so later
+       we need to close as well so better use with statement.
+
+        Codes:
+                import PyPDF2
+
+                with open("firstPdf.pdf", "rb") as file:
+                  PyPDF2.pdfFileReader(file)
+
+    e. And we get pdf file reader object.
+
+        Codes:
+                import PyPDF2
+
+                with open("firstPdf.pdf", "rb") as file:
+                  reader = PyPDF2.pdfFileReader(file)
+
+    f. Now this reader object has few intersting members. One of this is numPages which returns the number of
+       pages of the pdf. Let's print and see the number of pages of the firstpdf.pdf
+
+        Codes:
+                import PyPDF2
+
+                with open("firstPdf.pdf", "rb") as file:
+                  reader = PyPDF2.pdfFileReader(file)
+                  print(reader.numPages)
+
+        OutPut: 1
+        So in this pdf there is only a single page.
+
+    g. Also there is a method called getPage() it takes a pages number more accurately this parameter should have 
+       been called page index. Because the index of the first page is 0, so when we pass 0 we get first page. And this returns a page object.
+
+        Codes:
+                import PyPDF2
+
+                with open("firstPdf.pdf", "rb") as file:
+                  reader = PyPDF2.pdfFileReader(file)
+                  print(reader.numPages)
+                  page = reader.getPage(0)
+    
+    h. This page object has few interesting members like rotateClockwise, rotateCounterClockwise. This also has
+       scaleBy a given factor also scaleTo a given width and height here is the package document for detail - https://pypi.org/project/PyPDF2/ 
+       Here we will going to use rotate method let's rotate 90 clockwise:
+
+        Codes:
+                import PyPDF2
+
+                with open("firstPdf.pdf", "rb") as file:
+                  reader = PyPDF2.pdfFileReader(file)
+                  print(reader.numPages)
+                  page = reader.getPage(0)
+
+                  page.rotateClockwise(90)
+
+    i. So far this set of codes just rotates the page object in memory, this does not modify the original pdf. So
+       we need to write this is a separate pdf file. For that we need a pdf file writer so;
+
+        Codes:
+                import PyPDF2
+
+                with open("firstPdf.pdf", "rb") as file:
+                  reader = PyPDF2.pdfFileReader(file)
+                  print(reader.numPages)
+                  page = reader.getPage(0)
+
+                  page.rotateClockwise(90)
+
+                  writer = PyPDF2.PdfFileWriter()
+                  # We do not pass any arguements this simply creates a writer object
+                  # This writer object deals with memory not in file disc. Now e call addPagg() method and pass the page object here.
+
+                  writer.addPage(page)
+                  
+
+            
+
+                
+
+                
+
