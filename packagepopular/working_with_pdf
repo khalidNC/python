@@ -101,15 +101,113 @@ In this section, we will discuss on how to work with PDF files in Python. There 
                   page.rotateClockwise(90)
 
                   writer = PyPDF2.PdfFileWriter()
-                  # We do not pass any arguements this simply creates a writer object
-                  # This writer object deals with memory not in file disc. Now e call addPagg() method and pass the page object here.
+                  # We do not pass any arguements this simply creates a writer object.
+
+    j. This writer object deals with memory not in file disc. Now we call addPagg() method and pass the page
+       object here. This method will add this page object at the end of the new pdf.
+
+        Codes:
+                import PyPDF2
+
+                with open("firstPdf.pdf", "rb") as file:
+                  reader = PyPDF2.pdfFileReader(file)
+                  print(reader.numPages)
+                  page = reader.getPage(0)
+
+                  page.rotateClockwise(90)
+
+                  writer = PyPDF2.PdfFileWriter()
+                  # We do not pass any arguements this simply creates a writer object.
 
                   writer.addPage(page)
-                  
 
-            
+    k. We can also use insertPage() method it takes an index, so if you want to reorder or add the page on a
+       specific index to pass the second argument, 0 1 2 3 whatever index. 
 
-                
+        Codes:
+                writer.insertPage(page, 3)
 
-                
+    l. Also we can use insertBlankPage() method to add a blank page that does not take any arguments.
 
+        Codes:
+                writer.insertBlankPage()
+
+    m. Now let's back to the addPage() method and finally we need to write this pdf file memory file on disc. For 
+       that we need another file string so we can use the with statement again to open up another file(the new file where we are going to write) let's say it is rotedtedPdf.pdf and as second argument we need to pass 'wb' the short form of write in binary. 
+
+        Codes:
+                import PyPDF2
+
+                with open("firstPdf.pdf", "rb") as file:
+                  reader = PyPDF2.pdfFileReader(file)
+                  print(reader.numPages)
+                  page = reader.getPage(0)
+
+                  page.rotateClockwise(90)
+
+                  writer = PyPDF2.PdfFileWriter()
+                  # We do not pass any arguements this simply creates a writer object.
+
+                  writer.addPage(page)
+
+                  # Use with statement to open a file then call the file string output as output:
+                  with open("rotatedPdf.pdf", "wb") as output:
+                    # Finaly we call .write() and pass the file string 'output'
+                    writer.write(output)
+
+        Now save the changes and run the program and you can see the content of firstPdf.pdf is rotated 90 degree.
+
+4. Now let's create another script, combine multiple pdfs to a single pdf:
+    a. Create a new py file named pdf_combine.py
+    b. import PyPDF2
+
+5. Strat codding:
+    a. Use PdfFileMerger() method to merge multiple pdfs
+
+        Codes:
+                import PyPDF2
+
+                PyPDF2.PdfFileMerger()
+
+    b. So let's create a merger object
+
+        Codes:
+                import PyPDF2
+
+                merger = PyPDF2.pdfFileMerger()
+
+6. Now let's say we have array of file names and we set this to a arry of two stirngs. In real project instead of 
+   hard coded array, you can iterate over all the pdfs in a directory. 
+
+        Codes:
+                import PyPDF2
+
+                merger = PyPDF2.pdfFileMerger()
+                file_names = ["firstPdf.pdf", "secondPdf.pdf"]
+
+7. Now iterate over this array and call the merger.append() and pass the file_name.
+
+        Codes:
+                import PyPDF2
+
+                merger = PyPDF2.pdfFileMerger()
+                file_names = ["firstPdf.pdf", "secondPdf.pdf"]
+
+                for file_name in file_names:
+                  merger.append(file_name)
+
+8. So up to this point, we are merging the pdfs in memory now we need to write the result on file disc. So we call
+   write() method and pass file object or a string the specifies the name of the file(this will be the new combined pdf file).
+
+        Codes: 
+                import PyPDF2
+
+                merger = PyPDF2.pdfFileMerger()
+                file_names = ["firstPdf.pdf", "secondPdf.pdf"]
+
+                for file_name in file_names:
+                  merger.append(file_name)
+
+                merger.write("combinedPdf.pdf")
+
+        Now save the changes and run the program and see the newly created pdf named combinedPdf.pdf file with the combined one.
