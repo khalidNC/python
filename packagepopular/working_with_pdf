@@ -8,6 +8,7 @@ In this section, we will discuss on how to work with PDF files in Python. There 
 
 2. Create virtual environment and install packages:
     a. Open terminal in vscode and install pypdf2 with pipenv: pipenv install PyPDF2
+    b. On date 18th Dec, 23 the latest version is 3.0.1
 
 3. Start codding:
     a. Create a py file, pdf_rotation.py in the source directory
@@ -17,13 +18,13 @@ In this section, we will discuss on how to work with PDF files in Python. There 
         Codes:
                 import PyPDF2
 
-    c. In this module there are few classes to work with pdf files. Like we have pdfFileReader, pdfFileWriter,
-       pdfFileMerger etc. Let's strat with creating pdfFileReader instance.
+    c. In this module there are few classes to work with pdf files. Like we have pdfReader, pdfWriter,
+       pdfMerger etc. Let's strat with creating PdfReader.
 
         Codes:
                 import PyPDF2
 
-                PyPDF2.pdfFileReader()
+                PyPDF2.PdfReader()
 
         We need to pass a file string in the pdfFileReader() method. The file string is the object that built in open() function returns. Let's say we have a couple of pdf files in the source directory: firstPdf.pdf and secondPdf.pdf so using the open method sytax open("file_name_path", "mode") the second argument is about the mode like read/write and the open function is needed to be read as binary so for this the argument should be "rb". 
 
@@ -31,16 +32,16 @@ In this section, we will discuss on how to work with PDF files in Python. There 
                 import PyPDF2
 
                 open("firstPdf.pdf", "rb")
-                PyPDF2.pdfFileReader()
+                PyPDF2.PdfReader()
 
-    d. So now we have the file string object so we are gointo use with statement since we open the file so later
-       we need to close as well so better use with statement.
+    d. Now we have the file string object so we are going to use 'with' statement since we open the file and later
+       we need to close it as well, so better use 'with' statement.
 
         Codes:
                 import PyPDF2
 
                 with open("firstPdf.pdf", "rb") as file:
-                  PyPDF2.pdfFileReader(file)
+                  PyPDF2.PdfReader(file)
 
     e. And we get pdf file reader object.
 
@@ -48,45 +49,45 @@ In this section, we will discuss on how to work with PDF files in Python. There 
                 import PyPDF2
 
                 with open("firstPdf.pdf", "rb") as file:
-                  reader = PyPDF2.pdfFileReader(file)
+                  reader = PyPDF2.PdfReader(file)
 
-    f. Now this reader object has few intersting members. One of this is numPages which returns the number of
-       pages of the pdf. Let's print and see the number of pages of the firstpdf.pdf
+    f. Now this reader object has few intersting members. One of this is len(reader.pages) which returns the
+       number of pages of the pdf. Let's print and see the number of pages of the firstPdf.pdf
 
         Codes:
                 import PyPDF2
 
                 with open("firstPdf.pdf", "rb") as file:
-                  reader = PyPDF2.pdfFileReader(file)
-                  print(reader.numPages)
+                  reader = PyPDF2.PdfReader(file)
+                  print(len(reader.pages))
 
         OutPut: 1
         So in this pdf there is only a single page.
 
-    g. Also there is a method called getPage() it takes a pages number more accurately this parameter should have 
-       been called page index. Because the index of the first page is 0, so when we pass 0 we get first page. And this returns a page object.
+    g. Also there is a member called pages[] it takes a page index number. Because the index of the first page is 0, so when we pass 0 we get first page
+       And this returns a page object.
 
         Codes:
                 import PyPDF2
 
                 with open("firstPdf.pdf", "rb") as file:
-                  reader = PyPDF2.pdfFileReader(file)
-                  print(reader.numPages)
-                  page = reader.getPage(0)
+                  reader = PyPDF2.PdfReader(file)
+                  print(len(reader.pages))
+                  page = reader.pages[0]
     
-    h. This page object has few interesting members like rotateClockwise, rotateCounterClockwise. This also has
-       scaleBy a given factor also scaleTo a given width and height here is the package document for detail - https://pypi.org/project/PyPDF2/ 
-       Here we will going to use rotate method let's rotate 90 clockwise:
+    h. This page object has few interesting members like rotate. This also has scale a given factor also given width and height here is the 
+       package document for detail - https://pypi.org/project/PyPDF2/ 
+       Here we will going to use rotate method let's rotate 90 clockwise if we set -90 then it rotates anti clockwise:
 
         Codes:
                 import PyPDF2
 
                 with open("firstPdf.pdf", "rb") as file:
-                  reader = PyPDF2.pdfFileReader(file)
-                  print(reader.numPages)
-                  page = reader.getPage(0)
+                  reader = PyPDF2.PdfReader(file)
+                  print(len(reader.pages))
+                  page = reader.pages[0]
 
-                  page.rotateClockwise(90)
+                  page.rotate(90)
 
     i. So far this set of codes just rotates the page object in memory, this does not modify the original pdf. So
        we need to write this is a separate pdf file. For that we need a pdf file writer so;
@@ -95,61 +96,61 @@ In this section, we will discuss on how to work with PDF files in Python. There 
                 import PyPDF2
 
                 with open("firstPdf.pdf", "rb") as file:
-                  reader = PyPDF2.pdfFileReader(file)
-                  print(reader.numPages)
-                  page = reader.getPage(0)
+                  reader = PyPDF2.PdfReader(file)
+                  print(len(reader.pages))
+                  page = reader.pages[0]
 
-                  page.rotateClockwise(90)
+                  page.rotate(90)
 
-                  writer = PyPDF2.PdfFileWriter()
+                  writer = PyPDF2.PdfWriter()
                   # We do not pass any arguements this simply creates a writer object.
 
-    j. This writer object deals with memory not in file disc. Now we call addPagg() method and pass the page
+    j. This writer object deals with memory not in file disc. Now we call add_page() method and pass the page
        object here. This method will add this page object at the end of the new pdf.
 
         Codes:
                 import PyPDF2
 
                 with open("firstPdf.pdf", "rb") as file:
-                  reader = PyPDF2.pdfFileReader(file)
-                  print(reader.numPages)
-                  page = reader.getPage(0)
+                  reader = PyPDF2.PdfReader(file)
+                  print(len(reader.pages))
+                  page = reader.pages[0]
 
-                  page.rotateClockwise(90)
+                  page.rotate(90)
 
-                  writer = PyPDF2.PdfFileWriter()
+                  writer = PyPDF2.PdfWriter()
                   # We do not pass any arguements this simply creates a writer object.
 
-                  writer.addPage(page)
+                  writer.add_page(page)
 
-    k. We can also use insertPage() method it takes an index, so if you want to reorder or add the page on a
+    k. We can also use insert_page() method it takes an index, so if you want to reorder or add the page on a
        specific index to pass the second argument, 0 1 2 3 whatever index. 
 
         Codes:
-                writer.insertPage(page, 3)
+                writer.insert_page(page, 3)
 
-    l. Also we can use insertBlankPage() method to add a blank page that does not take any arguments.
+    l. Also we can use insert_blank_page() method to add a blank page that does not take any arguments.
 
         Codes:
-                writer.insertBlankPage()
+                writer.insert_blank_page()
 
-    m. Now let's back to the addPage() method and finally we need to write this pdf file memory file on disc. For 
+    m. Now let's back to the add_page() method and finally we need to write this pdf file memory file on disc. For 
        that we need another file string so we can use the with statement again to open up another file(the new file where we are going to write) let's say it is rotedtedPdf.pdf and as second argument we need to pass 'wb' the short form of write in binary. 
 
         Codes:
                 import PyPDF2
 
                 with open("firstPdf.pdf", "rb") as file:
-                  reader = PyPDF2.pdfFileReader(file)
-                  print(reader.numPages)
-                  page = reader.getPage(0)
+                  reader = PyPDF2.PdfReader(file)
+                  print(len(reader.pages))
+                  page = reader.pages[0]
 
-                  page.rotateClockwise(90)
+                  page.rotate(90)
 
-                  writer = PyPDF2.PdfFileWriter()
+                  writer = PyPDF2.PdfWriter()
                   # We do not pass any arguements this simply creates a writer object.
 
-                  writer.addPage(page)
+                  writer.add_page(page)
 
                   # Use with statement to open a file then call the file string output as output:
                   with open("rotatedPdf.pdf", "wb") as output:
@@ -168,14 +169,14 @@ In this section, we will discuss on how to work with PDF files in Python. There 
         Codes:
                 import PyPDF2
 
-                PyPDF2.PdfFileMerger()
+                PyPDF2.PdfMerger()
 
     b. So let's create a merger object
 
         Codes:
                 import PyPDF2
 
-                merger = PyPDF2.pdfFileMerger()
+                merger = PyPDF2.PdfMerger()
 
 6. Now let's say we have array of file names and we set this to a arry of two stirngs. In real project instead of 
    hard coded array, you can iterate over all the pdfs in a directory. 
@@ -183,7 +184,7 @@ In this section, we will discuss on how to work with PDF files in Python. There 
         Codes:
                 import PyPDF2
 
-                merger = PyPDF2.pdfFileMerger()
+                merger = PyPDF2.PdfMerger()
                 file_names = ["firstPdf.pdf", "secondPdf.pdf"]
 
 7. Now iterate over this array and call the merger.append() and pass the file_name.
@@ -191,7 +192,7 @@ In this section, we will discuss on how to work with PDF files in Python. There 
         Codes:
                 import PyPDF2
 
-                merger = PyPDF2.pdfFileMerger()
+                merger = PyPDF2.PdfMerger()
                 file_names = ["firstPdf.pdf", "secondPdf.pdf"]
 
                 for file_name in file_names:
@@ -203,7 +204,7 @@ In this section, we will discuss on how to work with PDF files in Python. There 
         Codes: 
                 import PyPDF2
 
-                merger = PyPDF2.pdfFileMerger()
+                merger = PyPDF2.PdfMerger()
                 file_names = ["firstPdf.pdf", "secondPdf.pdf"]
 
                 for file_name in file_names:
