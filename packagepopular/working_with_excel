@@ -16,6 +16,7 @@ Start with a new project in Python and the full steps fo the project are documen
 3. Create virtual environment and install package together with pipenv:
         a. Create virtual env and install openpyxl: pipenv install openpyxl
         b. Select the virtual environment in vscode
+        c. active the virtual environment: pipenv shell
 
 4. Start codding:
         a. Import package:
