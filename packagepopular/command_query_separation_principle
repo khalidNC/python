@@ -1,0 +1,66 @@
+The Command-Query Separation (CQS) principle is a design guideline in software development that suggests that the methods of an object or a system should be categorized into two distinct types: commands and queries. This principle emphasizes separating methods that modify state (commands) from methods that retrieve information (queries). The key idea is to avoid side effects when querying information and to ensure that methods are predictable and do not unexpectedly alter the state of the system.
+
+Here's a detailed explanation of the Command-Query Separation principle with examples:
+
+1. Commands: Modify State
+Commands are methods that perform an action or modify the state of an object or a system. These methods typically have a side effect, such as changing the internal state, updating a database, or triggering some behavior.
+
+Example:
+          class ShoppingCart:
+              def __init__(self):
+                  self.items = []
+
+              def add_item(self, item):
+                  self.items.append(item)
+                  # Side effect: Modifies the state by adding an item to the shopping cart
+
+In this example, the add_item method is a command because it modifies the state of the ShoppingCart object by adding an item to the list of items.
+
+2. Queries: Retrieve Information
+Queries are methods that retrieve information from an object or a system without modifying its state. These methods do not have side effects and are expected to be idempotent, meaning that multiple invocations will not change the state.
+
+Example:
+          class ShoppingCart:
+              def __init__(self):
+                  self.items = []
+
+              def get_items(self):
+                  return self.items
+                  # No side effect: Retrieves information without modifying the state
+
+In this example, the get_items method is a query because it only retrieves information (the list of items) without modifying the state of the ShoppingCart.
+
+3. Benefits of CQS:
+Predictability: Methods that are queries can be called without worrying about unintended side effects, making the system more predictable.
+
+Parallelization: Commands that modify state may introduce race conditions in a concurrent environment. Separating commands from queries can make it easier to reason about parallel execution.
+
+Readability and Maintainability: The separation of concerns enhances the clarity of the code. Code that reads or retrieves information is isolated from code that modifies state.
+
+4. CQS Violation:
+                  class ShoppingCart:
+                      def __init__(self):
+                          self.items = []
+
+                      def add_item_and_get_items(self, item):
+                          self.items.append(item)
+                          return self.items
+                          # Violation: This method is both a command and a query
+
+In this example, the add_item_and_get_items method violates the CQS principle because it both modifies the state (command) and retrieves information (query). It's generally advisable to avoid such mixed methods to maintain clarity and consistency.
+
+5. Applying CQS in a Web Application:
+Consider a web application where you have a UserController class. You might have commands for updating user information and queries for retrieving user details.
+
+                  class UserController:
+                      def update_user(self, user_id, new_data):
+                          # Command: Modifies the state by updating user information
+                          pass
+
+                      def get_user_info(self, user_id):
+                          # Query: Retrieves user information without modifying the state
+                          pass
+
+In this scenario, applying the CQS principle helps separate actions that change the state of the user from actions that retrieve user information.
+
+By adhering to the Command-Query Separation principle, you can design more maintainable, predictable, and parallelizable systems. It's a guideline that encourages a cleaner and more readable codebase by clearly distinguishing between methods that modify state and those that retrieve information.
