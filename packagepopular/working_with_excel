@@ -78,6 +78,9 @@ Start with a new project in Python and the full steps fo the project are documen
 
                         wb.create_sheet("Sheet2", 0)
 
+                        # Save the new sheet in new xlsx file
+                        wb.save("new_file.xlsx")
+
         g. We also have remove_sheet() method to delete sheet that takes sheet object and remove that sheet
 
                 Codes:
