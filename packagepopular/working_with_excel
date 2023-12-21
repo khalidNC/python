@@ -267,7 +267,7 @@ Start with a new project in Python and the full steps fo the project are documen
                         sheet[a1:c3]
 
         l. And using the same technique we can access the cell in given row or a range of rows. Like, sheet[1]
-           retunrs all the cells in the first row. Or if you use sheet[1:3] 1 to 3 it will retunr all the cells in row 1
+           retunrs all the cells in the first row. Or if you use sheet[1:3] 1 to 3 it will return all the cells in row 1
 
                 Codes:
                         import openpyxl
