@@ -316,7 +316,7 @@ Start with a new project in Python and the full steps fo the project are documen
 
                         sheet[a1:c3]
 
-                        # Apped method
+                        # Append method
                         sheet.append([1, 2, 3])
 
                         # we also have insert_rows() method and we use this to insert row in a given index
