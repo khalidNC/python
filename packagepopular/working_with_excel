@@ -201,7 +201,7 @@ Start with a new project in Python and the full steps fo the project are documen
                         vlaue_on_coulmn_header_2 in row 3
                         vlaue_on_coulmn_header_3 in row 3
 
-        j. Using square brackets we can also access range of calls here are few examples: We can access sheet of a 
+        j. Using square brackets we can also access range of cells here are few examples: We can access sheet of a 
            and that returns all the rows in column A and we store the result in coulmn and pirnt in terminal.
 
                 Codes:
