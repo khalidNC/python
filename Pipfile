@@ -11,6 +11,7 @@ name = "testpypi"
 [packages]
 requests = "==2.31.*"
 khalidpdf = {version = "==1.2", index = "testpypi"}
+numpy = "*"
 
 [dev-packages]
 
