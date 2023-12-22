@@ -165,5 +165,25 @@ rhs_vector = np.array([5, -8])
 # Solve the system of linear equations
 solution = np.linalg.solve(coeff_matrix, rhs_vector)
 
-print("Solution:")
-print(solution)
+# print("Solution:")
+# print(solution)
+
+# Another example let's say we have a dimention in inches and we need to convert it to cm
+dimention_in_inches = np.array([4, 8, 13])
+# 1 inche = 2.54 cm
+dimention_in_cm = dimention_in_inches * 2.54
+
+print(dimention_in_cm)
+# OutPut: [10.16 20.32 33.02]
+
+
+# Now let's see if we wnat to do this in pure python without numpy the code will be longer as below:
+
+# Let's say we have a dimention in a reguler list 
+dimnetion_inch = [4, 8, 13]
+
+# To transfor this array to a different array we need to use list comprehension
+# The syntax is: [item for item in list] here our list is dimention_inche amd let's call the item as i
+# and it returns dimention_in_centimeter
+dimention_in_centimeter = [i * 2.54 for i in dimnetion_inch]
+print(dimention_in_centimeter)
