@@ -15,5 +15,23 @@ Here we will show how to install Django and create the first Django project. Ste
       d. Open this in vscode: code .
 
 3. Start codding in vscode:
-      a. In vscode I see django admin create 
+      a. In vscode we got:
+            i. Django admin created vidjan folder 
+            ii. as well the manage.py file: we use this to perform some adminstrative task like, starting web server, migrating dadabse, populating it with data and so on.
+      
+      b. What is vidjan directory and why we have 2 vidjan directories, the outer one and the inner one? The outer one that we created(and this is the container of this project) and the inner one that django admin created of us and this is simplly a package and essentially the core of a project. It has a bunch of settings and that's where everything gets started. Inside the vidjan directory we have:
+            i. __init__.py file: this tell python to treat this directory as a package.
+            ii. settings.py file: In this file we have various configaration settings for the project.
+            iii. urls.py file: this is where we define various url endpoints for the application.
+            iv. wsgi.py file: Which short from of web server getway interface. The purpose of this file is to represent the standard interface between applications written in Python and web server. 
 
+      c. Manage py file: We will going to use the manage.py file to start our development web server.
+            i. In vscode, open manage.py
+            ii. Select the python enterpretor for the virtual environment for the project. And active the invironment
+            iii. Terminal commandline: python3 manage.py runserver
+            iv. Now by default it is going to start at development server on port 8000. If you have an application that is already lestening on that port, you can specify a different port: python3 manage.py runserver 8080
+            v. Now let's run the command and we get an alert like, "You have 15 unapplied migration..." but egnore for the time being. 
+            vi. And we can see a web server lestening at an address like: http://127.0.0.1:8080/ and to quit press Control C
+            vii. Now just navigate to the address and it will open the page in a browser. And this is our first Django project.
+
+Over the next directories we will modify this application bit by bit and will implement our video rental application. 
