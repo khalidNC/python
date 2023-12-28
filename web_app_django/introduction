@@ -1,1 +1,16 @@
-Here we will build a basic web application in Django.
+Here we will build a simple web application with super popular web framework called Django. If you want to build a web application that is fast, secure, and scalable, Django is the best option. Here are some popular websites that are build with Django. 
+    - Instagram
+    - YouTube
+    - Spotify
+    - Washington Post
+    - Dropbox and so on
+
+So in this section we will build a simple imaginary video rental application called Vidjan. This application will not be a fansy one this will have only a couple of mani feature. The purpose of this web is know how Dajgo works.
+
+What are the features will be in the web app:
+1. Home page with lost of movies
+2. Landing paegs with movies detail
+3. Api - the api will return the list of movies in json
+4. And will deploy this to a cloud platform called Heroku
+
+So we will going to see the process of building a web application from A to Z.
