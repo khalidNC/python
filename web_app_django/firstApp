@@ -1,5 +1,3 @@
 3rd Step: The first app
 
-1. Django Project: In Django the project that contains multiple apps. If the apps do not represent the entire application, they represent a small part of the application that focoiuse on one function area. 
-
-
+1. Django Project: In Django the project that contains multiple apps. If the apps do not represent the entire application, they represent a small part of the application that focoiuse on one function area.
