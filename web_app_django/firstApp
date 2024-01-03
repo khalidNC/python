@@ -9,4 +9,13 @@ So here we are going to create a new app called movies, in this small app we are
             b. then first we need to stop the development server(if it is already active): control C
             c. Then run: python3 manage.py startapp movies (we are calling the new app 'movies')
             d. This creates a new directory 'movies' and what we have in the directory:
-                        i. 
+                        i. a directory called 'migrations'
+                              1. __init__.py file to tell python that treate this as package
+                              2. admin.py file this is where we difine how the adminstartion area for managing the movies
+                              3. apps.py we use this to store various configaration settings for the app
+                              4. models.py here we have models and we define classess that represents domain of the this app. Like we could define classes like, moves, genre and so on
+                              5. test.py here we write automated tests for the app
+                              6. views.py here we define view function. The example of a view function:
+                              let's say we head over to our website /movies when we send a request to this endpoint Django is going to take this request, pass it to a function which we call a view function, That view function takes the request and returns a response. The response could be simple plain text, could be an html, json, xml, image and so on. For Django, the MVC architectural pattern has a variant MVT short from of model template view.
+
+                              So views.py is the module where we define our view function, and this is the topic for the next step 4th. 
