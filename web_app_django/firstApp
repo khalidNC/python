@@ -2,4 +2,11 @@
 
 1. Django Project: In Django the project that contains multiple apps. If the apps do not represent the entire application, they represent a small part of the application that focouse on one function area. Let's say we are going to build a website like Amazon. Amazon has a lot of different functional areas such as customer service, orders, shipping and so on. Each functional area includes a bunch of highly relatec functions. So with this architecture we can break down large complex project into a smaller, more manageable and more maintainable apps. Also we can reuse these apps in other Django projects. For example, we can build an app that represents a blog, and then reuse this app in an website that needs a blog. 
 
+So here we are going to create a new app called movies, in this small app we are going to have all the functionality for displaying the list of all the movies as well as the details of a given movie.
 
+2. Start with terminal:
+            a. Open the terminal
+            b. then first we need to stop the development server(if it is already active): control C
+            c. Then run: python3 manage.py startapp movies (we are calling the new app 'movies')
+            d. This creates a new directory 'movies' and what we have in the directory:
+                        i. 
