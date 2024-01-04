@@ -39,7 +39,6 @@
                       movies/1/details - here we assume 1 is the id of a given movie
                 3. So the empty string represents the root url
                 4. Do not wory about the 'movies' prefix we will add this in the next step. From the prospective of this app, we do not care what the prefix is. Because we should design this app for reusability, may be another developer wants to download the app from pypi.org and put it under a url like movies_collections/ so this app should not care where it is hosted. So here we should use relative urls. 
-                4. 
             then second argument - map this to a view function:
                 1. To do so we need to import the index function that we created earlier. that is in our views module
                 2. Look at the views.py file in the movies directory.
