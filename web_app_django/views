@@ -78,7 +78,7 @@
             vi. So here in the import statement(from django.urls import path) import another function called include
             vii. And as second argument we call the inclue() function
             viii. And pass a string that specify the name of the module that contains the url configuration for the movies app. That is movies.urls [Note: navigate to movies directory and there is the urls.py that is why we pass string "movies.urls" but not need to add .py django will automatically append the extension and load the module.]
-            ix. So with this line of code whenever we send a request that starts with 'movies' django will chop off the prefix("movies/") and send the remaining string to this("movies.urls") module. Tha is the reason in the url configuration for the movies app we use an empty string to represent the root of this app. 
+            ix. So with this line of code whenever we send a request that starts with 'movies' django will chop off the prefix("movies/") and send the remaining string to this("movies.urls") module. That is the reason in the url configuration for the movies app we use an empty string to represent the root of this app. 
             x. Now save the changes and restart our web server. Terminal command: python3 manage.py runserver
                 Codes:
                         from django.contrib import admin
