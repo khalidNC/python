@@ -2,7 +2,7 @@
 
 1. Creation of first view function:
       a. Go to the movies directory and open the views.py file
-      b. Define a function 'index'. This name is arbitrary, we could call it anything ut usually we use the word index for naming the function that represents a main page of an app. For example, /movies app page when we send a request to the address to the endpoint our index function is going to get call. So index represents the main page of an app. 
+      b. Define a function 'index'. This name is arbitrary, we could call it anything but usually we use the word index for naming the function that represents a main page of an app. For example, /movies app page when we send a request to the address to the endpoint our index function is going to get call. So index represents the main page of an app. 
             Codes:
                   from django.shortcuts import render
 
