@@ -1,0 +1,34 @@
+4th setp: The view function
+
+1. Creation of first view function:
+      a. Go to the movies directory and open the views.py file
+      b. Define a function 'index'. This name is arbitrary, we could call it anything ut usually we use the word index for naming the function that represents a main page of an app. For example, /movies app page when we send a request to the address to the endpoint our index function is going to get call. So index represents the main page of an app. 
+            Codes:
+                  from django.shortcuts import render
+
+                  # Create view function and all our view functions should take request parameter.
+                  def index(request): 
+
+                  '''
+                  Again the name 'request' is arbitrary but the object that pass to this function is an http request object. And we are not going to call this function, Django will take care of doing this. So when we send an http request to an endpoint, django will figure out based on some configaration what view function should be called.
+
+                  Now every view function should return an http response. So on the top, let's import the HttpResponse class from django.http module.
+
+                  And in this function, we will return http response object and here we will pass some plain text 'Hello world'.
+
+                  Save the changes. This is our first view. Now we need to map this to a url.
+                  '''
+
+                  from django.http import HttpResponse
+                  from django.shortcuts import render
+
+                  def index(request):
+                    return HttpResponse("Hello World")
+
+
+2. Map the view function to a url:
+      a. 
+
+
+
+
