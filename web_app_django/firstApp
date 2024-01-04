@@ -18,4 +18,6 @@ So here we are going to create a new app called movies, in this small app we are
                               6. views.py here we define view function. The example of a view function:
                               let's say we head over to our website /movies when we send a request to this endpoint Django is going to take this request, pass it to a function which we call a view function, That view function takes the request and returns a response. The response could be simple plain text, could be an html, json, xml, image and so on. For Django, the MVC architectural pattern has a variant MVT short from of model template view.
 
-                              So views.py is the module where we define our view function, and this is the topic for the next step 4th. 
+                              So views.py is the module where we define our view function, and this is the topic for the next step 4th.
+
+                              Next step will in the views folder.

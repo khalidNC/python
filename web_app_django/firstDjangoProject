@@ -34,4 +34,6 @@ Here we will show how to install Django and create the first Django project. Ste
             vi. And we can see a web server lestening at an address like: http://127.0.0.1:8080/ and to quit press Control C
             vii. Now just navigate to the address and it will open the page in a browser. And this is our first Django project.
 
-Over the next directories we will modify this application bit by bit and will implement our video rental application. 
+Over the next directories we will modify this application bit by bit and will implement our video rental application.
+
+Next step will be in this firstApp folder.

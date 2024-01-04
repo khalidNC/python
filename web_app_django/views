@@ -93,3 +93,5 @@
 4. After run the server get page not found:
       a. We see page not found, and we will fix this in next step no 5
       b. but if you head over to /movies you will see the 'Hello Word' text and this verifies that we successfully mapped a url endpoint to a view function.
+
+Next step will be in this models folder.
