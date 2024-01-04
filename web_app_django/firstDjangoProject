@@ -8,7 +8,7 @@ Here we will show how to install Django and create the first Django project. Ste
       c. Create virtual env and install Django using pipenv and let's set the version 2.1: pipenv install django==2.1
       d. Activate the vertual environment: pipenv shell
 
-2. Create a Django project using a toll called Django Admin:
+2. Create a Django project using a tool called Django Admin:
       a. Run the command: django-admin startproject vidjan
       b. We want to create this in current directory so let's add a period at the end: django-admin startproject vidjan .
       c. When we run this command django admin is going to create a basic website with some boilerplate codes.
