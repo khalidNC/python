@@ -30,7 +30,6 @@ So here in the movies directory let's open models.py file:
 
     b. So we have Genera class now create Movie class in same way and derive this class from models.model
 
-
           Codes:
                 from django.db import models
 
@@ -57,6 +56,29 @@ So here in the movies directory let's open models.py file:
                   number_in_stock = models.IntegerFields()
                   daily_rate = models.FloatFields()
 
+    c. Now each movie needs to be associated with a genera: how do we can do this?
 
-      
+        i. Here we should add another attribute genera and set this to an instance of models.ForeignKey() now with this we can create the relationship between movies and genaras.
 
+        ii. And as the first argument we need to pass the genera class because we want to add a relationship between movies and genera class.
+
+        iii. And as the second argument we need to pass a keyword=argument that is on_delete and with this we tell django what should happen when a genera is deleted. For example, if we have a genera called comedy and we have 5 movies in this genera, what should happen if we delete comedy?
+
+        iv. Let's assume for this tutorial if we delete a genera all the movies associated with this genera will be deleted. This thing we called cascading. So here we set on_delete to models.CASCADE
+
+          Codes:
+                from django.db import models
+
+                class Genera(models.Model):
+                  name = models.CharField(max_length=255)
+
+                class Movie(models.Model):
+                  title = models.CharFields(max_length=255)
+                  realse_year = models.IntegerFields()
+                  number_in_stock = models.IntegerFields()
+                  daily_rate = models.FloatFields()
+                  genera = models.ForeignKey(Genera, on_delete=model.CASCADE)
+
+        v. So up to this point we have two model classes that we need in the movies app. In the future, we can come back and add additional classes or modify the existing ones. 
+
+        vi. The next step is to tell django to synchronize our database with the models we have defined in the movies app. And this is in the next file called migrations step 6.
