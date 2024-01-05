@@ -77,7 +77,7 @@ So here in the movies directory let's open models.py file:
                   realse_year = models.IntegerFields()
                   number_in_stock = models.IntegerFields()
                   daily_rate = models.FloatFields()
-                  genera = models.ForeignKey(Genera, on_delete=model.CASCADE)
+                  genera = models.ForeignKey(Genera, on_delete=models.CASCADE)
 
         v. So up to this point we have two model classes that we need in the movies app. In the future, we can come back and add additional classes or modify the existing ones. 
 
