@@ -1,0 +1,62 @@
+5th Step: Models for the movies app
+
+1. Models creations:
+These models are the python classes that we use to represent our application data. So here in our movies app we are going to have models like genera and movie. Let's create them. 
+
+So here in the movies directory let's open models.py file:
+
+    a. Create a class called genera and we should derive this class from models.Model
+            
+           Codes: 
+                  from django.db import models
+
+                  class Genera(models.Model):
+
+        i. This means, in django we have this package django.db this package has all the functionalities around working with database. In this package we have module called models and in this module we have class called Model. This class has lot of functionalities that is storing a model object in a database or retriving model object, filter them and so on.
+
+        ii. So by inheriting the genera class from the base model class in django, our genera class also inherite all the functionalities, whcih means we do not really have to write any code to store genera objects in a database. Django will automatically take care of that. So think of the concept of genera what attributes should a genera have?
+
+        iii. Well in basic implementation all we need to know about the genera is it's label or name. Is it a action movie, or comedy or what. So we define a class attribute called name.
+
+        iv. And we set it to an instance of a field class in django. So in the models module, we have a bunch of field classes like, CharField to represent a database field that can contain textual data, we also have IntegerField, FloatField, BooleanField and so on. So we have set this to an instance of the CharField class. 
+
+        v. And here in the class we should pass keyword=argument. max_length, let's set this to 255 characters. With this we can ensure that no genera can have a name larger than 255 characters. And this one way to prevent security hacks in our application. So hacker can not create a genera with 2 billion characters long. So we enforce a limit here. 
+
+          Codes:
+                from django.db import models
+
+                class Genera(models.Model):
+                  name = models.CharField(max_length=255)
+
+    b. So we have Genera class now create Movie class in same way and derive this class from models.model
+
+
+          Codes:
+                from django.db import models
+
+                class Genera(models.Model):
+                  name = models.CharField(max_length=255)
+
+                class Movie(models.Model):
+
+        i. Now we need to know what attribute of a movie could be? In our imaginary video rental application, we need to know the title of each movie, the year of realse, the number of these movie DVD's in stock, as well as the daily rental rate. So let's start and create these attributes.
+                              1. We seth the title as calling the function models.CharFields() and pass max_length
+                              2. Then set realse year as IntegerFields()
+                              3. Then numbers instock as IntegerFields()
+                              4. then daily rate as set as FloatFields() so that we can store like 2 dollars
+
+          Codes:
+                from django.db import models
+
+                class Genera(models.Model):
+                  name = models.CharField(max_length=255)
+
+                class Movie(models.Model):
+                  title = models.CharFields(max_length=255)
+                  realse_year = models.IntegerFields()
+                  number_in_stock = models.IntegerFields()
+                  daily_rate = models.FloatFields()
+
+
+      
+
