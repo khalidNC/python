@@ -39,7 +39,7 @@ So here in the movies directory let's open models.py file:
                 class Movie(models.Model):
 
         i. Now we need to know what attribute of a movie could be? In our imaginary video rental application, we need to know the title of each movie, the year of realse, the number of these movie DVD's in stock, as well as the daily rental rate. So let's start and create these attributes.
-                              1. We seth the title as calling the function models.CharFields() and pass max_length
+                              1. We set the title as calling the function models.CharFields() and pass max_length
                               2. Then set realse year as IntegerFields()
                               3. Then numbers instock as IntegerFields()
                               4. then daily rate as set as FloatFields() so that we can store like 2 dollars
