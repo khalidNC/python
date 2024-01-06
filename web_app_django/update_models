@@ -28,7 +28,7 @@
                     daily_rate = models.FloatField()
                     genera = models.ForeignKey(Genera, on_delete=models.CASCADE)
                     # date_created = models.DateTimeField(default=datetime.now())
-                    date_created = models.DateTimeField(default=timezone.now())
+                    date_created = models.DateTimeField(default=timezone.now)
 
       k. Now save the changes and to create a new migration open terminal and run: python3 manage.py makemigrations
       l. Now we have migration number 2 with new oparation type AlterField.
@@ -51,4 +51,3 @@
       b. Let's say we want to know what SQL statements are generated as a result of applying this 2nd migration. Command syntax is: python manage.py then instead of migrate use sqlmigrate then specify apps name in this case, it is movies then spicify specific migration[in migrations folder migrations file has prefix with uniquqe number].
       c. So open the terminal and run: python3 manage.py sqlmigrate 0002
       d. OutPut: in output, we can see the exact sql statement that is sent to the database.
-      
