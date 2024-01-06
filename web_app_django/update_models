@@ -1,0 +1,54 @@
+7th Step: Update models
+
+1. Let's go through the workflow one more time:
+      a. In the movies app, let's open models.py
+      b. Here in our Movie class, I am adding another attribute called date created at the bottom
+      c. And set this to models.DateTimeField()
+      d. And here we optionally supply a default value as keyword=argument
+      e. ehre we can import DateTime class from python standard library and write some code like, datetime.now()
+      f. But this approach the datetime object does not aware of time zone. 
+      g. So better approach is to use timezone object in django because that object is aware of time zone
+      h. Also this approach can automatically translate user's time zone.
+      i. To do so, let's import timezone from django.utils on the top
+      j. and set the default argument as timezone.now
+          - Note: we are not calling the now() method we are just passing the reference(.now) of now method
+          - If we call the method and run the migration then the current date time will hard coded in our migration
+
+            Codes:
+                  from django.db import models
+                  from django.utils import timezone
+
+                  class Genera(models.Model):
+                    name = models.CharField(max_length=255)
+
+                  class Movie(models.Model):
+                    title = models.CharField(max_length=255)
+                    release_year = models.IntegerField()
+                    number_in_stock = models.IntegerField()
+                    daily_rate = models.FloatField()
+                    genera = models.ForeignKey(Genera, on_delete=models.CASCADE)
+                    # date_created = models.DateTimeField(default=datetime.now())
+                    date_created = models.DateTimeField(default=timezone.now())
+
+      k. Now save the changes and to create a new migration open terminal and run: python3 manage.py makemigrations
+      l. Now we have migration number 2 with new oparation type AlterField.
+      m. So this oparation is going to the movie table, and alter a filed called date_created 
+      n. And the date time set to default=django.utils.timezone.now [Note that the current date time is not hardcoded in our migration]
+
+2. Go ahead and apply the new migration to our database:
+   Note: Never delete the previous/old migration file.
+      a. Go back to the terminal 
+      b. python3 manage.py migrate
+      c. Output: we see migration has applied with ok message
+
+3. Sqlite browser database:
+      a. Open the Sqlite browser database
+      b. Expand the movie table
+      c. And see the new filed 'date_created' has created
+    
+4. SQL Statement: 
+      a. Another thing, each migration in the migration file is essentially a python class that ditermines how our database should be updated. Now when we run migrate command, django is going to look at the mirgations that are not applied and based on the oparations that they defined, is going to generate some SQL statements to send to tha database. To see them we can use SQL migrate command.
+      b. Let's say we want to know what SQL statements are generated as a result of applying this 2nd migration. Command syntax is: python manage.py then instead of migrate use sqlmigrate then specify apps name in this case, it is movies then spicify specific migration[in migrations folder migrations file has prefix with uniquqe number].
+      c. So open the terminal and run: python3 manage.py sqlmigrate 0002
+      d. OutPut: in output, we can see the exact sql statement that is sent to the database.
+      
