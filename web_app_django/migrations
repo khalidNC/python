@@ -41,5 +41,24 @@
             vi. This time django has detected the changes in the movies app, so it created a migration that is inside movies/migrations/0001_initial.py this file. 
             vii. Let's have a quick look at this migration in this file:
                   1. Here we have class called Migration
+                  2. And in this class we have a couple of oparations for bringing our database up to date with our current model classes. 
+                        a. The first oparation: For creating a model we can see the name is set to genera. And the fields of genera are id and name. Note: In out code we only specify name not id, but django automatically creates this for us. And it ensures that every object has id property, that uniquely identifies that object. 
 
+                        b. The secound oparations: In similarly we have another create model oparation for creating the movie table in this table we are going to have the files along with the id that we did not mention in our code but django takes care of this.
+                  3. Now this migration has not executed yet it simply describe the oparations that we need to be perfomed in the database to brieng it up to date with our current model classes. 
+                  4. So next step is to run this migration:
+                        a. Before run the migration let's see one thing;
+                            - Open the terminal
+                            - and run: python3 manage.py runserver
+                            - OutPut: we see an error like, we have 16 unapplied migrations. This basically means, we have migrations that need to be executed. Eariler we had 15 unapplied now 16.
+                            So let's stop server 'control c'
+                        b. And run: python3 manage.py migrate
+                            - This will run all the pending migrations we have. We can see all the migrations are applied.
+                            - OutPut: As we can see each of migrations has a prefix with the name of the app that contains it.
+                            - So here we have migration for contenttypes app, auth app, 3 migartions for admin app.
+                            - After all the migartions at the bottopm we can see migartion for movies app.
+                  5. Now open the Sqlite databse once again, we can see we have a total numbers of tables. Each of the tables is prefix with the name of the app that contains it. So we can see 2 tables for movies app, movies_genera and movies_movie. And we can always overwrite anytime. If we expand the move table we can see the columns, for id, rease date, and so on. S owe do not have to create any table manually, django does for us.
+                  6. We have also a table for django_migrations, django uses this for keeping track of the migrations that are applied on the database.
+                  7. So go to browse data tab and select the django_migration table. And we see the list of all migrations currently applied. If you scroll down and can see the migration for the move in the list with it's name along with the date time.
 
+2. In next step:7 it shows if we update the model classes what happen in database.
