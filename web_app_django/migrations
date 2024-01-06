@@ -1,0 +1,45 @@
+6th Step: Telling django to migrate/synchronize database with the models we created
+
+1. Store the model objects in our database:
+      a. Sqlite3: Look at the db.sqlite3 file in the source directory. This is a blank sqlite database that django automatically created. Sqlite is a very simple light weight database that we often use in small applications that we run on mobile devices. But it is not suitable for the enterprise web applications that has thousands of users and it does not have features like security and concurrency, in those situation we use database like MYSQL, SQL server by Microsoft and so on. The good thing is django supports all of this database engines.
+
+      b. Now to work with sqlite3 database, search 'db browser for sqlite' in google and navigate to their site: https://sqlitebrowser.org/ this is a simple application that we can download the extension and use this to open an sqlite database. Here we can create new database or opena existing one. 
+
+      c. We opne the our database just drag and drop the file to open. We can there is no table yet. That means we need to create a couple of tables. In order to store movies and generas in this database. To be noted: when we are using django we do not have to manually design this table, django automatically creates that for us based on our models.
+
+      d. Tables in sqlite: So every time we create new model classes or modified the existing one, we tell django to compare our model classes with our database. Django will look at our database it will figure out what tables and columns we have, then it will calculate the difference between our model classes and our database tables. and based on that, it will create a migration, a migration is essensially a python file that include some codes. When we run that it will synchronize our database with our model classes. Let's take a look.
+
+            i. Let's open the terminal
+            ii. and run: python3 manage.py makemigrations
+            iii. Then it shows innitially 'No changes detected'. Because by default django is not aware of our model classes
+            iv. So first step is to register our movies app with django. Let's see how do this:
+                  1. In our project, inside the vidjan package, open settings.py this file contain various configarations and settings. One of the settings is INSTALLED_APPS and few apps are installed by default.
+                        a. First one is admin: and this creates admin pannel for us
+                        b. Then Auth: Which is authentication framework, with this we can authenticate users, and can see whochave the permission to perform various tasks.
+                        c. Then contenttypes: A framework for creating generic relationship between model classes.
+                        d. Sessions: This framework allows us to temporarily store data about the current users.
+                        e. Messages: We have messaging framework, and use that in situation like when user creates new movie and we display the message like 'The movie is successfully created'.
+                        f. Then staticfiles: Which is use for managing static files like css files, images and so on.
+                        Note: In most applications, we need pretty much all these installed apps, but if do not need any of this you can delet that from the list.
+                  2. Now we need to register our movies app here, so that django can keep track of our model classes in that app.
+                        a. So back to our movies folder and open the apps.py file
+                        b. here we have various configaration settings for the movies app.
+                        c. Look at the class name 'MoviesConfig' this class is in apps module of the movies package. So to register the movies app with django we need to provied the complete path of this class.
+                        d. So bakc to the settings.py in vidjan package and we add MoviesConfig class full path first movies package then apps module then the class at the bottom. And save the changes.
+                              
+                              Codes:
+                                    INSTALLED_APPS = [
+                                      'django.contrib.admin',
+                                      'django.contrib.auth',
+                                      'django.contrib.contenttypes',
+                                      'django.contrib.sessions',
+                                      'django.contrib.messages',
+                                      'django.contrib.staticfiles',
+                                      'movies.apps.MoviesCongif'
+                                    ]
+            v. Go back to the terminal again and run the makemigrations command once again: python3 manage.py makemigrations
+            vi. This time django has detected the changes in the movies app, so it created a migration that is inside movies/migrations/0001_initial.py this file. 
+            vii. Let's have a quick look at this migration in this file:
+                  1. Here we have class called Migration
+
+
