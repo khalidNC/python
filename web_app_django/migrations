@@ -5,7 +5,7 @@
 
       b. Now to work with sqlite3 database, search 'db browser for sqlite' in google and navigate to their site: https://sqlitebrowser.org/ this is a simple application that we can download the extension and use this to open an sqlite database. Here we can create new database or open an existing one. 
 
-      c. We opne the our database just drag and drop the file to open. We can there is no table yet. That means we need to create a couple of tables. In order to store movies and generas in this database. To be noted: when we are using django we do not have to manually design this table, django automatically creates that for us based on our models.
+      c. We open our database just by drag and drop the file. We can there is no table yet. That means we need to create a couple of tables. In order to store movies and generas in this database. To be noted: when we are using django we do not have to manually design this table, django automatically creates that for us based on our models.
 
       d. Tables in sqlite: So every time we create new model classes or modified the existing one, we tell django to compare our model classes with our database. Django will look at our database it will figure out what tables and columns we have, then it will calculate the difference between our model classes and our database tables. and based on that, it will create a migration, a migration is essensially a python file that include some codes. When we run that it will synchronize our database with our model classes. Let's take a look.
 
