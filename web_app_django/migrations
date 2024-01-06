@@ -3,7 +3,7 @@
 1. Store the model objects in our database:
       a. Sqlite3: Look at the db.sqlite3 file in the source directory. This is a blank sqlite database that django automatically created. Sqlite is a very simple light weight database that we often use in small applications that we run on mobile devices. But it is not suitable for the enterprise web applications that has thousands of users and it does not have features like security and concurrency, in those situation we use database like MYSQL, SQL server by Microsoft and so on. The good thing is django supports all of this database engines.
 
-      b. Now to work with sqlite3 database, search 'db browser for sqlite' in google and navigate to their site: https://sqlitebrowser.org/ this is a simple application that we can download the extension and use this to open an sqlite database. Here we can create new database or opena existing one. 
+      b. Now to work with sqlite3 database, search 'db browser for sqlite' in google and navigate to their site: https://sqlitebrowser.org/ this is a simple application that we can download the extension and use this to open an sqlite database. Here we can create new database or open an existing one. 
 
       c. We opne the our database just drag and drop the file to open. We can there is no table yet. That means we need to create a couple of tables. In order to store movies and generas in this database. To be noted: when we are using django we do not have to manually design this table, django automatically creates that for us based on our models.
 
