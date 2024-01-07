@@ -7,5 +7,48 @@
       c. Then open the server: http://127.0.0.1:8000/ in browser and head over to /admin
       d. And it loaded the admin login page, this is the enterance of the adminstration pannel.
       e. By default we get the login screen. This is coming from the auth app that is installed default in settings.py file.
-      f. This auth app is for authenticating all users. And the login screen is implemented inside the auth app. And this reusable package we are using in this project. In the same token we can build small, resuable apps that other peopel can use for their projects.
-2.     
+      f. This auth app is for authenticating all users. And the login screen is implemented inside the auth app. And this reusable package we are using in this project. In the same token we can build small, resuable apps that other people can use for their projects.
+
+2. Admin user creation:
+      a. Currently we do not have any users in our database. So next step is to create super user.
+      b. Go to vscode and open a new terminal window so that we not need to stop the server.
+      c. And run the command to create super user: python3 manage.py createsuperuser
+      d. then enter user name: ***
+      e. Then enter email address: *****
+      f. and enter password: ***
+      g. Thne we see success message as output
+
+3. Login to the admin pannel:
+      a. Go back to the login screen of the /admin page
+      b. Login with the newly created credentials
+      c. It lands me on the admin pannel home page here we can manage list of groups and users.
+      d. So we can create different user in a group like admin modarators, guests and so on.
+
+4. List of Users:
+      a. Click to users link it takes me to the list of users page.
+      b. Here we see a table that all the users in the database. And we can filter them in various filtering options.
+
+5. Manage our custom models movie and genera:
+      a. Back to the admin homepage. Currently we can manage users and groups.
+      b. We can brieng our custom models data here easily here with a single line of code.
+      c. Go to the vscode:
+            - Open the admin.py file under movies app/packages
+            - Here we will register the models we want to manage using our adminstrative interface.
+            - First we import our Genera and Movie classes. From the models module in the current folder(the preriod[.] indecates the current directory) import Genera, Movie classes
+            - And we call admin.site.register() method and pass Genera and Movie class
+
+                  Codes:
+                        from django.contrib import admin
+                        from .models import Genera, Movie
+
+                        # Register your models here.
+                        admin.site.register(Genera)
+                        admin.site.register(Movie)
+
+            - So with this two lines we are telling django to register these models to the adminstration interface.
+            - Now save the chnages and go to the admin site and reload the browser and see the Genera and Movie in the Movies app.
+
+6. List of Genera:
+      a. Now let's go to the list of Genera by clicking on the genera.
+      b. 
+
