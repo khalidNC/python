@@ -1,0 +1,11 @@
+7th Step: Creating admin pannel and users to display list of movies on the vidjan web application:
+
+1. So far we have done with database, now the next step is to allow the stuff at our imaginery video rental store to populate the list of movies. So we need to create an adminstrative pannel for them. However, when using django we do not have to do this manually. All Djngo applications come with a powerful adminstration interface. Let's see how to use this.
+
+      a. Open the terminal
+      b. Run the development server: python3 manage.py runserver
+      c. Then open the server: http://127.0.0.1:8000/ in browser and head over to /admin
+      d. And it loaded the admin login page, this is the enterance of the adminstration pannel.
+      e. By default we get the login screen. This is coming from the auth app that is installed default in settings.py file.
+      f. This auth app is for authenticating all users. And the login screen is implemented inside the auth app. And this reusable package we are using in this project. In the same token we can build small, resuable apps that other peopel can use for their projects.
+2.     
