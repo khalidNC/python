@@ -51,3 +51,6 @@
       b. Let's say we want to know what SQL statements are generated as a result of applying this 2nd migration. Command syntax is: python manage.py then instead of migrate use sqlmigrate then specify apps name in this case, it is movies then spicify specific migration[in migrations folder migrations file has prefix with uniquqe number].
       c. So open the terminal and run: python3 manage.py sqlmigrate 0002
       d. OutPut: in output, we can see the exact sql statement that is sent to the database.
+
+      Next step is on creating admin pannel to display list of movies on the website.
+      So the 7th setp is in admin folder.
