@@ -1,4 +1,4 @@
-7th Step: Creating admin pannel and users to display list of movies on the vidjan web application:
+8th Step: Creating admin pannel and users to display list of movies on the vidjan web application:
 
 1. So far we have done with database, now the next step is to allow the stuff at our imaginery video rental store to populate the list of movies. So we need to create an adminstrative pannel for them. However, when using django we do not have to do this manually. All Djngo applications come with a powerful adminstration interface. Let's see how to use this.
 
