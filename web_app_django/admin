@@ -28,7 +28,7 @@
       a. Click to users link it takes me to the list of users page.
       b. Here we see a table that all the users in the database. And we can filter them in various filtering options.
 
-5. Manage our custom models movie and genera:
+5. Manage our custom models movie and genre:
       a. Back to the admin homepage. Currently we can manage users and groups.
       b. We can brieng our custom models data here easily here with a single line of code.
       c. Go to the vscode:
@@ -49,6 +49,6 @@
             - Now save the chnages and go to the admin site and reload the browser and see the Genera and Movie in the Movies app.
 
 6. List of Genera:
-      a. Now let's go to the list of Genera by clicking on the genera.
+      a. Now let's go to the list of Genera by clicking on the genre.
       b. 
 

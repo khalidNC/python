@@ -1,11 +1,11 @@
 5th Step: Models for the movies app
 
 1. Models creations:
-These models are the python classes that we use to represent our application data. So here in our movies app we are going to have models like genera and movie. Let's create them. 
+These models are the python classes that we use to represent our application data. So here in our movies app we are going to have models like genre and movie. Let's create them. 
 
 So here in the movies directory let's open models.py file:
 
-    a. Create a class called genera and we should derive this class from models.Model
+    a. Create a class called genre and we should derive this class from models.Model
             
            Codes: 
                   from django.db import models
@@ -14,13 +14,13 @@ So here in the movies directory let's open models.py file:
 
         i. This means, in django we have this package django.db this package has all the functionalities around working with database. In this package we have module called models and in this module we have class called Model. This class has lot of functionalities that is storing a model object in a database or retriving model object, filter them and so on.
 
-        ii. So by inheriting the genera class from the base model class in django, our genera class also inherite all the functionalities, whcih means we do not really have to write any code to store genera objects in a database. Django will automatically take care of that. So think of the concept of genera what attributes should a genera have?
+        ii. So by inheriting the genre class from the base model class in django, our genre class also inherite all the functionalities, whcih means we do not really have to write any code to store genre objects in a database. Django will automatically take care of that. So think of the concept of genre what attributes should a genre have?
 
-        iii. Well in basic implementation all we need to know about the genera is it's label or name. Is it a action movie, or comedy or what. So we define a class attribute called name.
+        iii. Well in basic implementation all we need to know about the genre is it's label or name. Is it a action movie, or comedy or what. So we define a class attribute called name.
 
         iv. And we set it to an instance of a field class in django. So in the models module, we have a bunch of field classes like, CharField to represent a database field that can contain textual data, we also have IntegerField, FloatField, BooleanField and so on. So we have set this to an instance of the CharField class. 
 
-        v. And here in the class we should pass keyword=argument. max_length, let's set this to 255 characters. With this we can ensure that no genera can have a name larger than 255 characters. And this one way to prevent security hacks in our application. So hacker can not create a genera with 2 billion characters long. So we enforce a limit here. 
+        v. And here in the class we should pass keyword=argument. max_length, let's set this to 255 characters. With this we can ensure that no genre can have a name larger than 255 characters. And this one way to prevent security hacks in our application. So hacker can not create a genre with 2 billion characters long. So we enforce a limit here. 
 
           Codes:
                 from django.db import models
@@ -56,15 +56,15 @@ So here in the movies directory let's open models.py file:
                   number_in_stock = models.IntegerFields()
                   daily_rate = models.FloatFields()
 
-    c. Now each movie needs to be associated with a genera: how do we can do this?
+    c. Now each movie needs to be associated with a genre: how do we can do this?
 
-        i. Here we should add another attribute genera and set this to an instance of models.ForeignKey() now with this we can create the relationship between movies and genaras.
+        i. Here we should add another attribute genre and set this to an instance of models.ForeignKey() now with this we can create the relationship between movies and genaras.
 
-        ii. And as the first argument we need to pass the genera class because we want to add a relationship between movies and genera class.
+        ii. And as the first argument we need to pass the genre class because we want to add a relationship between movies and genre class.
 
-        iii. And as the second argument we need to pass a keyword=argument that is on_delete and with this we tell django what should happen when a genera is deleted. For example, if we have a genera called comedy and we have 5 movies in this genera, what should happen if we delete comedy?
+        iii. And as the second argument we need to pass a keyword=argument that is on_delete and with this we tell django what should happen when a genre is deleted. For example, if we have a genre called comedy and we have 5 movies in this genre, what should happen if we delete comedy?
 
-        iv. Let's assume for this tutorial if we delete a genera all the movies associated with this genera will be deleted. This thing we called cascading. So here we set on_delete to models.CASCADE
+        iv. Let's assume for this tutorial if we delete a genre all the movies associated with this genre will be deleted. This thing we called cascading. So here we set on_delete to models.CASCADE
 
           Codes:
                 from django.db import models
@@ -77,7 +77,7 @@ So here in the movies directory let's open models.py file:
                   realse_year = models.IntegerFields()
                   number_in_stock = models.IntegerFields()
                   daily_rate = models.FloatFields()
-                  genera = models.ForeignKey(Genera, on_delete=models.CASCADE)
+                  genre = models.ForeignKey(Genera, on_delete=models.CASCADE)
 
         v. So up to this point we have two model classes that we need in the movies app. In the future, we can come back and add additional classes or modify the existing ones. 
 

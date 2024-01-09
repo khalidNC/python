@@ -42,7 +42,7 @@
             vii. Let's have a quick look at this migration in this file:
                   1. Here we have class called Migration
                   2. And in this class we have a couple of oparations for bringing our database up to date with our current model classes. 
-                        a. The first oparation: For creating a model we can see the name is set to genera. And the fields of genera are id and name. Note: In out code we only specify name not id, but django automatically creates this for us. And it ensures that every object has id property, that uniquely identifies that object. 
+                        a. The first oparation: For creating a model we can see the name is set to genre. And the fields of genre are id and name. Note: In out code we only specify name not id, but django automatically creates this for us. And it ensures that every object has id property, that uniquely identifies that object. 
 
                         b. The secound oparations: In similarly we have another create model oparation for creating the movie table in this table we are going to have the files along with the id that we did not mention in our code but django takes care of this.
                   3. Now this migration has not executed yet it simply describe the oparations that we need to be perfomed in the database to brieng it up to date with our current model classes. 
