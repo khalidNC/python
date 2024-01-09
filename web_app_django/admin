@@ -34,21 +34,21 @@
       c. Go to the vscode:
             - Open the admin.py file under movies app/packages
             - Here we will register the models we want to manage using our adminstrative interface.
-            - First we import our Genera and Movie classes. From the models module in the current folder(the preriod[.] indecates the current directory) import Genera, Movie classes
-            - And we call admin.site.register() method and pass Genera and Movie class
+            - First we import our Genre and Movie classes. From the models module in the current folder(the preriod[.] indecates the current directory) import Genre, Movie classes
+            - And we call admin.site.register() method and pass Genre and Movie class
 
                   Codes:
                         from django.contrib import admin
-                        from .models import Genera, Movie
+                        from .models import Genre, Movie
 
                         # Register your models here.
-                        admin.site.register(Genera)
+                        admin.site.register(Genre)
                         admin.site.register(Movie)
 
             - So with this two lines we are telling django to register these models to the adminstration interface.
-            - Now save the chnages and go to the admin site and reload the browser and see the Genera and Movie in the Movies app.
+            - Now save the chnages and go to the admin site and reload the browser and see the Genre and Movie in the Movies app.
 
-6. List of Genera:
-      a. Now let's go to the list of Genera by clicking on the genre.
+6. List of Genre:
+      a. Now let's go to the list of Genre by clicking on the genre.
       b. 
 
