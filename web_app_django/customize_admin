@@ -1,0 +1,47 @@
+9th Step: Customize the adminstration interface
+
+1. Genere object(1) separate the name and the id:
+    a. Navigate the admin/movies/genere it shows 1 entity Genere object(1)
+    b. It shows because it is a default represent of a genere object as a string.
+    c. One way to fix this is to apply the __str__ magic method in the Genre class. Let's open models.py
+
+        Codes:
+                from django.db import models
+                from django.utils import timezone
+
+                class Genre(models.Model):
+                  name = models.CharField(max_length=255)
+
+                  # Here add str magic method to specify the string representation of a genre object
+                  # So let'e define the method, and the first parameter is self
+                  # And return name. So we are using the name of a genre to represent it as a string
+
+                  def __str__(self):
+                    return self.name
+    d. Now save the changes and back to the admin and reload the page. Now it shows name of the Genre.
+    e. Take this to next level now, let's say we want to see the genere id in a separate colume in the admin interface.
+    f. To do so, we need to open admin.py module under the movies directory.
+    g. Here we already regestered Genre and Movie classes with admin. Now to customize the list of genres on admin pannel we will add another class called GenreAdmin.
+    h. And this class derive from admin.ModelAdmin class
+    i. This means, we alredy import admin module so the admin module has a class ModelAdmin(which represents the admin model in the admin pannel) so the GenreAdmin class inhereted all the features of the ModelAdmin class and we can override some of them. 
+    j. For example, we can set list_display attribute to set the list of fields(columns) that we want to show on the admin genre list page. We set list_display to tuple, and in the tuple we specify the fields we want to show on the list page.
+    k. Also we need to pass the model GenreAdmin as 2nd argument in the register() method.
+
+        Codes:
+                from django.contrib import admin
+                from .models import Genre, Movie
+
+                class GenreAdmin():
+                  list_display = ('id', name)
+                  # Note: the item name shoule be as it is as mention inthe migration file. Like if you provide 'Id' this will raise an error
+
+                # Register your models here.
+                admin.site.register(Genre, GenreAdmin)
+                admin.site.register(Movie)
+    
+    l. Save the changes and reload the admin genre list page. And we can see the Id and Name columns and the entity.
+    m. Now add more genres in the list one by one.
+
+2. Add movies now:
+    a. 
+
