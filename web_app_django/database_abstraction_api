@@ -3,7 +3,7 @@
 1. Earlier we built a view function to response to the request to movies/ endpoint. An currently we are only displaying text "Hello Word" and next we will display the the list of movies in our database.
 
     a. Open the models.py module there is a Movie class. We derived this class from the Model class in django. 
-    b. But why? Because this Model class gives us a bunch of methods for creating, retriving, updating, or deleting object from our database. So if you want to store movie object in our database, you simply call one of these methods[save()] in our database. This save method internally take care of generating the right SQL statement to update our SQL database. This is we called database abstraction API. 
+    b. But why? Because this Model class gives us a bunch of methods for creating, retriving, updating, or deleting object from our database. So if you want to store movie object in our database, you simply call one of these methods in our database. This method internally take care of generating the right SQL statement to update our SQL database. This is we called database abstraction API. 
     c. So this Model class give us an API, Application Programming Interface. And this API abstracts away the complexity of working with database. 
 
 2. Now, see how to use this API to get the list of movie object from our database:
@@ -27,7 +27,7 @@
                   Movie.objects.get(id=1)
                   return HttpResponse("Hello Word")
 
-    e. Call thye movie objects all to get all the movie objects in the database. So when we call this at some point django is going to generate the SQL statement like this;
+    e. Call the movie objects all to get all the movie objects in the database. So when we call this at some point django is going to generate the SQL statement like this;
         i. SELECT * FROM movies_movie
 
     g. We also have a method for filtering record like: Movie.bojects.filter() and here we can pass arbitrary keyword argument like, return all the movies with release year 1998. Movie.bojects.filter(release_year=1998). So when we call this django generates the SQL statement like this;
