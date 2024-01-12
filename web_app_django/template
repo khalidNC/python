@@ -1,0 +1,48 @@
+11th Step: Return html content from the view function:
+
+1. So far we use database abstraction api and get movie titles from the database and displat on the web page, /movies.
+Now we want to return html content from the view function. To do so open views module:
+    
+    Codes:
+            # Import Movie class from models module from current directory
+            from django.shortcuts import render
+            from django.http import HttpResponse
+            from .models import Movie
+            
+            # Define views usally the function called index that represents the main page of an app
+            # When the request is sent to an address the the function is get called and returns response, this could be a text
+            # So we import HttpResponse class from django http module
+            def index(request):
+              # Call all the movie object from database by database abstraction api and it returns movies object
+              movies = Movie.objects.all()
+              # Use list comprehention to retrive stirng out of the movie objects
+              # Use comma separator join method to display all the movie titles on the /movies page
+              output = ', '.join([m.title for m in movies])
+              return HttpResponse(output)
+
+    a. Here on the top we import render function, we use thin function to render template.
+    b. So we delete the list strint, output we do not want formating list string. So we have a list of movies now.
+    c. And instead returning httpresponse we will call render() function. And we pass a couple of parameters:
+        1. First parameter: request object
+        2. Second parameter: name of the template
+        3. Thrid parameter: it is optional since it has a default value, context=None. context is basically a dictionary
+        that we use to pass data to our template. In this case we wnat to pass the list of movies to render as html. So 
+        here we pass a dictionary and add a key movies then set this to movies list.
+        4. and return the result of the reder function
+
+        Codes: 
+                from django.shortcuts import render
+                from django.http import HttpResponse
+                from .models import Movie
+                
+                def index(request):
+                  movies = Movie.objects.all()
+                  return render(request, 'index.html', { "movies": movies })
+
+2. Now need to create template:
+    a. In movies directory, add a new folder by convention the name will be templates because that is the name 
+    that django looks for.
+    b. Add a new file called index.html in this folder and open it.
+    c. Now just render something basic to check things are working properly:
+        - Let's add h1: <h1>Hello Word</h1>
+
