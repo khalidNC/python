@@ -1,0 +1,13 @@
+10th Step: Buid API from the database
+
+1. Earlier we built a view function to response to the request to movies/ endpoint. An currently we are only displaying text "Hello Word" and next we will display the the list of movies in our database.
+
+    a. Open the models.py module there is a Movie class. We derived this class from the Model class in django. 
+    b. But why? Because this Model class gives us a bunch of methods for creating, retriving, updating, or deleting object from our database. So if you want to store movie object in our database, you simply call one of these methods[save()] in our database. This save method internally take care of generating the right SQL statement to update our SQL database. This is we called database abstraction API. 
+    c. So this Model class give us an API, Application Programming Interface. And this API abstracts away the complexity of working with database. 
+
+2. Now, see how to use this API to get the list of movie object from our database:
+    a. Let's open views.py module under the movies package
+    b. We already created index function that currently returning text "Hello Word" on the /movies page.
+    c. Now we are going to use our model api to get all the movie objects
+    d. 
