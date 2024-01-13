@@ -45,4 +45,167 @@ Now we want to return html content from the view function. To do so open views m
     b. Add a new file called index.html in this folder and open it.
     c. Now just render something basic to check things are working properly:
         - Let's add h1: <h1>Hello Word</h1>
+    d. And save the changes and reload the page, we can see the Hello Word displays on the page.
 
+3. Imporve the template and content:
+    a. Select HTML language in vscode and quickly generate html code this feature is called gen coding
+    b. Let's say we we want: a table with class table, inside this table we have thead section and inside the 
+    thead section we want tr and inside the tr tag we want to have 3 th tags. So we will write this as below:
+    table.table>thead>tr>th*5 then enter tab button. This will generate the htm codes as below:
+    Codes:
+        <tabe class="tabe">
+          <thead>
+            <tr>
+              <th></th>
+              <th></th>
+              <th></th>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+        </tabe>
+
+    c. here the fisrt column is Title of the Movie
+    d. Second column is Genre
+    e. Third is Stock
+    f. Then Daily Rate
+    g. Release Year
+    Codes:
+        <tabe class="tabe">
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Genre</th>
+              <th>Stock</th>
+              <th>Rate</th>
+              <th>Release Year</th>
+            </tr>
+          </thead>
+        </tabe>
+
+    h. So far we created our table headers. Now let's create table body, called tbody
+    i. Let's say we want tbody inside the tbody tag we need tr inside the tr we want 5 td tags. So we write this
+    like: tbody>tr>td*5 and hit tab button.
+    j. It generate gen codes like below:
+    Codes:
+          <tabe class="tabe">
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>Genre</th>
+                <th>Release Year</th>
+                <th>Rate</th>
+                <th>Stock</th>
+              </tr>
+            </thead>
+            <tbody>
+            {% for movie in movies %}
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </tabe>
+      
+    k. Now we want to render tr under tbody dynamically, so basically we want to itarate over all the movies we get 
+    in this template and for each movie we want to render a table row. To do this we will use Django Template Syntax.
+    l. In django template, we can use execute some logic using template tags like, inside curly brackets
+    add persent as like this: {% %} and in between this we will write some logic. Like if statement, loop and so on.
+    m. Here we will use for loop since we need to iterate a list. So the logic will be like {% for movie in movies %}
+    here we write the list reference movies because in the render method on views module we used context object to pass
+    a dictionary with key movie:movies that's why here we can access the object 'movies' here.
+    n. Now we can use django template snippets extension in vscode for django template that generate code automatically. So just type for it suggests for forloop so select this and it will genearte the codes for us as below:
+    codes:
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>Genre</th>
+                <th>Release Year</th>
+                <th>Stock</th>
+                <th>Rate USD</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for  in  %}
+              
+              {% endfor %}
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+
+    o. Now just write movie in movies and we want to render the table row so just move the tr tags to the loop with
+    one indent as below:
+    codes:
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>Genre</th>
+                <th>Release Year</th>
+                <th>Stock</th>
+                <th>Rate USD</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for movie in movies %}
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table> 
+
+    p. Now we need to render some content inside each td tags under tr tag. So we use another syntax: {{ }} to render the value of a variable. So we want title of movie so {{movie.title}} and same as others as below:
+    codes:
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>Genre</th>
+                <th>Release Year</th>
+                <th>Stock</th>
+                <th>Rate USD</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for movie in movies %}
+                <tr>
+                  <td>{{ movie.title }}</td>
+                  <td>{{ movie.genre }}</td>
+                  <td>{{ movie.release_year }}</td>
+                  <td>{{ movie.number_in_stock}}</td>
+                  <td>{{ movie.daily_rate }}</td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+
+    q. Note: In django template there are 2 important notations {% to execute logic, and {{ for rendering value.
+    r. Now save the changes and reload the browser and see the movies in a tbel format on the page.
+
+4. App's name specific html template:
+    a. There will be an issue if we flow the approach if we name index.html for a template. Because django searches
+    for all the installed apps for the template so if there is any common name for the template then it will raise error.
+    b. So the better approach is to create sub-directory for the app name specific, for an example, since we are creating 
+    template for movies app so we will create a folder under templates forlder name as 'movies'.
+    c. Then move the index.html file to the movies folder.
+    d. and inside the views module, reference the movies/ prefix with idex.html template as like below:
+        Codes:
+                return render(request, "movies/index.html", { "movies": movies })
+    e. Now save the changes and reload the browser to check things are okay.
+
+Next step:12 is on adding bootstrap in file adding_bootstrap
