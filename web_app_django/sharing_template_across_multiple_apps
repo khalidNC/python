@@ -1,0 +1,34 @@
+14th Step: sharing a base template across the multiple apps. 
+
+1. Currently we have the base template in movies folder. And we want to move this to the root directory.
+    a. Create a new directory and name it 'templates' in the root directory
+    b. then move the base.html file to the new templates directory
+    c. Since we have used name space in index.html to extends template: {% extends "movies/base.html" %}
+    d. Now need to remove the prefix movies/ form it because the base template is in root now.
+    e. Now save the changes and reload the browser
+    f. But we see an error template does not exist: Ifwe take look at the full error message we can notice 
+    django try to check and find all installed apps templates but template has not been found. 
+    g. So we need to update the settings module under vidjan directory with some does to tell django to ckech the root directory for the template. So let's open setting module and find TEMPLATES object as below:
+
+        Codes:
+                TEMPLATES = [
+                    {
+                        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+                        'DIRS': [os.path.join(BASE_DIR, "templates")],
+                        'APP_DIRS': True,
+                        'OPTIONS': {
+                            'context_processors': [
+                                'django.template.context_processors.debug',
+                                'django.template.context_processors.request',
+                                'django.contrib.auth.context_processors.auth',
+                                'django.contrib.messages.context_processors.messages',
+                            ],
+                        },
+                    },
+                ]
+
+    h. And write codes in DIRS key: os.path.join(BASE_DIR, "templates") here BASE_DIR is the django default variable for referencing root directory.
+    i. Now save the changes and reload the browser and this time we can see the webpage having no errors.
+
+    Next step:15 is no url parameters
+    
