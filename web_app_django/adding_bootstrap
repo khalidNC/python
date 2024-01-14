@@ -1,0 +1,87 @@
+12th Step: Bootstrap, is a very popular css framework. We are going tto add this framework into the vidjan app.
+It gives the application a modern look and fit. It responsive on mobie as well so we do not need extra work for
+that. Let's start:
+
+    a. Go to bootstrap website: https://getbootstrap.com/
+    b. Then go to documentation page: https://getbootstrap.com/docs/5.3/getting-started/introduction/
+    c. Here we can find the instruction how to add bootstrap to an existing website. And we basically will add 
+    css file, it's url is given in the documentation also we can download it from here and can add as static 
+    file in our project.
+    d. We can see Quick start template here as well we copy that template
+    e. Then back to our project in templates folder, inside the movies folder add a new file by convention we call
+    the file base.html so this is the basic template for all the pages in out movies app.
+    f. Now paste the quick start template we just coppied.
+        Codes:
+                <!doctype html>
+                <html lang="en">
+                  <head>
+                    <meta charset="utf-8">
+                    <meta name="viewport" content="width=device-width, initial-scale=1">
+                    <title>Bootstrap demo</title>
+                  </head>
+                  <body>
+                    <h1>Hello, world!</h1>
+                  </body>
+                </html>
+
+    g. And let's edit some of the tags as below:
+        a. Change the title to Vidjan
+        b. And in body, let's remove h1 tag
+        c. and instead h1 define a placeholder for other templates. So when we render the movies, that template will 
+        return an html table. So we want to render that html table inside the body. 
+        d. So we need a placeholder for our views to render the templates. So how to write placeholder:
+            i. write 'block', the django template snippets suggests block codes and select this
+            ii. here we have multi cursor editing, so whatever we type after block and end block, we give a block name
+            e.g content the name display on the end block as well. so press the escape button then remove the 2nd one. And save the changes. 
+
+                Codes:
+                    <!doctype html>
+                    <html lang="en">
+                      <head>
+                        <meta charset="utf-8">
+                        <meta name="viewport" content="width=device-width, initial-scale=1">
+                        <title>Vidjan</title>
+                      </head>
+                      <body>
+                        {% block content %}
+                        {% endblock  %}
+                      </body>
+                    </html>
+            
+    h. Now let's back to the index template file. On the top we need another template tag called extends. So type extends and django template suggests the codes.
+    i. We are extending the base.html template. so type 'base.html' inside the codes.
+    j. Now where should we put the table class='table'? We will put this table in content block that we just defined. So just one more time defined block template and write content that was our defined block.
+    k. Now put the table in between the content block with an indent.
+    l. Save the changes and reload the browser but it raise an error because django does not find the base.html template. 
+    m. So we should name specific our template. So we just need to prefix 'movies/' before base.html in extends code block.
+    n. Now save the changes and reload the browser and we see the new look with css.
+             
+             codes:
+                    {% extends "movies/base.html" %}
+                    <h1>Top Movies List and Rental Price</h1>
+                    {% block content %}
+                      <table class="table">
+                        <thead>
+                          <tr>
+                            <th>Title</th>
+                            <th>Genre</th>
+                            <th>Release Year</th>
+                            <th>Stock</th>
+                            <th>Rate USD</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {% for movie in movies %}
+                            <tr>
+                              <td>{{ movie.title }}</td>
+                              <td>{{ movie.genre }}</td>
+                              <td>{{ movie.release_year }}</td>
+                              <td>{{ movie.number_in_stock }}</td>
+                              <td>{{ movie.daily_rate }}</td>
+                            </tr>
+                          {% endfor %}
+                        </tbody>
+                      </table>
+                    {% endblock  %}
+
+Next step:13 is on customizing the layout of the css in file customizing_css_layout
