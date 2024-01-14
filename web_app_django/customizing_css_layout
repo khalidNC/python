@@ -46,3 +46,10 @@
     a. Boack to the index.html here is our table class
     b. Let's add another class for the border: <table class="table table-bordered">
     c. Then save the changes and reload the browser and see the border now.
+
+4. Also add hover effect by adding another class table-hover:
+    a. Boack to the index.html here is our table class
+    b. Let's add another class for the border: <table class="table table-bordered table-hover">
+    c. Then save the changes and reload the browser and see the nice hover effect now.
+
+There is an issue in the navbar this nabar is for movies app only what if there is multiple apps and we do not want to redefine the bootstrap every single app. In next step:14 we will show how to share a base template across multiple apps.
