@@ -1,0 +1,48 @@
+13th Step: Customize the css output to take this to next level:
+
+1. Now we have the table is better look. Let's use componants to improve by adding Navbar on the top:
+    a. Let's say we want to add Navbar at the top. So navigate to the left menu and select Navbar
+    b. It opens the internal page: https://getbootstrap.com/docs/5.3/components/navbar/
+    c. Copy the HTML for navbar under brand
+        Codes:
+                <!-- As a heading -->
+                <nav class="navbar bg-body-tertiary">
+                  <div class="container-fluid">
+                    <span class="navbar-brand mb-0 h1">Navbar</span>
+                  </div>
+                </nav>
+    d. Then paste the html just above block content on base.html file
+    e. Then change the 'Navbar' to 'Something you want to display on the to as heading on the webpage'
+    f. Then save the changes and reload the browser and we can see the Heading in navbar.
+
+2. Another improvment: Currently the table takes the entire space of the page, let's make it centered. 
+    a. Back to the base.html and we should warp the content block inside of the main element with the container class.
+    b. So with bootstrap we want to create a main class: <main class="container"></main> then put the content block inside this container block with an indent.
+        Codes:
+                <!doctype html>
+                <html lang="en">
+                  <head>
+                    <meta charset="utf-8">
+                    <meta name="viewport" content="width=device-width, initial-scale=1">
+                    <title>Vidjan</title>
+                    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+                  </head>
+                  <body>
+                    <!-- As a heading -->
+                    <nav class="navbar bg-body-tertiary">
+                      <div class="container-fluid">
+                        <span class="navbar-brand mb-0 h1">Top Movies List and Rental Price</span>
+                      </div>
+                    </nav>
+                    <main class="container">
+                      {% block content %}
+                      {% endblock  %}
+                    </main>
+                    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+                  </body>
+                </html>
+
+3. Also add border to this table: Now let's add border to do so:
+    a. Boack to the index.html here is our table class
+    b. Let's add another class for the border: <table class="table table-bordered">
+    c. Then save the changes and reload the browser and see the border now.
