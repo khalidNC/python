@@ -1,0 +1,37 @@
+15th Step: URL Parameters
+
+1. We will click on the movie name and it takes me to the movie detail page. So we will request another endpoint to django views the endpoint like movies/1 1 is the movie_id. So let's see how we can implement this:
+
+    a. Firts we need to define a url that takes a parameter. Like, movies/1 where 1 is the movie id.
+        1. Open the urls module under movies app, here we deifne a new url.
+        2. To define new url, call the path() function. Then pass first argument a string to "<movie_id>" here '<>' is to define parameter. Just to recall:
+                                          a. Our main urls module includes the url parterns on movies urls module
+                                          b. And the prefix, movies/ in main urls specify the base apth of the app
+        3. When we add a parameter <movie_id> that represents the url look like this, movies/1. Because all the urls we are working in this moives/urls module starts with movies/
+        4. With this if we request url like movies/1 (where 1 is movie_id) this will tigger view function in views.py module in movies app.
+        5. So need to pass the second argument as view function reference. We did not add the fuction yet. Let's say will add a fuction on views module as detail
+        6. And as third argument as best practice we should specify the name of the url with keyword:argument like, name='detail'. This is because if there are multiple references on url or hard coded urls like movies/ old_system/movies/ then we need to change everywhere. More better practice to name spces like, name='movies_detail'
+        7. So this is our url patterns. Now let's create view function.
+
+            Codes:
+                    urlpatterns = [
+                      path("", views.index, name="movies_index"),
+                      path("<movie_id>", views.detail, name="movies_detail")
+                    ]
+
+    b. Create view function as detail:
+        1. Open views.py in the movies app
+        2. And add a new view function called detail() and it takes request, and also a parameter called movie_id because the url pattern in movies/urls module we used the parameter <movie_id>.
+        3. So when we send a request like movies/1 django automatically extract 1 and it will call the detail() fuction and pass 1 as an argument for movie id.
+        4. the function return initially an HttpResponse for the movie_id
+
+            Codes:
+                    def detail(request, movie_id):
+                      return HttpResponse(movie_id)
+
+        5. Now save the changes and reload the page then open movies/1 and we can see the browser display 1.
+        6. Now if we visit movies/ with nonnumaric value like, movies/a it also returns a. So we should limited this to integer because in our database the movie id is integer. 
+        7. To fix this open urls in movies app and use a type converter to convert movie_id to integer using prefix with int: before movie_id: <int:movie_id>
+        8. Now if we again try movies/a system will raise not found error.
+
+Next step:16 we will get the movie object for the movie_id and render this on the movies/1 page.
