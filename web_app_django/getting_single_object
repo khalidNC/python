@@ -1,0 +1,74 @@
+16th Step: Getting movie objects and render this to the movie detail page:
+
+1. Get Movie objects in view detail() function and that render result:
+
+    a. Use Movie model to get movie objects in detail function in views module.
+    b. So we have detail fuction and we get movie_id so we can get movie objects of a give id
+    c. Like, Movie.objects.get(movie_id), here get() method is used to get a single movie of a given id
+    d. The get() method take keyword:argument id='movie_id', we also have know keyword pk(primary key) pk=movie_id. so any of these 2 can be used.
+    e. now we need to put this in a template, then render it and the function retruns this result. 
+    f. So delete this line of code: return HttpResponse(movie_id)
+    g. and return render() and pass request, then our "template" which is 'movies/detail.html' [Note: As convention, we use name space movies/ since the template we will created inside movies folder, and the template name same as function's name], then pass contex object which is a dictionary {} and we set it to key is 'movie': movie
+
+        Codes:
+                from django.shortcuts import render
+                from django.http import HttpResponse
+                from .models import Movie
+
+                def index(request):
+                  movies = Movie.objects.all()
+                  return render(request, "movies/index.html", { "movies": movies })
+
+                # Define a function detail for the movie detail page
+                def detail(request, movie_id):
+                  movie = Movie.objects.get(id="movie_id")
+                  # return HttpResponse(movie_id)
+                  return render(request, 'movies/detail.html', {"movie": movie})
+
+    h. Save the changes.
+
+2. Now we need to created detail.html template:
+
+    a. Open movies folder inside templates folder under movies app and create a new file called detail.html
+    b. In the template on the top, we need to extend base.html template in extends block, again the django template will autosuggest this: {% extends "base.html" %}
+    c. Then we will use a block and we define this a content block: 
+                                                                    {% block content %}
+
+                                                                    {% endblock  %}
+    d. We want to render a description list tag(dl) inside the block. Again, we need chnage the language to html in vscode.
+    e. then we want create a dl tag inisde that we neen dt and next to it we wnat dd and we want this 5 times. So all comes together: dl>(dt+dd)*5 then press 'tab' button and it will create the tags stracture automatically as below:
+          {% block content %}
+            <dl>
+              <dt></dt>
+              <dd></dd>
+              <dt></dt>
+              <dd></dd>
+              <dt></dt>
+              <dd></dd>
+              <dt></dt>
+              <dd></dd>
+              <dt></dt>
+              <dd></dd>
+            </dl>
+          {% endblock  %} 
+
+    f. here, dt will render text 'Title' and dd will render actual value so we use double curly brackets {{ movie.title }}
+    g. And fill all the tags in same way. And this will look like below:
+          {% block content %}
+            <dl>
+              <dt>Title</dt>
+              <dd>{{ movie.title }}</dd>
+              <dt>Genre</dt>
+              <dd>{{ movie.genre }}</dd>
+              <dt>Release year</dt>
+              <dd>{{ movie.release_year }}</dd>
+              <dt>Stock</dt>
+              <dd>{{ movie.number_in_stock }}</dd>
+              <dt>Rate in USD</dt>
+              <dd>{{ movie.daily_rate }}</dd>
+            </dl>
+          {% endblock  %}
+
+3. Now save the changes and reload the browser and see the movie detail in the movies/1 page. 
+
+Next step:17 is on raising error 404
