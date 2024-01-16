@@ -1,0 +1,43 @@
+17th Step: Raising 404 error:
+
+1. We have render the movie dteila on movie detail page. Now if we browse by invalid id then the system show an error like, DoesNotExist at /movies/20, but this is not good we should return http 404 error if page not found. We can fix that as below;
+
+    a. We need handel exception and return an http 404 error on view function
+    b. Open views module and add try block in detail function as below;
+
+        Codes:
+                def detail(request, movie_id):
+                  try:
+                  movie = Movie.objects.get(id=movie_id)
+                  return render(request, "movies/detail.html", {"movie": movie})
+
+    c. And then catch the exception, here the exception type is does not exist. And the exception class is the part of our model. So Movie.DoesNotExist. Note: Our Model class derived from Model class in django and this class defines the doesnotexist, so Movie class inherited this.
+    d. So we handled DoesNotExist. Now need return 404 error. And we need import on top Http404
+    e. insead retunr raise Http404() since this is an exception class and we need raise.
+
+        Codes:
+                def detail(request, movie_id):
+                  try:
+                    movie = Movie.objects.get(id=movie_id)
+                    return render(request, "movies/detail.html", {"movie": movie})
+                  except Movie.DoesNotExist:
+                    raise Http404() 
+
+2. Now save the changes and reload the browser and pass an invaid movie id in the url movies/10. Now it shows Page not found 404.
+
+3. Now django has a shortcut way to handle try and except by using a function called get_object_or_404 the benifit of using this funtion is you do not need to reapitedly write try and except block in each view functions. This function does that for us.
+    a. Go to the views module import get_object_or_404 from django shortcuts
+    b. call the fuction while creating the movie object and it takes 2 arguments
+    c. first one is the model class which is Movie in this case, and the second one is keyword:argument id=movie_id
+    The code will look like this:
+
+        Codes:
+                from django.shortcuts import render, get_object_or_404
+
+                def detail(request, movie_id):
+                  movie = get_object_or_404(Movie, id=movie_id)
+                  return render(request, "movies/detail.html", {"movie": movie})
+
+4. Now save the changes and reload the browser and see Page Not Found 404 error for an invalid movie id
+
+Next Step:18 is on referencing url, here we will click on any movie in the index page and it takes you to the detail page.
