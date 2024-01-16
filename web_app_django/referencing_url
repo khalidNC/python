@@ -1,0 +1,92 @@
+18th Step: referencing url, here we will click on any movie title in the index page and it takes me to the detail page.
+
+To do so we need to:
+1. Put link to the movie title in the index page.
+2. Then check thing works or not
+3. Use name space link instead hardcod url because in feauture it may require to change url then have to change everywhere.
+4. Then again check things are working.
+5. Finally, improve the name space option in index module by defining app name in urls module, this option reduces our codes.
+
+So Let's start:
+1. Put link in index html template:
+    a. Open the index html template since our mivie titles are in this page and we wnat click on each title.
+    b. Inside tbody, we add anchor tag td tag where we render movie title to put href to define hardcoded url first.
+    c. the link will be like: href="/movies/" here we want to render movie_id dynamic so use double curly brackets.
+    href="/movies/{{ movie.id }}"
+    d. Then cut the {{ movie.title }} and paste inside the ></a> tag.
+
+        Codes:
+                <tbody>
+                  {% for movie in movies %}
+                    <tr>
+                      <td>
+                        <a href="/movies/{{ movie.id }}">{{ movie.title }}</a>
+                      </td>
+                      <td>{{ movie.genre }}</td>
+                      <td>{{ movie.release_year }}</td>
+                      <td>{{ movie.number_in_stock }}</td>
+                      <td>{{ movie.daily_rate }}</td>
+                    </tr>
+                  {% endfor %}
+                </tbody>
+    
+    2. Now save the changes and and reload the browser and we can see the movie title has link and it takes me to the detail page.
+
+    3. Now replace hardcoded link with name space to reference the url:
+        a. Open the urls module in movies app here we defined name for each urls: name="movies_detail". Now we can reference this url using their name. 
+        b. back to the index.html and delete the hardcod url /movies/{{ movie.id }} instead we are going to use url template tag inside href="".
+        c. so add curly bracket, then percent and type url in between: {% url %}. This our url template tag, first we pass name of our url in this case "movies_detail". second we pass any parameter if they exist. In this case, it is 
+        movie.id. So it looks like: {% url 'movies_id' movie.id %}
+
+            Codes:
+                    <tbody>
+                      {% for movie in movies %}
+                        <tr>
+                          <td>
+                            <a href="{% url 'movies_detail' movie.id %}">{{ movie.title }}</a>
+                          </td>
+                          <td>{{ movie.genre }}</td>
+                          <td>{{ movie.release_year }}</td>
+                          <td>{{ movie.number_in_stock }}</td>
+                          <td>{{ movie.daily_rate }}</td>
+                        </tr>
+                      {% endfor %}
+                    </tbody>
+
+4. Now save the changes and reload browser and see it works same as before.
+
+5. Define a know variable app_name instead prefix app's name to each url's name:
+    a. Back to the urls module in movies app:
+
+        Codes:
+                from django.urls import path
+                from . import views
+
+                urlpatterns = [
+                  path("", views.index, name="movies_index"),
+                  path("<int:movie_id>", views.detail, name="movies_detail")
+                ]
+
+    b. Earlier it is mentioned it is good practice to prefix all the url's name with the app's name. Like, movies_detail. We did that because django acidentally pick a url with the same name from a different app. This is a good practice however there is a better way.
+    c. Just above 'urlpatterns' let's define a know variable app_name django is aware of this variable and assign here the name of the app in this case it is 'movies'.
+    d. Then delete the movies_ prefix from everywhere from the url's names.
+
+        Codes:
+                from django.urls import path
+                from . import views
+
+                app_name = "movies"
+
+                urlpatterns = [
+                  path("", views.index, name="index"),
+                  path("<int:movie_id>", views.detail, name="detail")
+                ]
+
+    e. Now go back to the index.html and replace the underscore(movies_) with colon(movies:) in the url template tag: {% url 'movies:detail' movie.id %} when django sees this, it knows that we are talking about the movies app. and that we should have a url name detail.
+
+        Codes:
+                <a href="{% url 'movies:detail' movie.id %}">{{ movie.title }}</a>
+
+    f. Now save the changes and reload browser and see things are working well.
+
+Next step:19 is now creating api
