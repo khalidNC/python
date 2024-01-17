@@ -1,0 +1,29 @@
+19th Step: creating api:
+
+1. Build an api, introduction: 
+API is short from of Application Programming Interface, we wiil build the api for our movies app. With this api other websites or mobile apps can work with our data. In practical terms that means we are going to expose new endpoints that start with api. like, /api/movies, so other wesites or mobile apps can send http request to this end point and get the list of our moives in json format. That is pure data, there is no html markup. So they can get list of movies and do whatever they want with it. There are tons websites that have thire public api like, facbook, twitter, youtube, yelp and so on. All these websites have api so you can work with their data in your apps. This is the benefit of publishing api. 
+
+2. Building api with django:
+There are basically 2 polular frameworks, one of them is django-tastypie and another one is djangorestframework. We will build api with django-tastypie framework. 
+
+3. Steps on building api with django-tastypie:
+    a. Install django-tastypie and create virtuel environment with pipenv
+    b. Create new app or the project called api
+    c. Register the api app in the list of all installed apps in the settings.py module
+    d. Add new model class in models.py module in api app to represent the concept of a movie in resful api
+    e. Derive this model class from model-resource-class in django, import this class from tastypie.
+    f. Tastypie looks for inner class called Meta, so define this class as well.
+    g. this Meta class defines some meta data about movei resouce. So set few attributes that tastypie looks for
+    h. First attribute is queryset and set this to query for getting list of all movies. So import Movie class from moives
+    i. The call all movie object: Movie.objects.all(), this simply returns a query it ig not getting data form the database
+    g. Second attribute is resource_name and set this movies that determines the endpoint
+    h. then generate url endpoint: go to main app vidjan and open urls.py module 
+    i. Add new url pattern for api
+    j. import MovieResource class from api models module
+    k. then create a class instance. This instance has property ulrs that returns urls for the movie resoucre.
+    m. Pass the movie_resoure.urls to the incldule method
+    l. That's it. So save the changes and hit api/movies and see the data in json format.
+
+4. Detail step down with codes:
+
+    a. 
