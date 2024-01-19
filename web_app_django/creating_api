@@ -1,29 +1,250 @@
 19th Step: creating api:
 
 1. Build an api, introduction: 
-API is short from of Application Programming Interface, we wiil build the api for our movies app. With this api other websites or mobile apps can work with our data. In practical terms that means we are going to expose new endpoints that start with api. like, /api/movies, so other wesites or mobile apps can send http request to this end point and get the list of our moives in json format. That is pure data, there is no html markup. So they can get list of movies and do whatever they want with it. There are tons websites that have thire public api like, facbook, twitter, youtube, yelp and so on. All these websites have api so you can work with their data in your apps. This is the benefit of publishing api. 
+API is short from of Application Programming Interface, we wiil build the api for our movies app. With this api other websites or mobile apps can work with our data. In practical terms that means we are going to expose new endpoints that start with api. like, /api/movies, so other wesites or mobile apps can send http request to this endpoint and get the list of our moives in json format. That is pure data, there is no html markup. So they can get list of movies and do whatever they want with it. There are tons websites that have their public api like, facbook, twitter, youtube, yelp and so on. All these websites have api so you can work with their data in your apps. This is the benefit of publishing api. 
 
 2. Building api with django:
 There are basically 2 polular frameworks, one of them is django-tastypie and another one is djangorestframework. We will build api with django-tastypie framework. 
 
 3. Steps on building api with django-tastypie:
     a. Install django-tastypie and create virtuel environment with pipenv
-    b. Create new app or the project called api
+    b. Create new app for the project called api
     c. Register the api app in the list of all installed apps in the settings.py module
-    d. Add new model class in models.py module in api app to represent the concept of a movie in resful api
-    e. Derive this model class from model-resource-class in django, import this class from tastypie.
-    f. Tastypie looks for inner class called Meta, so define this class as well.
-    g. this Meta class defines some meta data about movei resouce. So set few attributes that tastypie looks for
-    h. First attribute is queryset and set this to query for getting list of all movies. So import Movie class from moives
-    i. The call all movie object: Movie.objects.all(), this simply returns a query it ig not getting data form the database
-    g. Second attribute is resource_name and set this movies that determines the endpoint
-    h. then generate url endpoint: go to main app vidjan and open urls.py module 
-    i. Add new url pattern for api
-    j. import MovieResource class from api models module
-    k. then create a class instance. This instance has property ulrs that returns urls for the movie resoucre.
-    m. Pass the movie_resoure.urls to the incldule method
-    l. That's it. So save the changes and hit api/movies and see the data in json format.
+    d. Add new model class in models.py module under the api app which represents the concept of a movie in restful api
+    e. Generate url endpoint in urls.py module 
 
-4. Detail step down with codes:
+4. Detail steps breakdown with codes:
+    a. Install django-tastypie and create virtual environment together with pipenv: 
 
-    a. 
+        Command line: pipenv install django-tastypie
+
+    b. Create api app:
+
+        Command line: python3 manage.py startapp api
+
+       It creates a app directory in the root ridectory. This directory has below files and folders.
+       Api directory structure:
+                                VIDJAN/
+                                  │
+                                  ├── api/
+                                  │   ├── migrations/
+                                  │   │   └── __init__.py
+                                  │   ├── __init__.py
+                                  │   ├── admin.py
+                                  │   ├── apps.py
+                                  │   ├── models.py
+                                  │   ├── test.py
+                                  │   └── views.py
+
+    c. Register api app in settings.py module:
+        1. Open the settings.py module under main app, vidjan 
+        2. Add the config class of api app as reference at the end of the INSTALLED_APPS list:
+
+            Codes: 
+                    INSTALLED_APPS = [
+                    'django.contrib.admin',
+                    'django.contrib.auth',
+                    'django.contrib.contenttypes',
+                    'django.contrib.sessions',
+                    'django.contrib.messages',
+                    'django.contrib.staticfiles',
+                    'movies.apps.MoviesConfig',
+                    'api.apps.ApiConfig'
+                ]
+        
+        3. Register is done so save the changes.
+    
+    d. Create model class for api app:
+    In the world of api we refer model as resource. There is another term, restful api. REST stands for Representational State Transfer. This is a technical jargon for a bunch of conventions that defines how application should talk to each other over http protocol. No in rest world, we have url(Uniform Resource Locator) like, /moivies. With this url we can locate the movies. And here movie is resource. So essentially in rest world, we expose some of our resources using urls. Now, let's create movie resource in models module in api app.
+        1. Open models module under api app
+        2. Add a class MoiveResource it is arbitrary but good practice is to define the name by adding Resource
+
+            Codes: 
+                    class MovieResource()
+
+        3. And we should derive this class from the model resource class in django-tastypie. So on the top import ModelResource class from the resources module in the tastypie packages. Then pass the class reference in the MovieResource class. With this our class will inherite all the attributes of ModelResource class.
+
+            Codes:
+                    from tastypie.resources import ModelResource 
+
+                    class MovieResource(ModelResource):
+
+        4. Now tastypie looks for inner class called Meta, so we define another class Meta:
+
+            Codes:
+                    from tastypie.resources import ModelResource 
+
+                    class MovieResource(ModelResource):
+                      class Meta:
+        
+        5. This Meta class defines some metadate about our movie resources. So we will set few attributes that tastypie looks for. The first attribute is queryset, and set this to the query for getting the list of all movies. So on the top from our movies app models module import Movie class. Then set the attribute to Movie.objects.all(). This all() method simply returns a query, it is not going to the database and get the list of all movies. This simply return a query and this query will be executed at some point in the future. This is what we call lazy loading, so this query object is a lazy object. 
+
+            Codes:
+                    from tastypie.resources import ModelResource
+                    from movies.models import Movie
+
+                    class MovieResource(ModelResource):
+                      class Meta:
+                        queryset = Movie.objects.all()
+
+        The second attribute resource_name and we need to set this to 'movies'. And this name determines what our endpoint will look like. So we use movies here, and that means later we will have an api available at api/movies. So we done with our model. And next step to generate url endpoint.
+
+            Codes:
+                    from tastypie.resources import ModelResource
+                    from movies.models import Movie
+
+                    class MovieResource(ModelResource):
+                      class Meta:
+                        queryset = Movie.objects.all()
+                        resource_name = 'movies'
+
+    e. Generate url endpoint:
+        1. Go to our main app vidjan and open urls.py module. Currently we have 2 url patterens:
+
+            Codes:
+                    urlpatterns = [
+                        path('admin/', admin.site.urls),
+                        path('movies/', include('movies.urls'))
+                    ]
+
+        Earlier we told django that any url starts with movies/ should include urls from movies.urls module. We will do same approach here as well. So let's create another path and tell django that any url starts with api/ should include another module. 
+
+            Codes:                    
+                    urlpatterns = [
+                        path('admin/', admin.site.urls),
+                        path('movies/', include('movies.urls'))
+                        path('api/', include(''))
+                    ]
+        
+        2. What is that modudle? we need to import MovieResource model. So on the top from api app, models module import MovieResource class. 
+
+            Codes:  
+                    from api.models import MovieResource  
+
+                    urlpatterns = [
+                        path('admin/', admin.site.urls),
+                        path('movies/', include('movies.urls'))
+                        path('api/', include(''))
+                    ]
+        
+        
+        3. Then create an instence of this class. let's call the instence movie_resource and set this to MovieResource(), now this object has a attribute called urls and this attribute returns the urls for this MovieResource based on the resource_name we set in the models module. 
+
+            Codes:  
+                    from api.models import MovieResource
+
+                    movie_resource = MovieResource()
+
+                    urlpatterns = [
+                        path('admin/', admin.site.urls),
+                        path('movies/', include('movies.urls'))
+                        path('api/', include(''))
+                    ]
+        
+        4. Now pass movie_resource.urls in the include function.
+
+            Codes:  
+                    from api.models import MovieResource
+
+                    movie_resource = MovieResource()
+
+                    urlpatterns = [
+                        path('admin/', admin.site.urls),
+                        path('movies/', include('movies.urls')),
+                        path('api/', include(movie_resource.urls))
+                    ]
+
+        5. Save the changes, that's all we had to do to create an api to expose our movie objects, or more accurately move resources.
+
+5. Recap:
+    a. We installed tastypie
+    b. we reated a new app called api
+    c. in that app, we added a new model that represents our movie resources 
+    d. We registered a new url pattern in urls.py
+
+6. Now test the api: Go to the browser and head over the api/movies and it takes you to the page with all our movie object serialized as json:
+
+    json:
+
+          {
+            "meta": {
+            "limit": 20,
+            "next": null,
+            "offset": 0,
+            "previous": null,
+            "total_count": 5
+            },
+            "objects": [
+              {
+              "daily_rate": 1.5,
+              "date_created": "2024-01-10T13:41:33",
+              "id": 1,
+              "number_in_stock": 5,
+              "release_year": 2005,
+              "resource_uri": "/api/movies/1/",
+              "title": "The Lost City"
+              },
+              {
+              "daily_rate": 2,
+              "date_created": "2024-01-10T14:19:06.224677",
+              "id": 2,
+              "number_in_stock": 4,
+              "release_year": 1997,
+              "resource_uri": "/api/movies/2/",
+              "title": "Life Is Beautiful"
+              },
+              {
+              "daily_rate": 1,
+              "date_created": "2024-01-10T17:00:10.167137",
+              "id": 3,
+              "number_in_stock": 3,
+              "release_year": 1997,
+              "resource_uri": "/api/movies/3/",
+              "title": "Good Will Hunting"
+              },
+              {
+              "daily_rate": 2,
+              "date_created": "2024-01-10T17:03:56.852260",
+              "id": 4,
+              "number_in_stock": 9,
+              "release_year": 1994,
+              "resource_uri": "/api/movies/4/",
+              "title": "The Shawshank Redemption"
+              },
+              {
+              "daily_rate": 6.5,
+              "date_created": "2024-01-10T17:05:16.678325",
+              "id": 5,
+              "number_in_stock": 7,
+              "release_year": 2008,
+              "resource_uri": "/api/movies/5/",
+              "title": "Kung Fu Panda"
+              }
+            ]
+          }
+
+7. To not expose any object:
+Currenty all the movies data are axpose to public. For an example we do not wnt to expose date_created so we just need to go back to the api.models module inside meta class set an attribute excludes and set a list of data fields that you want to exclude. In this case:
+
+    Codes:
+            class MovieResource(ModelResource):
+              class Meta:
+                queryset = Movie.objects.all()
+                resource_name = 'movies'
+                excludes = ['date_created']
+
+Save the changes and reload browser and see the date_created has gone:
+
+    Json:
+          "objects": [
+              {
+              "daily_rate": 1.5,
+              "id": 1,
+              "number_in_stock": 5,
+              "release_year": 2005,
+              "resource_uri": "/api/movies/1/",
+              "title": "The Lost City"
+              },
+          ]
+
+Next step:20 is on adding homepage
