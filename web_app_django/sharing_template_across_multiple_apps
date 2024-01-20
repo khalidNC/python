@@ -8,7 +8,7 @@
     e. Now save the changes and reload the browser
     f. But we see an error template does not exist: Ifwe take look at the full error message we can notice 
     django try to check and find all installed apps templates but template has not been found. 
-    g. So we need to update the settings module under vidjan directory with some does to tell django to ckech the root directory for the template. So let's open setting module and find TEMPLATES object as below:
+    g. So we need to update the settings module under vidjan directory with some codes to tell django to check the root directory for the template. So let's open setting module and find TEMPLATES object as below:
 
         Codes:
                 TEMPLATES = [
@@ -31,4 +31,3 @@
     i. Now save the changes and reload the browser and this time we can see the webpage having no errors.
 
     Next step:15 is no url parameters
-    
