@@ -1,0 +1,87 @@
+20th Step Adding the Homepage:
+
+1. Introduction:
+So far we ahve done the admin site, movies index, and movie detail page however our homepage is still broken. When we head over to this address: http://127.0.0.1:8000/ it redirects to page not found. So now we will add a template for homepage and render this.
+
+2. Steps of Creating Homepage:
+    a. Add views.py module in the main app
+    b. Define view fuction in the module
+        1. The function takes a request
+        2. and render a template and return it
+        3. So we need to import render function from django shortcuts module
+        4. so we return render() function that takes requst as 1st argument, and template as 2nd argument
+        4. Note: since we do not render any data in the homepage so we will not pass context object 
+    c. Map the view fucntion to a url endpoint
+        1. Back to urls module in vidjan app
+        2. Import the views module that we just created in vidjan app
+        3. Create a new url pattern, basically add a new path object, and pass empty string to represent the homepage
+        4. and map this to the class reference that we just created in views module
+    d. Create html template
+        1. There are two places where we can create html template
+            a. Add template inside vidjan folder. In this case we need register the divjan as an app in setting.py module. Also we need a config class in apps.py(need to create this as well under vidjan) module to register as an app.
+            b. Put all the general templates like, homepage, about page, contact page and so on inside mani template folder
+        2. In this case, we will choose second option
+        3. Add a html template file inside template folder
+  
+3. Steps breakdown with codes:
+    a. Add views.py module in the main app:
+        1. Go to vidjan folder
+        2. Add a new file named views.py
+    b. Define a view function called home
+        1. The function takes request
+        2. This function retunrs the results of the render function which takes the request, and html template
+
+        Codes:
+                from django.shortcuts import render
+
+                def home(request):
+                  return render(request, "home.html")
+
+    c. Map the home fucntion to a url endpoint
+        1. Back to urls module in vidjan app
+        2. Import the views module that we just created in vidjan app:
+            Codes: from . views import Home
+        3. Create a new url pattern, basically add a new path object, and pass empty string to represent the homepage
+        4. and map this to the class reference that we just created in views module
+
+            Codes:
+                    urlpatterns = [
+                        path('admin/', admin.site.urls),
+                        path('movies/', include('movies.urls')),
+                        path('api/', include(movie_resource.urls)),
+                        path('', views.home)
+                    ]
+
+    d. Create html template
+        1. There are two places where we can create html template
+            a. Add template inside vidjan folder. In this case we need register the divjan as an app in setting.py module. Also we need a config class in apps.py(need to create this as well under vidjan) module to register as an app.
+            b. Put all the general templates like, homepage, about page, contact page and so on inside mani template folder
+        2. In this case, we will choose second option
+        3. Add a html template file inside template folder in root:
+            a. Add template named home.html inside template in root directory
+            b. Open the file extends base.html
+            c. Add block and specify it as content 
+            d. Inside the block add body tag with a basic style
+            e. Inside body, add a paragraph inside <p> tag
+            f. Inside p tag add a anchor tag with specify the url rendering dinaymicly and the text to be linked. 
+
+                Codes:
+                        {% extends "base.html" %}
+
+                        {% block content %}
+                          <body style="--bs-body-color: #0e0e0e;">
+                            <p>
+                              Welcome to our cinematic universe, where storytelling comes alive on the silver 
+                              screen. Immerse yourself in a world of captivating narratives, extraordinary performances, 
+                              and breathtaking visuals. From pulse-pounding action to heartwarming tales that tug at your 
+                              emotions, our curated selection of movies promises an unforgettable journey for every cinephile. 
+                              Whether you seek the thrill of the latest blockbuster, the allure of timeless classics, or the discovery 
+                              of hidden gems, our diverse collection caters to every taste and preference. Join us in celebrating 
+                              the magic of cinema, where each frame tells a unique story, and every viewing experience is a voyage 
+                              into the extraordinary. Welcome to a place where the love for movies knows no 
+                              bounds – <a href="{% url 'movies:index'%}">Watch here</a>
+                            </p>
+                          </body>
+                        {% endblock  %}
+
+Next step:21 is on make the things ready to deploy
