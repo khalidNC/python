@@ -1,1 +1,38 @@
-12th step: is on make the things ready to deploy
+21st step: make the things ready to deploy:
+
+1. Intorduction:
+The vidjan app we build is useless if it is going to sit on our machine. We should upload or deploy this to somewhere so the other peopel can use this. Here in this section, we will prepare the things to deploy.
+
+2. prerequisite for deploying:
+We will deploy our app to a very popular cloud platform called heroku. There many other platfroms like, google cloud, amazon bew service, microsoft Azure and so on where we can deploy django applications as well. The stpes we need to follow to deploy the app to heroku as below:
+
+    a. Signup on heroku website
+
+    b. Install heroku cli globaly: npm install -g heroku
+
+    c. Install gunicorn, The Gunicorn "Green Unicorn" is a Python Web Server Gateway Interface HTTP server: pipenv install gunicorn
+
+    d. add a new file called "Procfile" Note: spell this exactly the same and this is the file heroku looks at to start the application. 
+        1. In this file write, web: gunicorn vidjan.wsgi
+        2. Save the changes
+
+    e. Prepare the static files for deployment
+        1. Go to vidjan
+        2. Open settings.py module
+        3. At the bottom, there is a variable called STATIC_URL. Add a new variable STATIC_ROOT and set this to the path of the folder where that contain our static file. Currently we do nothave that so,
+          a. Add a folder named "static at the root of the project
+        4. Now put the static folder path in STATIC_ROOT variable, but not hardcoded. Rather use the join() method: os.path.join(BASE_DIR, "static")
+        5. Save the chnages
+
+    f. Open the terminal window and run: python3 manage.py collectstatic
+       This command will look at all the installed apps it will get all their static files and copy to the static folder.
+       We will see a message like this in output: 125 static files copied to '/Users/user/vidjan/static'.
+
+    g. Now to serve this static folder to heroku we need to install another package called whitenoise, this is heroku spesific, so if you are hosting some other cloud platform then it step will be different. So open the terminal in vscode and run: pipenv install whitenoise
+
+    h. Now go to the documentation page on pypi site for 'whitenoise for django': https://whitenoise.readthedocs.io/en/stable/django.html and follow the steps mentioned there:
+        1. Set STATIC_ROOT on settings. We already did
+        2. Enable whitenoice middleware by adding the object from the documentation
+        3. Save the changes. And with this cnages things are prepared for deployment.
+
+Next step:22 is on deploying the vidjan app

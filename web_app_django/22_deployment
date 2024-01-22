@@ -1,0 +1,33 @@
+Last Step deployment the vidjan app on heroku:
+
+1. Intorduction:
+To deploy the app to heroku we need a git repository, is basically contains the source codes and all it's version. So every time we commit our code to this repository and tgis repo is local. As part of the deployment process we need to set up another git repository in heroku that mirrors our local one. So when we ready to deploy we push the changes to our local repository to the repository in heroku. And heroku has a process that setup in the background it consistantly checking it's git repository, whenever it detects any changes in repo and copy it the right folder. 
+
+2. Steps to deploy:
+    a. add our codes to the local repository: start with run: git init to initialize with git
+    b. whenever new codes write that need to add to the repo: run, git add .
+    c. Then need to commit: run, git commit -m "the lebel message"
+    d. Git push in github: run, git push -u origin main
+    e. Now create heroku app using heroku cli:
+        1. First need login to heroku: run, heroku login
+        2. Type your email and password. You are looged in now
+        3. Now created heroku app: run, heroku create
+           This creates an app and it gives an random unique name. We can also provide name while creating the app but it should be unique. So we can see the address of the app in cloud. and it redirects to a default page because we did not deploy yet.
+
+    f. Now after we create app three things happned:
+        1. Heroku creates an app at mentioned address:
+        2. Heroku creates a git repository at mentioned address:
+        3. And third it tells our current local git repository in this folder about this new remote git repository.
+
+    g. Now, to deploy our application we need to run: git push heroku master
+       It will push the changes in our local repo to the master branch ot the heroku repository.
+
+    h. Now we need to tell heromu to allocate 1 web server for this application. So we run: heroku ps:scale web=1
+
+    g. To open the application run: heroku open
+
+    h. Allow the host in settings.py module: After the app opens by default it show an error 'disallow host', it is for security purpose to prevent post header attack. To fix this:
+        1. Open settings.py module
+        2. Search for ALLOW_HOST object initially the value is empty list here we need to add the address of the website in string.
+        3. Then save the changes and commit to local repo 
+        4. Then push to heroku master repo
