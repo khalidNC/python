@@ -4,7 +4,7 @@
 The vidjan app we build is useless if it is going to sit on our machine. We should upload or deploy this to somewhere so the other peopel can use this. Here in this section, we will prepare the things to deploy.
 
 2. prerequisite for deploying:
-We will deploy our app to a very popular cloud platform called heroku. There many other platfroms like, google cloud, amazon bew service, microsoft Azure and so on where we can deploy django applications as well. The stpes we need to follow to deploy the app to heroku as below:
+We will deploy our app to a very popular cloud platform called heroku. There many other platfroms like, google cloud, amazon web service, microsoft Azure and so on where we can deploy django applications as well. The stpes we need to follow to deploy the app to heroku as below:
 
     a. Signup on heroku website
 
