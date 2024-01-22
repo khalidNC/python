@@ -22,7 +22,7 @@ We will deploy our app to a very popular cloud platform called heroku. There man
         3. At the bottom, there is a variable called STATIC_URL. Add a new variable STATIC_ROOT and set this to the path of the folder where that contain our static file. Currently we do nothave that so,
           a. Add a folder named "static at the root of the project
         4. Now put the static folder path in STATIC_ROOT variable, but not hardcoded. Rather use the join() method: os.path.join(BASE_DIR, "static")
-        5. Save the chnages
+        5. Save the changes
 
     f. Open the terminal window and run: python3 manage.py collectstatic
        This command will look at all the installed apps it will get all their static files and copy to the static folder.
