@@ -1,10 +1,20 @@
 21st step: make the things ready to deploy:
 
 1. Intorduction:
-The vidjan app we build is useless if it is going to sit on our machine. We should upload or deploy this to somewhere so the other peopel can use this. Here in this section, we will prepare the things to deploy.
+The vidjan app we build is useless if it is going to sit on our machine. We should upload or deploy this to somewhere so the other people can use this. Here in this section, we will prepare the things to deploy.
 
-2. prerequisite for deploying:
-We will deploy our app to a very popular cloud platform called heroku. There many other platfroms like, google cloud, amazon web service, microsoft Azure and so on where we can deploy django applications as well. The stpes we need to follow to deploy the app to heroku as below:
+2. Deploying to could platforms:
+   We can deploy the app to various cloud platforms at free of cost like;
+      - Render
+      - PythonAnywhere
+      - Vercel 
+   We can also deploy some other platfomrs where we need to pay for this service like;
+      - heroku
+      - google cloud
+      - amazon web service
+      - microsoft Azure and so on. 
+
+   The stpes we need to follow to deploy the app to Heroku as below:
 
     a. Signup on heroku website
 
@@ -19,8 +29,8 @@ We will deploy our app to a very popular cloud platform called heroku. There man
     e. Prepare the static files for deployment
         1. Go to vidjan
         2. Open settings.py module
-        3. At the bottom, there is a variable called STATIC_URL. Add a new variable STATIC_ROOT and set this to the path of the folder where that contain our static file. Currently we do nothave that so,
-          a. Add a folder named "static at the root of the project
+        3. At the bottom, there is a variable called STATIC_URL. Add a new variable STATIC_ROOT and set this to the path of the folder where that contain our static file. Currently we do not have that so,
+          a. Add a folder named "static" at the root of the project
         4. Now put the static folder path in STATIC_ROOT variable, but not hardcoded. Rather use the join() method: os.path.join(BASE_DIR, "static")
         5. Save the changes
 
@@ -33,6 +43,59 @@ We will deploy our app to a very popular cloud platform called heroku. There man
     h. Now go to the documentation page on pypi site for 'whitenoise for django': https://whitenoise.readthedocs.io/en/stable/django.html and follow the steps mentioned there:
         1. Set STATIC_ROOT on settings. We already did
         2. Enable whitenoice middleware by adding the object from the documentation
-        3. Save the changes. And with this cnages things are prepared for deployment.
+        3. Save the changes. And with this changes things are prepared for deployment.
+
+3. Deploy to Render at free of cost:
+
+    a. Sign up to render: render.com
+
+    b. Create a Requirements File: 
+       Create a requirements.txt file in the root directory listing the project dependencies. We can generate this file using the commandline: pip freeze > requirements.txt
+
+    c. Configure Django for Production: Update your settings.py file for production. Make sure to set DEBUG to False
+
+    d. Configure static file:
+        1. Go to vidjan
+        2. Open settings.py module
+        3. At the bottom, there is a variable called STATIC_URL. Add a new variable STATIC_ROOT and set this to the path of the folder where that contain our static file. Currently we do not have that so,
+          a. Add a folder named "static" at the root of the project
+        4. Now put the static folder path in STATIC_ROOT variable, but not hardcoded. Rather use the join() method: os.path.join(BASE_DIR, "static")
+        5. Save the changes
+
+    f. Open the terminal window and run: python3 manage.py collectstatic
+       This command will look at all the installed apps it will get all their static files and copy to the static folder.
+       We will see a message like this in output: 125 static files copied to '/Users/user/vidjan/static'.
+
+    g. Install gunicorn:
+       The Gunicorn "Green Unicorn" is a Python Web Server Gateway Interface HTTP server: pipenv install gunicorn
+
+    h. Create Procfile:
+       add a new file called "Procfile" Note: spell this exactly the same and this is the file heroku looks at to start the application. 
+          1. In this file write, web: gunicorn vidjan.wsgi
+          2. Save the changes
+
+    i. Database setup in setting.py file:
+       Set the database list as like this:
+          DATABASES = {
+              'default': {
+                  'ENGINE': 'django.db.backends.sqlite3',
+                  'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+              }
+          }
+
+    j. Create a New Web Service on Render
+          1. Log in to your Render account.
+          2. Click on the "New" button and select "Web Service."
+          3. Connect your Git repository.
+          4. Configure the following settings:
+          5. Environment: Python
+          6. Build Command: pip install -r requirements.txt
+          7. Start Command: gunicorn yourprojectname.wsgi
+          8. Click "Save" and then "Deploy."
+    
+    k. Updte Host in settings.py:
+    In Django, the ALLOWED_HOSTS setting is a security measure to prevent HTTP Host header attacks. It specifies a list of valid host/domain names for your Django application. When Django receives a request, it checks the Host header against the values in ALLOWED_HOSTS. If the Host header does not match any of the allowed values, Django raises a SuspiciousOperation (400 Bad Request) exception.
+
+    So we need to copy the url and update the allowed host in settings.py file. Then again git commit. Then we can see the website properbly.
 
 Next step:22 is on deploying the vidjan app
