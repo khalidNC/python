@@ -1,0 +1,120 @@
+Introduction:
+Welcome to the documentation guide for deploying a Django application with a PostgreSQL database on the Render platform. This guide will walk you through the process of connecting Render's PostgreSQL database to your Django app, ensuring a seamless deployment experience.
+
+In this tutorial, you will learn the step-by-step instructions for deploying both the Django application and its associated database on the Render platform. By the end of this guide, you'll have a fully operational Django app running on Render, with a connected PostgreSQL database.
+
+Please follow the detailed instructions provided in each section to successfully set up and deploy your Django application on Render, utilizing the PostgreSQL database for data storage.
+
+Let's get started on this journey of deploying and hosting your Django app with Render!
+
+Steps to follow:
+    1. Signup on render platform
+    2. Connect your github account to the render, this will allow deploy the app easily
+    3. Create a postgresql database on render:
+        a. Go to render dashboard
+        b. Navigate to new postgresql and it takes you inner page to create databse
+        c. Input the name for the databae it is arbitrary
+        d. Keep the other option as it is and choose the free plan
+        e. And click on the creat database button
+        f. It will take you to the confirmation page where you can see the status
+            The postgresql databse has a option to connect let's see what options are there in this page:
+                1. Click on the Connect button on the write top corner
+                2. It opens a try with 2 options;
+                    a. Internal connections: If my app is hosted on render as a web service then I need to use the internal connection URL.
+                    b. External connections: If I am connecting to the database from outside of render then need to use the external connection URL. 
+    4. Go back to the vscode and open settings.py module and we need connect the postgresql database to the django app by overwriting the DATABASE setting on settings.py module instead using the sqlite3 or whatever it is that currently using for the django app. To do so we need to do a couple of things;
+        a. The current database setup is like this below:
+            Codes:
+                    DATABASES = {
+                          'default': {
+                              'ENGINE': 'django.db.backends.sqlite3',
+                              'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+                          }
+                      }
+           So either you can change the ENGINE: to postgresql and cna change NAME: to be dtabase name. or you can setup username password. But here we like to use django databse url.
+        b. So to install the dj-database-url run the command: pipenv install dj-databse-url
+        c. After install done let's import that on the top like: import dj-database-url
+        d. then write database settings, we create a class instance for dj-databse-url and use parse method that takes the external url for the render's postgresql as parameter and it returns DATABSE['default'] value as below: 
+            Codes:
+                    DATABASE['default'] = dj-databse-url.parse('external_url_to_connect_postgresql_that_copied_from_render')
+        e. Save the changes, and now we have a separate database and we need to migrate because we need to create tables to the new database.
+        f. So run the command for the migration: python3 manage.py migrate
+        g. If it raises error like: eror loading psycopg2 or psycopg module that means I do not have postgresql driver installed.
+        h. So to install run the command: pipenv install psycopg2-binary or it could be psycopg2 without the binary basde on the local machine.
+        g. Then run the migrate again. This time migration is done.
+        h. To connect to my database directly to a tool called Dbeaver, open the dbeaver desktop app 
+        i. and to connect, choose the postgresql in the app and I will see the dtabase as postgresql after the migration. To do so we need a couple stup here as below:
+            1. I copy the url from host field in the current page
+            2. and take out the things that should be the part of other fileds like, name 
+            3. The host should be everything after the @ sign
+            4. Then take out the user name from the url and paste inside the username
+            5. then after the colon sign to till @ sign should be the password
+            6. Then click on the connection button and it should be connected. And I should see the database.
+        j. Let's test the databse works or not. Open the server from the terminal: python3 manage.py runserver
+        then add data then again open the Dbeaver and see the data is up here or not. 
+    
+    4. Now time to deply the django app:
+        a. Open the render dashboard.
+
+        b. go for creating a new web service.
+
+        c. here we need to connect github repo so we need to push all the changes to the github.
+
+        d. But before pushing in the settings.py module, we need to set certain things that come from environment variables because we do not want that should go to the repo.
+            1. Import os so that I can grab environment variables
+
+            2. One thing that need to be in environment variable is DEBUG. Right now it is TRUE. But we want this to be the vale from the environment veriable, so I can do like: call the get() method from os.eviron module and that takse a key named "DEBUG" and it going to return 'False' by default so pass this as 2nd argument. So it looks like in the codes: DEBUG = os.environ.get("DEBUG", "False") 
+            Now I want to check if this equal to ture as well so finally it comes like: 
+            DEBUG = os.environ.get("DEBUG", "False") == "True"
+            So debug takes in a boolean so we want to set if the debug value itself is string that's true it will going to equal true. And actually we can set this in more better way, using lower method so the thing will still work if the varibales is lower as well.
+            DEBUG = os.environ.get("DEBUG", "False").lower() == "true"
+
+            3. Second thing is ALLOWED_HOSTS, we can slso create environment variable. I want to call get() and set the key "ALLOWED_HOSTS" so I will just the everything same as the setting in django. And what I am going to do is spliting the value with an space using .split(" "), the I idea is when we have multiple hosts separated with a space and returns a list. So it will be like: ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS").split(" ")
+
+            4. Third things is SECRET_KEY, I can do something similar call the get() method on os.environ module and pass key as "SECRET_KEY" like: SECRET_KEY = os.environ.get("SECRET_KEY") instead hardcoded actual key.
+
+            5. The last thing would be the DATABASE, we can set a vriable called databse_url and set this to environemnt variable by calling the get() method and pass the key "DATABASE_URL" then replace the string inside the parse method argument with the variable, database_url. Like:
+            the current codes:
+                    DATABASE['default'] = dj-databse-url.parse('external_url_to_connect_postgresql_that_copied_from_render')
+
+            replace codes:
+                    database_url = os.environ.get("DATABASE_URL")
+                    DATABASE['default'] = dj-databse-url.parse(database_url)
+
+        f. Now we need requirements.txt file that contains list of all the dependencies because when render platform deploy this the platfrom needs to install all this dependencies. to create the txt file we need to run the command:
+        pip freeze > requirements.txt 
+        This will create the file automatically in the root directory.
+
+        g. Now go ahead and push the changes in the github.
+
+        h. Now actually we can able to connect the github to render dashboard after creating the new webservice.
+
+        i. It takes you to the setup page to set the webservice name and others fields;
+            1. Input the name in the name field for example: vidjan
+            2. Set the region
+            3. Branch like master/main based on your github settings
+            4. Root directory I keep empty for the time being
+            5. Runtime to Python3 since the language of the app on python
+            6. Buid command to pip install -r requirements.txt
+            7. Start command actually going to run the app so we need gunicorn to be installed and we can run the wsgi. So we set this to: gunicorn then name_of_my_app then .wsgi like: gunicorn vidjan.wsgi
+            8. Then select the payment option set as free.
+            9. Then click on the create button and it start try to deploy in the inner page.
+        
+        j. If I see any error we need to fix those in accordance with in the codes and push to github then come back to the render websevice page and manually deploy with latest commit.
+
+        k. One error is common at this point which is ALLOWED_HOSTS is missing because we did not specify this in the render webservice setting option. So go to the Environment option in the dasheboard and set as below;
+            1. First one is the SECRET_KEY for the Key and generate the value in the next filed by clicking on the button
+            2. Then add another key which is ALLOWED_HOSTS and set the value as the render app web link inside string and if you need multiple host like localhost specify with a space.
+            3. And we need another one which is DEBUG and value should be set to False.
+            4. And another one is DATABASE_URL and set the value as the internal database url copying from the postgresql page
+            5. And save the changes and it will automatically start deploying.
+
+        l. After deployment is done you head over to the url to open the app. But you might see a common error, 400 a bad request error. So we come to know somthing is not working properly but we are not sure what is the issue.
+
+        m. So for the time being the we change the DEBUG value False to True on the emvironment setting to figure out what is going on. Now deployment automatically starts. And this time we can see detail error message and we can see for example, the host start with https we remove it and save the changes and it deploys automatically again. 
+
+        n. Now the web app is working as expected and it is using the same database as before we already have data in it.
+
+        m. And we can add data here and can see it has saved to the postgresql database. 
+
+That's the end of the deployment process.
