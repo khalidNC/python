@@ -32,24 +32,26 @@ Steps to follow:
                           }
                       }
            So either you can change the ENGINE: to postgresql and cna change NAME: to be dtabase name. or you can setup username password. But here we like to use django databse url.
-        b. So to install the dj-database-url run the command: pipenv install dj-databse-url
+        b. So to install the dj-database-url run the command: pipenv install dj-database-url
         c. After install done let's import that on the top like: import dj-database-url
-        d. then write database settings, we create a class instance for dj-databse-url and use parse method that takes the external url for the render's postgresql as parameter and it returns DATABSE['default'] value as below: 
+        d. then write database settings, we create a class instance for dj-database-url and use parse method that takes the external url for the render's postgresql as parameter and it returns DATABASES['default'] value as below: 
             Codes:
-                    DATABASE['default'] = dj-databse-url.parse('external_url_to_connect_postgresql_that_copied_from_render')
+                  DATABASES['default'] = dj-database-url.parse('external_url_to_connect_postgresql_that_copied_from_render')
         e. Save the changes, and now we have a separate database and we need to migrate because we need to create tables to the new database.
         f. So run the command for the migration: python3 manage.py migrate
-        g. If it raises error like: eror loading psycopg2 or psycopg module that means I do not have postgresql driver installed.
+        g. If it raises error like: error loading psycopg2 or psycopg module that means I do not have postgresql driver installed.
         h. So to install run the command: pipenv install psycopg2-binary or it could be psycopg2 without the binary basde on the local machine.
         g. Then run the migrate again. This time migration is done.
         h. To connect to my database directly to a tool called Dbeaver, open the dbeaver desktop app 
-        i. and to connect, choose the postgresql in the app and I will see the dtabase as postgresql after the migration. To do so we need a couple stup here as below:
-            1. I copy the url from host field in the current page
-            2. and take out the things that should be the part of other fileds like, name 
-            3. The host should be everything after the @ sign
-            4. Then take out the user name from the url and paste inside the username
-            5. then after the colon sign to till @ sign should be the password
-            6. Then click on the connection button and it should be connected. And I should see the database.
+        i. and to connect, choose the postgresql in the dbeaver's desktop app and I will see the database as postgresql after the migration. To connet the database, we need a couple setup here as below:
+            1. I copy paste the external url: postgres://vidjan_postgresql_user:gWB1CyEwJDVirOfS9YI1s9sUYxswXxMd@dpg-cmp46dicn0vc73cl2dog-a.singapore-postgres.render.com/vidjan_postgresql somewhere and then,
+            2. and take out the things that should be the part of the aprppiate  fileds like, Database name and so on.
+            3. Databse name is: vidjan_postgresql
+            3. The host should be everything after the @ sign like: dpg-cmp46dicn0vc73cl2dog-a.singapore-postgres.render.com
+            4. Then take out the user name: vidjan_postgresql_user
+            5. then after the colon sign to till @ sign should be the password: gWB1CyEwJDVirOfS9YI1s9sUYxswXxMd
+            6. Then click on the test connection button and check it works and I see cconnected and click on the ok button.
+            7. Then click on the finish button and it should be connected. And I should see the database.
         j. Let's test the databse works or not. Open the server from the terminal: python3 manage.py runserver
         then add data then again open the Dbeaver and see the data is up here or not. 
     
