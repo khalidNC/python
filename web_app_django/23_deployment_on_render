@@ -33,10 +33,10 @@ Steps to follow:
                       }
            So either you can change the ENGINE: to postgresql and cna change NAME: to be dtabase name. or you can setup username password. But here we like to use django databse url.
         b. So to install the dj-database-url run the command: pipenv install dj-database-url
-        c. After install done let's import that on the top like: import dj-database-url
-        d. then write database settings, we create a class instance for dj-database-url and use parse method that takes the external url for the render's postgresql as parameter and it returns DATABASES['default'] value as below: 
+        c. After install done let's import that on the top like: import dj_database_url
+        d. then write database settings, we create a class instance for dj_database_url and use parse method that takes the external url for the render's postgresql as parameter and it returns DATABASES['default'] value as below: 
             Codes:
-                  DATABASES['default'] = dj-database-url.parse('external_url_to_connect_postgresql_that_copied_from_render')
+                  DATABASES['default'] = dj_database_url.parse('external_url_to_connect_postgresql_that_copied_from_render')
         e. Save the changes, and now we have a separate database and we need to migrate because we need to create tables to the new database.
         f. So run the command for the migration: python3 manage.py migrate
         g. If it raises error like: error loading psycopg2 or psycopg module that means I do not have postgresql driver installed.
@@ -77,11 +77,11 @@ Steps to follow:
 
             5. The last thing would be the DATABASE, we can set a vriable called databse_url and set this to environemnt variable by calling the get() method and pass the key "DATABASE_URL" then replace the string inside the parse method argument with the variable, database_url. Like:
             the current codes:
-                    DATABASE['default'] = dj-databse-url.parse('external_url_to_connect_postgresql_that_copied_from_render')
+                  DATABASES['default'] = dj_database_url.parse('external_url_to_connect_postgresql_that_copied_from_render')
 
             replace codes:
                     database_url = os.environ.get("DATABASE_URL")
-                    DATABASE['default'] = dj-databse-url.parse(database_url)
+                    DATABASES['default'] = dj_database_url.parse(database_url)
 
         f. Now we need requirements.txt file that contains list of all the dependencies because when render platform deploy this the platfrom needs to install all this dependencies. to create the txt file we need to run the command:
         pip freeze > requirements.txt 
@@ -104,8 +104,8 @@ Steps to follow:
         
         j. If I see any error we need to fix those in accordance with in the codes and push to github then come back to the render websevice page and manually deploy with latest commit.
 
-        k. One error is common at this point which is ALLOWED_HOSTS is missing because we did not specify this in the render webservice setting option. So go to the Environment option in the dasheboard and set as below;
-            1. First one is the SECRET_KEY for the Key and generate the value in the next filed by clicking on the button
+        k. There are few common issues at this point because we did not specify those in the render webservice environment variable option. So go to the Environment option in the dasheboard and set as below;
+            1. First key is the SECRET_KEY and generate the value in the next field by clicking on the button
             2. Then add another key which is ALLOWED_HOSTS and set the value as the render app web link inside string and if you need multiple host like localhost specify with a space.
             3. And we need another one which is DEBUG and value should be set to False.
             4. And another one is DATABASE_URL and set the value as the internal database url copying from the postgresql page
