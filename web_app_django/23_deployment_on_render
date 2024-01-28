@@ -12,8 +12,8 @@ Steps to follow:
     2. Connect your github account to the render, this will allow deploy the app easily
     3. Create a postgresql database on render:
         a. Go to render dashboard
-        b. Navigate to new postgresql and it takes you inner page to create databse
-        c. Input the name for the databae it is arbitrary
+        b. Navigate to new postgresql and it takes you inner page to create database
+        c. Input the name for the database it is arbitrary
         d. Keep the other option as it is and choose the free plan
         e. And click on the creat database button
         f. It will take you to the confirmation page where you can see the status
@@ -105,7 +105,7 @@ Steps to follow:
         j. If I see any error we need to fix those in accordance with in the codes and push to github then come back to the render websevice page and manually deploy with latest commit.
 
         k. There are few common issues at this point because we did not specify those in the render webservice environment variable option. So go to the Environment option in the dasheboard and set as below;
-            1. First key is the SECRET_KEY and generate the value in the next field by clicking on the button
+            1. First key is the SECRET_KEY and copy the SECRET_KEY from the settings.py module and paste it in value
             2. Then add another key which is ALLOWED_HOSTS and set the value as the render app web link inside string and if you need multiple host like localhost specify with a space.
             3. And we need another one which is DEBUG and value should be set to False.
             4. And another one is DATABASE_URL and set the value as the internal database url copying from the postgresql page
