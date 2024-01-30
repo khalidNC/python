@@ -31,7 +31,7 @@ Steps to follow:
                               'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
                           }
                       }
-           So either you can change the ENGINE: to postgresql and cna change NAME: to be dtabase name. or you can setup username password. But here we like to use django databse url.
+           So either you can change the ENGINE: to postgresql and can change NAME: to be dtabase name. or you can setup username password. But here we like to use django databse url.
         b. So to install the dj-database-url run the command: pipenv install dj-database-url
         c. After install done let's import that on the top like: import dj_database_url
         d. then write database settings, we create a class instance for dj_database_url and use parse method that takes the external url for the render's postgresql as parameter and it returns DATABASES['default'] value as below: 
@@ -45,7 +45,7 @@ Steps to follow:
         h. To connect to my database directly to a tool called Dbeaver, open the dbeaver desktop app 
         i. and to connect, choose the postgresql in the dbeaver's desktop app and I will see the database as postgresql after the migration. To connet the database, we need a couple setup here as below:
             1. I copy paste the external url: postgres://vidjan_postgresql_user:gWB1CyEwJDVirOfS9YI1s9sUYxswXxMd@dpg-cmp46dicn0vc73cl2dog-a.singapore-postgres.render.com/vidjan_postgresql somewhere and then,
-            2. and take out the things that should be the part of the aprppiate  fileds like, Database name and so on.
+            2. take out the things that should be the part of the aprppiate fileds like, Database name and so on.
             3. Databse name is: vidjan_postgresql
             3. The host should be everything after the @ sign like: dpg-cmp46dicn0vc73cl2dog-a.singapore-postgres.render.com
             4. Then take out the user name: vidjan_postgresql_user
@@ -63,17 +63,17 @@ Steps to follow:
         c. here we need to connect github repo so we need to push all the changes to the github.
 
         d. But before pushing in the settings.py module, we need to set certain things that come from environment variables because we do not want that should go to the repo.
-            1. Import os so that I can grab environment variables
+            1. First Import os, so that I can grab environment variables
 
-            2. One thing that need to be in environment variable is DEBUG. Right now it is TRUE. But we want this to be the vale from the environment veriable, so I can do like: call the get() method from os.eviron module and that takse a key named "DEBUG" and it going to return 'False' by default so pass this as 2nd argument. So it looks like in the codes: DEBUG = os.environ.get("DEBUG", "False") 
+            2. One thing that need to be in environment variable is DEBUG. Right now it is TRUE. But we want this to be the value from the environment veriable, so I can do like: call the get() method from os.environ module and that takse a key named "DEBUG" and it going to return 'False' by default so pass this as 2nd argument. So it looks like in the codes: DEBUG = os.environ.get("DEBUG", "False") 
             Now I want to check if this equal to ture as well so finally it comes like: 
             DEBUG = os.environ.get("DEBUG", "False") == "True"
-            So debug takes in a boolean so we want to set if the debug value itself is string that's true it will going to equal true. And actually we can set this in more better way, using lower method so the thing will still work if the varibales is lower as well.
+            So debug takes in a boolean so we want to set if the debug value itself is string that's true it will going to equal true. And actually we can set this in more better way, using lower method so that the thing will still work if the varibales is lower as well.
             DEBUG = os.environ.get("DEBUG", "False").lower() == "true"
 
-            3. Second thing is ALLOWED_HOSTS, we can slso create environment variable. I want to call get() and set the key "ALLOWED_HOSTS" so I will just the everything same as the setting in django. And what I am going to do is spliting the value with an space using .split(" "), the I idea is when we have multiple hosts separated with a space and returns a list. So it will be like: ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS").split(" ")
+            3. Second thing is ALLOWED_HOSTS, we can slso create environment variable. I want to call get() and set the key "ALLOWED_HOSTS", and for example we want to use local host as well. So what I am going to do is, spliting the value with an space using .split(" "), the I idea is when we have multiple hosts separated with a space and returns a list. So it will be like: ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", "localhost 127.0.0.1").split(" ")
 
-            4. Third things is SECRET_KEY, I can do something similar call the get() method on os.environ module and pass key as "SECRET_KEY" like: SECRET_KEY = os.environ.get("SECRET_KEY") instead hardcoded actual key.
+            4. Third things is SECRET_KEY, I can do something similar call the get() method on os.environ module and pass key as "SECRET_KEY" like: SECRET_KEY = os.environ.get("SECRET_KEY").__str__ instead hardcoded actual key. We are using .__str__ magic method referrence here to return this as string.
 
             5. The last thing would be the DATABASE, we can set a vriable called databse_url and set this to environemnt variable by calling the get() method and pass the key "DATABASE_URL" then replace the string inside the parse method argument with the variable, database_url. Like:
             the current codes:
@@ -82,6 +82,20 @@ Steps to follow:
             replace codes:
                     database_url = os.environ.get("DATABASE_URL")
                     DATABASES['default'] = dj_database_url.parse(database_url)
+            
+            To use both databses, sqlite3 for local host and postgresql for render host we can use the if condition. This will check if the databse_url is ture for the environment variable settings on render end then database default value from the postgresql. else default is sqlite3 for local host. So the full codes look like;
+
+                Codes:
+                      DATABASES = {
+                          'default': {
+                              'ENGINE': 'django.db.backends.sqlite3',
+                              'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+                          }
+                      }
+
+                      database_url = os.environ.get("DATABASE_URL")
+                      if database_url:
+                          DATABASES['default'] = dj_database_url.parse(database_url) 
 
         f. Now we need requirements.txt file that contains list of all the dependencies because when render platform deploy this the platfrom needs to install all this dependencies. to create the txt file we need to run the command:
         pip freeze > requirements.txt 
@@ -89,7 +103,7 @@ Steps to follow:
 
         g. Now go ahead and push the changes in the github.
 
-        h. Now actually we can able to connect the github to render dashboard after creating the new webservice.
+        h. Now actually we can able to connect the github to render dashboard before that you can create a new webservice.
 
         i. It takes you to the setup page to set the webservice name and others fields;
             1. Input the name in the name field for example: vidjan
@@ -98,25 +112,57 @@ Steps to follow:
             4. Root directory I keep empty for the time being
             5. Runtime to Python3 since the language of the app on python
             6. Buid command to pip install -r requirements.txt
-            7. Start command actually going to run the app so we need gunicorn to be installed and we can run the wsgi. So we set this to: gunicorn then name_of_my_app then .wsgi like: gunicorn vidjan.wsgi
+            7. Start command actually going to run the app so we need gunicorn to be installed and it can run the wsgi. So we set this to: gunicorn then name_of_my_app then .wsgi like: gunicorn vidjan.wsgi
             8. Then select the payment option set as free.
             9. Then click on the create button and it start try to deploy in the inner page.
         
         j. If I see any error we need to fix those in accordance with in the codes and push to github then come back to the render websevice page and manually deploy with latest commit.
 
-        k. There are few common issues at this point because we did not specify those in the render webservice environment variable option. So go to the Environment option in the dasheboard and set as below;
+        k. There are few common issues at this point because we did not specify those in the render webservice environment variable option. So go to the Environment option in the dashboard and set as below;
             1. First key is the SECRET_KEY and copy the SECRET_KEY from the settings.py module and paste it in value
-            2. Then add another key which is ALLOWED_HOSTS and set the value as the render app web link inside string and if you need multiple host like localhost specify with a space.
+            2. Then add another key which is ALLOWED_HOSTS and set the value as the render app web link inside string and if you need multiple host like localhost specify with a space. 
             3. And we need another one which is DEBUG and value should be set to False.
             4. And another one is DATABASE_URL and set the value as the internal database url copying from the postgresql page
             5. And save the changes and it will automatically start deploying.
 
         l. After deployment is done you head over to the url to open the app. But you might see a common error, 400 a bad request error. So we come to know somthing is not working properly but we are not sure what is the issue.
 
-        m. So for the time being the we change the DEBUG value False to True on the emvironment setting to figure out what is going on. Now deployment automatically starts. And this time we can see detail error message and we can see for example, the host start with https we remove it and save the changes and it deploys automatically again. 
+        m. So for the time being we change the DEBUG value False to True on the emvironment setting to figure out what is going on. Now deployment automatically starts. And this time we can see detail error message and we can see for example, the host start with https we remove it and save the changes and it deploys automatically again. 
 
-        n. Now the web app is working as expected and it is using the same database as before we already have data in it.
+        n. Now the web app is working as expected and it is using the postgresql database as before we already have data in it.
 
-        m. And we can add data here and can see it has saved to the postgresql database. 
+        m. And we can add data here and can see it has saved to the postgresql database.
 
-That's the end of the deployment process.
+
+Steps to add new data fields in local then migrate:
+Up to this point, your app is live on render hosting. Now you change or add new data field in you app localy that could updates the local database, qslite3. Then test in local machine if things are okay then push and you need migrate local changes to the production. And the steps of full process as below:
+
+    1. To change the data fileds in your app:
+        a. Modify the models.py module by adding model class attribute
+        b. update the Admin.py module in according to the changes on model class
+        c. Then update the html templates based on the data
+
+    2. Save the changes in local and run the local server and check every things work expectedly.
+
+    3. If things are okay then update the local database, sqlite3 by running the below command:
+        Terminal command:
+            python3 manage.py makemigrations
+
+            Note: After the new data filed is added it might not allow you to make migrations because the data filed for privious data become none so you need to provide default data for the empty fileds for previous data. When you run the make migrations command it prompts 2 options to provide the default data like below:
+              Terminal output:
+                Please select a fix:
+                1. Provide a one-off default now (will be set on all existing rows with a null value for this column)
+                2. Quit and manually define a default value in models.py.
+
+              Then input the default value for the empty fileds in the terminal as instruction then complete the make migrations.
+
+            Then migrate:
+            python3 manage.py migrate
+    
+    4. Populate new data on the localhost app and check things are working and data is saving in the sqlite3 database.
+    5. Now commit and push main this will automatically deploy on render end.
+    6. Then you need to update the databse on the render end which is postgresql. To do so run the command:
+        export DATABASE_URL=external_database_url (copping from the postgresql database page on render)
+        then re-run migration:
+        python3 manage.py migrate
+    7. Prouction databse is updated now. And you can use the production now. 
