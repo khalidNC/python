@@ -96,6 +96,6 @@ The vidjan app we build is useless if it is going to sit on our machine. We shou
     k. Updte Host in settings.py:
     In Django, the ALLOWED_HOSTS setting is a security measure to prevent HTTP Host header attacks. It specifies a list of valid host/domain names for your Django application. When Django receives a request, it checks the Host header against the values in ALLOWED_HOSTS. If the Host header does not match any of the allowed values, Django raises a SuspiciousOperation (400 Bad Request) exception.
 
-    So we need to copy the url and update the allowed host in settings.py file. Then again git commit. Then we can see the website properbly.
+    So we need to copy the url and update the allowed host in settings.py file. Then again git commit. Then we can see the website properly.
 
 Next step:22 is on deploying the vidjan app
