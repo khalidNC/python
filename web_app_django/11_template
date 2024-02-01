@@ -1,6 +1,6 @@
 11th Step: Return html content from the view function:
 
-1. So far we use database abstraction api and get movie titles from the database and displat on the web page, /movies.
+1. So far we use database abstraction api and get movie titles from the database and display on the web page, /movies.
 Now we want to return html content from the view function. To do so open views module:
     
     Codes:
