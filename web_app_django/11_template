@@ -53,7 +53,7 @@ Now we want to return html content from the view function. To do so open views m
     thead section we want tr and inside the tr tag we want to have 3 th tags. So we will write this as below:
     table.table>thead>tr>th*5 then enter tab button. This will generate the htm codes as below:
     Codes:
-        <tabe class="tabe">
+        <tabe class="table">
           <thead>
             <tr>
               <th></th>

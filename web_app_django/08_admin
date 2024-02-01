@@ -52,7 +52,7 @@
       a. Now let's go to the list of Genre by clicking on the genre.
       b. Initially there is no genere 
       c. Add a genere name let's say Action
-      d. After adding it the entity shows as 'Genre object (1)' so it doe snot shows the name Action
+      d. After adding it the entity shows as 'Genre object (1)' so it does not shows the name Action
       e. Note: the the django automatically generate the id of genere in this case the id is 1
 
 In next step:9 we will customize the admin interface in file the "Customize admin".

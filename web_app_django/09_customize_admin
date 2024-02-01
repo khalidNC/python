@@ -45,10 +45,10 @@
 2. Add movies now:
     a. Navigate to the Mivies list page
     b. Then input data like name, realse year and so on in the fields
-    c. Afeter adding a movies again we see the Movie object (1) instead of the actual name
+    c. After adding a movies again we see the Movie object (1) instead of the actual name
     d. So need to do the same as above stuff to fix this.
     e. So add a class MovieAdmin() to implement the fields
-    f. Here we can override few of the attributes like if we want to exclue any filed we can use exclude attribute and set then name of the filed we want to exclude in a tuple
+    f. Here we can override few of the attributes like if we want to exclude any filed we can use exclude attribute and set then name of the filed we want to exclude in a tuple
     
         Codes:
                 class MovieAdmin(admin.ModelAdmin):
