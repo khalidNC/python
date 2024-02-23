@@ -8,4 +8,3 @@ Supervised Learning: This involves training a model on a labeled dataset, where 
 Unsupervised Learning: In this type of learning, the algorithm is given unlabeled data and must find patterns, relationships, or structures within the data without explicit guidance. Common unsupervised learning techniques include clustering and dimensionality reduction.
 
 Reinforcement Learning: This involves training a model to make decisions by providing feedback in the form of rewards or penalties. The model learns to take actions in an environment to maximize cumulative rewards over time. It is often used in scenarios where an agent interacts with an environment.
-
