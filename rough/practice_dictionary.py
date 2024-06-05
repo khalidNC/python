@@ -43,7 +43,7 @@ def count_nums(num_list):
   return counts
 
 # Now we want to a separate function to print the key value in more readable way
-# It loop over the counts dictinary and print how many times the unique number are appear
+# It loop over the counts dictinary and print how many times the unique number are appear.
 def print_counts(counts):
   for key in counts:
     value = counts[key]
