@@ -69,7 +69,7 @@ def change_value(n):
 
 
 # Now we are going to do the same thing with a list rather than a number.
-# here, my_list and list both variable point to the my_list value [42, 28, 16]
+# here, my_list and list both variable point to the my_list value [42, 28, 16].
 # Now append function adds 42 at the end of the list this time. because in python list is mutable. 
 def main():
   my_list = [42, 28, 16]
