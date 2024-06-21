@@ -72,4 +72,5 @@ we can not create instance.
 
 Secondly, future if we create another stream class MemoryStream and just pass(line-32, 33). It still does not allow me to run the 
 codes, it gives TypeError. Because, if we look at the abstractmethod(line-20, 21, 22) here read method is define, so
-till we use the read() method for all type of Stream class it will keep raising error. '''
+till we use the read() method for all type of Stream class it will keep raising error. 
+'''
