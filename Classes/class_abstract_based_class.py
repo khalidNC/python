@@ -40,7 +40,8 @@ class MemoryStream:
 streams = MemoryStream()
 streams.read()
 
-''' In general, Through the process of abstraction, a programmer hides all but the relevant data about an object
+''' 
+In general, Through the process of abstraction, a programmer hides all but the relevant data about an object
 in order to reduce complexity and increase efficiency. On the above example of inheritance class has a couple of
 issues;
 1. If I wish I can create instance on base class and call it's function. and the program runs. Line-37, 38 
@@ -72,4 +73,5 @@ we can not create instance.
 
 Secondly, future if we create another stream class MemoryStream and just pass(line-32, 33). It still does not allow me to run the 
 codes, it gives TypeError. Because, if we look at the abstractmethod(line-20, 21, 22) here read method is define, so
-till we use the read() method for all type of Stream class it will keep raising error. '''
+till we use the read() method for all type of Stream class it will keep raising error. 
+'''
