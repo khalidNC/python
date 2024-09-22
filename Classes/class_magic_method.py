@@ -1,4 +1,5 @@
-''' Magic methods in Python, also known as dunder methods (short for "double underscore" methods), 
+'''
+Magic methods in Python, also known as dunder methods (short for "double underscore" methods), 
 are special methods that have double underscores at the beginning and end of their names, 
 like __init__, __str__, __add__, etc. These methods are used to define how objects of a class 
 behave in various contexts. They enable you to customize the behavior of your classes and objects 
